@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": ["es6"],
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6"
+  },
+  "exclude": ["dist/**/*", "node_modules", "**/*.test.ts"],
+  "typedocOptions": {
+    "entryPoints": ["./src"],
+    "entryPointStrategy": "expand",
+    "gitRevision": "main",
+    "out": "./docs"
+  }
+}

@@ -1,0 +1,68 @@
+name: 'test'
+
+on:
+  push:
+    branches:
+    - 'main'
+  pull_request:
+    branches:
+    - 'main'
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }}-${{ github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  install_and_compile:
+    name: 'install-and-compile'
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: 'actions/checkout@v2'
+
+    - uses: 'actions/setup-node@v2'
+      with:
+        node-version: '12.x'
+
+    - name: 'npm build'
+      run: 'npm ci && npm run build && npm run docs'
+
+    - name: 'verify compiled'
+      shell: 'bash'
+      run: |-
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "TypeScript is not compiled!"
+          git diff
+          exit 1
+        fi
+
+  unit:
+    name: 'unit'
+    needs: 'install_and_compile'
+    runs-on: '${{ matrix.os }}'
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+        - 'ubuntu-latest'
+        - 'windows-latest'
+        - 'macos-latest'
+
+    steps:
+    - uses: 'actions/checkout@v2'
+
+    - uses: 'actions/setup-node@v2'
+      with:
+        node-version: '12.x'
+
+    - name: 'npm build'
+      run: 'npm ci && npm run build'
+
+    - name: 'npm lint'
+      # There's no need to run the linter for each operating system, since it
+      # will find the same thing 3x and clog up the PR review.
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: 'npm run lint'
+
+    - name: 'npm test'
+      run: 'npm run test'
