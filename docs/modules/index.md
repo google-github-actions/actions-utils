@@ -1,4 +1,4 @@
-[actions-utils](../README.md) / [Exports](../modules.md) / index
+[@google-github-actions/actions-utils](../README.md) / [Exports](../modules.md) / index
 
 # Module: index
 

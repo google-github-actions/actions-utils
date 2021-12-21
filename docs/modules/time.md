@@ -1,4 +1,4 @@
-[actions-utils](../README.md) / [Exports](../modules.md) / time
+[@google-github-actions/actions-utils](../README.md) / [Exports](../modules.md) / time
 
 # Module: time
 

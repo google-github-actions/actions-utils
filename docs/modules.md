@@ -1,6 +1,6 @@
-[actions-utils](README.md) / Exports
+[@google-github-actions/actions-utils](README.md) / Exports
 
-# actions-utils
+# @google-github-actions/actions-utils
 
 ## Table of contents
 

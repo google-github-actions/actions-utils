@@ -1,4 +1,4 @@
-[actions-utils](../README.md) / [Exports](../modules.md) / csv
+[@google-github-actions/actions-utils](../README.md) / [Exports](../modules.md) / csv
 
 # Module: csv
 

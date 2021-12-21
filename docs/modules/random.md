@@ -1,4 +1,4 @@
-[actions-utils](../README.md) / [Exports](../modules.md) / random
+[@google-github-actions/actions-utils](../README.md) / [Exports](../modules.md) / random
 
 # Module: random
 

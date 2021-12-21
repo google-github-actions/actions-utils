@@ -1,4 +1,4 @@
-actions-utils / [Exports](modules.md)
+@google-github-actions/actions-utils / [Exports](modules.md)
 
 # GitHub Actions Utils
 

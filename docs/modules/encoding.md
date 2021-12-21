@@ -1,4 +1,4 @@
-[actions-utils](../README.md) / [Exports](../modules.md) / encoding
+[@google-github-actions/actions-utils](../README.md) / [Exports](../modules.md) / encoding
 
 # Module: encoding
 

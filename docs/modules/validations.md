@@ -1,4 +1,4 @@
-[actions-utils](../README.md) / [Exports](../modules.md) / validations
+[@google-github-actions/actions-utils](../README.md) / [Exports](../modules.md) / validations
 
 # Module: validations
 
