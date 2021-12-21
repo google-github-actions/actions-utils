@@ -1,8 +1,7 @@
 {
-  "name": "actions-utils",
+  "name": "@google-github-actions/actions-utils",
   "version": "0.1.0",
   "description": "Helpers and utilities that are shared among Google GitHub Actions",
-  "private": true,
   "author": "Google LLC",
   "license": "Apache-2.0",
   "scripts": {
