@@ -32,7 +32,7 @@ A boolean, true if the file was deleted, false otherwise.
 
 #### Defined in
 
-[fs.ts:43](https://github.com/googlestaging/actions-utils/blob/main/src/fs.ts#L43)
+[fs.ts:43](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L43)
 
 ___
 
@@ -58,4 +58,4 @@ Path to written file.
 
 #### Defined in
 
-[fs.ts:30](https://github.com/googlestaging/actions-utils/blob/main/src/fs.ts#L30)
+[fs.ts:30](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L30)

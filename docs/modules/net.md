@@ -53,7 +53,7 @@ String body response.
 
 #### Defined in
 
-[net.ts:67](https://github.com/googlestaging/actions-utils/blob/main/src/net.ts#L67)
+[net.ts:67](https://github.com/google-github-actions/actions-utils/blob/main/src/net.ts#L67)
 
 ___
 
@@ -81,4 +81,4 @@ String response body.
 
 #### Defined in
 
-[net.ts:34](https://github.com/googlestaging/actions-utils/blob/main/src/net.ts#L34)
+[net.ts:34](https://github.com/google-github-actions/actions-utils/blob/main/src/net.ts#L34)

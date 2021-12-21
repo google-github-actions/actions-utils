@@ -32,4 +32,4 @@ Error information as a string.
 
 #### Defined in
 
-[errors.ts:26](https://github.com/googlestaging/actions-utils/blob/main/src/errors.ts#L26)
+[errors.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/errors.ts#L26)

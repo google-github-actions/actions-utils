@@ -33,7 +33,7 @@ Decoded string.
 
 #### Defined in
 
-[encoding.ts:41](https://github.com/googlestaging/actions-utils/blob/main/src/encoding.ts#L41)
+[encoding.ts:41](https://github.com/google-github-actions/actions-utils/blob/main/src/encoding.ts#L41)
 
 ___
 
@@ -57,4 +57,4 @@ URL-encoded, unpadded base64 string.
 
 #### Defined in
 
-[encoding.ts:24](https://github.com/googlestaging/actions-utils/blob/main/src/encoding.ts#L24)
+[encoding.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/encoding.ts#L24)

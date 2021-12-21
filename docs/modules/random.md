@@ -49,7 +49,7 @@ Name of the file.
 
 #### Defined in
 
-[random.ts:31](https://github.com/googlestaging/actions-utils/blob/main/src/random.ts#L31)
+[random.ts:31](https://github.com/google-github-actions/actions-utils/blob/main/src/random.ts#L31)
 
 ___
 
@@ -76,4 +76,4 @@ Full file path.
 
 #### Defined in
 
-[random.ts:48](https://github.com/googlestaging/actions-utils/blob/main/src/random.ts#L48)
+[random.ts:48](https://github.com/google-github-actions/actions-utils/blob/main/src/random.ts#L48)

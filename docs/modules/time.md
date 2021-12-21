@@ -30,4 +30,4 @@ the empty string.
 
 #### Defined in
 
-[time.ts:24](https://github.com/googlestaging/actions-utils/blob/main/src/time.ts#L24)
+[time.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/time.ts#L24)

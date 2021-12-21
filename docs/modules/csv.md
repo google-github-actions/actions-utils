@@ -31,4 +31,4 @@ Array of strings, in the same order they were supplied.
 
 #### Defined in
 
-[csv.ts:25](https://github.com/googlestaging/actions-utils/blob/main/src/csv.ts#L25)
+[csv.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/csv.ts#L25)

@@ -30,7 +30,7 @@ Credential is a generic exported credential.
 
 #### Defined in
 
-[auth.ts:23](https://github.com/googlestaging/actions-utils/blob/main/src/auth.ts#L23)
+[auth.ts:23](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L23)
 
 ___
 
@@ -68,7 +68,7 @@ like a workload identity pool.
 
 #### Defined in
 
-[auth.ts:45](https://github.com/googlestaging/actions-utils/blob/main/src/auth.ts#L45)
+[auth.ts:45](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L45)
 
 ___
 
@@ -95,7 +95,7 @@ ServiceAccountKeyCredential is an exported credential for a service account key.
 
 #### Defined in
 
-[auth.ts:28](https://github.com/googlestaging/actions-utils/blob/main/src/auth.ts#L28)
+[auth.ts:28](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L28)
 
 ## Properties
 
@@ -132,7 +132,7 @@ credential is ExternalAccount
 
 #### Defined in
 
-[auth.ts:123](https://github.com/googlestaging/actions-utils/blob/main/src/auth.ts#L123)
+[auth.ts:123](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L123)
 
 ___
 
@@ -155,7 +155,7 @@ credential is ServiceAccountKey
 
 #### Defined in
 
-[auth.ts:113](https://github.com/googlestaging/actions-utils/blob/main/src/auth.ts#L113)
+[auth.ts:113](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L113)
 
 ___
 
@@ -182,4 +182,4 @@ external credentials file.
 
 #### Defined in
 
-[auth.ts:86](https://github.com/googlestaging/actions-utils/blob/main/src/auth.ts#L86)
+[auth.ts:86](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L86)

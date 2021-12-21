@@ -34,7 +34,7 @@ Boolean indicating whether all elements were truthy.
 
 #### Defined in
 
-[validations.ts:70](https://github.com/googlestaging/actions-utils/blob/main/src/validations.ts#L70)
+[validations.ts:70](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L70)
 
 ___
 
@@ -60,7 +60,7 @@ Boolean indicating whether exactly one element was truthy.
 
 #### Defined in
 
-[validations.ts:40](https://github.com/googlestaging/actions-utils/blob/main/src/validations.ts#L40)
+[validations.ts:40](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L40)
 
 ___
 
@@ -85,4 +85,4 @@ The trimmed string or undefined.
 
 #### Defined in
 
-[validations.ts:27](https://github.com/googlestaging/actions-utils/blob/main/src/validations.ts#L27)
+[validations.ts:27](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L27)

@@ -26,7 +26,7 @@ KVPair represents a key=value pair of strings.
 
 #### Defined in
 
-[kv.ts:25](https://github.com/googlestaging/actions-utils/blob/main/src/kv.ts#L25)
+[kv.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L25)
 
 ## Functions
 
@@ -50,7 +50,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:76](https://github.com/googlestaging/actions-utils/blob/main/src/kv.ts#L76)
+[kv.ts:76](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L76)
 
 ___
 
@@ -80,7 +80,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:102](https://github.com/googlestaging/actions-utils/blob/main/src/kv.ts#L102)
+[kv.ts:102](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L102)
 
 ___
 
@@ -104,7 +104,7 @@ leading and trailing whitespace is trimmed.
 
 #### Defined in
 
-[kv.ts:34](https://github.com/googlestaging/actions-utils/blob/main/src/kv.ts#L34)
+[kv.ts:34](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L34)
 
 ___
 
@@ -128,7 +128,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:173](https://github.com/googlestaging/actions-utils/blob/main/src/kv.ts#L173)
+[kv.ts:173](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L173)
 
 ___
 
@@ -151,4 +151,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:146](https://github.com/googlestaging/actions-utils/blob/main/src/kv.ts#L146)
+[kv.ts:146](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L146)
