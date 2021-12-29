@@ -17,3 +17,4 @@
 - [random](modules/random.md)
 - [time](modules/time.md)
 - [validations](modules/validations.md)
+- [warnings](modules/warnings.md)

@@ -15,6 +15,7 @@
 - [exactlyOneOf](index.md#exactlyoneof)
 - [fromBase64](index.md#frombase64)
 - [isExternalAccount](index.md#isexternalaccount)
+- [isPinnedToHead](index.md#ispinnedtohead)
 - [isServiceAccountKey](index.md#isserviceaccountkey)
 - [parseCSV](index.md#parsecsv)
 - [parseCredential](index.md#parsecredential)
@@ -24,6 +25,7 @@
 - [parseKVString](index.md#parsekvstring)
 - [parseKVStringAndFile](index.md#parsekvstringandfile)
 - [parseKVYAML](index.md#parsekvyaml)
+- [pinnedToHeadWarning](index.md#pinnedtoheadwarning)
 - [presence](index.md#presence)
 - [randomFilename](index.md#randomfilename)
 - [randomFilepath](index.md#randomfilepath)
@@ -89,6 +91,12 @@ Re-exports [isExternalAccount](auth.md#isexternalaccount)
 
 ___
 
+### isPinnedToHead
+
+Re-exports [isPinnedToHead](warnings.md#ispinnedtohead)
+
+___
+
 ### isServiceAccountKey
 
 Re-exports [isServiceAccountKey](auth.md#isserviceaccountkey)
@@ -140,6 +148,12 @@ ___
 ### parseKVYAML
 
 Re-exports [parseKVYAML](kv.md#parsekvyaml)
+
+___
+
+### pinnedToHeadWarning
+
+Re-exports [pinnedToHeadWarning](warnings.md#pinnedtoheadwarning)
 
 ___
 
