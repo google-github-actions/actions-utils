@@ -43,9 +43,9 @@ export function pinnedToHeadWarning(recommended: string): string {
   const actionRepo = process.env.GITHUB_ACTION_REPOSITORY;
 
   return (
-    `${actionRepo} is pinned at HEAD. We strongly advise against pinning to ` +
-    `"@${actionRef}" as it may be unstable. Please update your GitHub Action ` +
-    `YAML from:\n` +
+    `${actionRepo} is pinned at "${actionRef}". We strongly advise against ` +
+    `pinning to "@${actionRef}" as it may be unstable. Please update your ` +
+    `GitHub Action YAML from:\n` +
     `\n` +
     `    uses: '${actionRepo}@${actionRef}'\n` +
     `\n` +
