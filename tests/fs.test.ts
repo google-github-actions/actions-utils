@@ -17,13 +17,37 @@
 import 'mocha';
 import { expect } from 'chai';
 
+import { tmpdir } from 'os';
+
 import { promises as fs } from 'fs';
 import { constants as fsconstants } from 'fs';
 import { randomFilepath } from '../src/random';
 
-import { removeFile, writeSecureFile } from '../src/fs';
+import { isEmptyDir, removeFile, writeSecureFile } from '../src/fs';
 
 describe('fs', () => {
+  describe('#isEmptyDir', async () => {
+    const cases = [
+      {
+        name: 'non-existent dir',
+        dir: '/this/path/definitely/does/not/exist',
+        exp: true,
+      },
+      {
+        name: 'exists',
+        dir: tmpdir(),
+        exp: false,
+      },
+    ];
+
+    cases.forEach((tc) => {
+      it(tc.name, async () => {
+        const isEmpty = await isEmptyDir(tc.dir);
+        expect(isEmpty).to.eq(tc.exp);
+      });
+    });
+  });
+
   describe('#removeFile', () => {
     it('deletes the file', async () => {
       const filepath = randomFilepath();

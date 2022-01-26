@@ -14,6 +14,7 @@
 - [errorMessage](index.md#errormessage)
 - [exactlyOneOf](index.md#exactlyoneof)
 - [fromBase64](index.md#frombase64)
+- [isEmptyDir](index.md#isemptydir)
 - [isExternalAccount](index.md#isexternalaccount)
 - [isPinnedToHead](index.md#ispinnedtohead)
 - [isServiceAccountKey](index.md#isserviceaccountkey)
@@ -82,6 +83,12 @@ ___
 ### fromBase64
 
 Re-exports [fromBase64](encoding.md#frombase64)
+
+___
+
+### isEmptyDir
+
+Re-exports [isEmptyDir](fs.md#isemptydir)
 
 ___
 
