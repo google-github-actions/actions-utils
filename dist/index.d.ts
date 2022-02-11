@@ -4,7 +4,6 @@ export * from './encoding';
 export * from './errors';
 export * from './fs';
 export * from './kv';
-export * from './net';
 export * from './random';
 export * from './time';
 export * from './validations';

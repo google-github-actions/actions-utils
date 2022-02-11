@@ -13,7 +13,6 @@
 - [fs](modules/fs.md)
 - [index](modules/index.md)
 - [kv](modules/kv.md)
-- [net](modules/net.md)
 - [random](modules/random.md)
 - [time](modules/time.md)
 - [validations](modules/validations.md)
