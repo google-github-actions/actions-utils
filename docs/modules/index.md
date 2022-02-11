@@ -30,9 +30,7 @@
 - [presence](index.md#presence)
 - [randomFilename](index.md#randomfilename)
 - [randomFilepath](index.md#randomfilepath)
-- [rawRequest](index.md#rawrequest)
 - [removeFile](index.md#removefile)
-- [request](index.md#request)
 - [toBase64](index.md#tobase64)
 - [writeSecureFile](index.md#writesecurefile)
 
@@ -182,21 +180,9 @@ Re-exports [randomFilepath](random.md#randomfilepath)
 
 ___
 
-### rawRequest
-
-Re-exports [rawRequest](net.md#rawrequest)
-
-___
-
 ### removeFile
 
 Re-exports [removeFile](fs.md#removefile)
-
-___
-
-### request
-
-Re-exports [request](net.md#request)
 
 ___
 
