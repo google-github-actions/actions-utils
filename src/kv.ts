@@ -25,9 +25,10 @@ import { errorMessage } from './errors';
 export type KVPair = Record<string, string>;
 
 /**
- * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2". Keys
- * or values that contain a comma must be escaped with a backslash ("\,"). All
- * leading and trailing whitespace is trimmed.
+ * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
+ * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
+ * escaped with a backslash ("\,", "\\n"). All leading and trailing whitespace
+ * is trimmed.
  *
  * @param input String with key/value pairs to parse.
  */
@@ -39,9 +40,9 @@ export function parseKVString(input: string): KVPair {
 
   const result: KVPair = {};
 
-  // This regular expression uses a lookahead to split on commas which are not
-  // preceeded by an escape character (slash).
-  const pairs = input.split(/(?<!\\),/gi);
+  // This regular expression uses a lookahead to split on commas and newlines
+  // which are not preceeded by an escape character (slash).
+  const pairs = input.split(/(?<!\\)[,\n]/gi);
   for (let i = 0; i < pairs.length; i++) {
     const pair = pairs[i];
     const firstEqual = pair.indexOf('=');
@@ -49,12 +50,15 @@ export function parseKVString(input: string): KVPair {
       throw new SyntaxError(`Failed to parse KEY=VALUE pair "${pair}": missing "="`);
     }
 
-    // Trim any key whitespace and un-escape any escaped commas.
-    const k = pair.slice(0, firstEqual).trim().replace(/\\,/gi, ',');
+    // Trim any key whitespace and un-escape any escaped commas and newlines.
+    const k = pair
+      .slice(0, firstEqual)
+      .trim()
+      .replace(/\\([,\n])/gi, '$1');
     const v = pair
       .slice(firstEqual + 1)
       .trim()
-      .replace(/\\,/gi, ',');
+      .replace(/\\([,\n])/gi, '$1');
 
     if (!k || !v) {
       throw new SyntaxError(`Failed to parse KEY=VALUE pair "${pair}": no value`);
