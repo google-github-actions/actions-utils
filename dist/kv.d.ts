@@ -3,9 +3,10 @@
  */
 export declare type KVPair = Record<string, string>;
 /**
- * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2". Keys
- * or values that contain a comma must be escaped with a backslash ("\,"). All
- * leading and trailing whitespace is trimmed.
+ * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
+ * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
+ * escaped with a backslash ("\,", "\\n"). All leading and trailing whitespace
+ * is trimmed.
  *
  * @param input String with key/value pairs to parse.
  */

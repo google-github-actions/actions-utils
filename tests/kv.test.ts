@@ -77,6 +77,21 @@ describe('kv', () => {
         expected: { FOO: 'bar', ZIP: 'zap' },
       },
       {
+        name: 'multiline',
+        input: `
+          FOO=bar
+          ZIP=zap
+        `,
+        expected: { FOO: 'bar', ZIP: 'zap' },
+      },
+      {
+        name: 'multiline escaped',
+        input: `
+          FOO=bar\\\nbaz
+        `,
+        expected: { FOO: 'bar\nbaz' },
+      },
+      {
         name: 'escaped comma key',
         input: 'FOO\\,BAR=baz,ZIP=zap',
         expected: { 'FOO,BAR': 'baz', 'ZIP': 'zap' },

@@ -50,7 +50,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:76](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L76)
+[kv.ts:80](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L80)
 
 ___
 
@@ -80,7 +80,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:102](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L102)
+[kv.ts:106](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L106)
 
 ___
 
@@ -88,9 +88,10 @@ ___
 
 ▸ **parseKVString**(`input`): [`KVPair`](kv.md#kvpair)
 
-parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2". Keys
-or values that contain a comma must be escaped with a backslash ("\,"). All
-leading and trailing whitespace is trimmed.
+parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
+"KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
+escaped with a backslash ("\,", "\\n"). All leading and trailing whitespace
+is trimmed.
 
 #### Parameters
 
@@ -104,7 +105,7 @@ leading and trailing whitespace is trimmed.
 
 #### Defined in
 
-[kv.ts:34](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L34)
+[kv.ts:35](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L35)
 
 ___
 
@@ -128,7 +129,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:173](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L173)
+[kv.ts:177](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L177)
 
 ___
 
@@ -151,4 +152,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:146](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L146)
+[kv.ts:150](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L150)
