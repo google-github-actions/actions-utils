@@ -44,7 +44,11 @@ export function parseKVString(input: string): KVPair {
   // which are not preceeded by an escape character (slash).
   const pairs = input.split(/(?<!\\)[,\n]/gi);
   for (let i = 0; i < pairs.length; i++) {
-    const pair = pairs[i];
+    const pair = (pairs[i] || '').trim();
+    if (!pair) {
+      continue;
+    }
+
     const firstEqual = pair.indexOf('=');
     if (!firstEqual || firstEqual === -1) {
       throw new SyntaxError(`Failed to parse KEY=VALUE pair "${pair}": missing "="`);
