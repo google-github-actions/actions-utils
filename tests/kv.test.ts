@@ -85,6 +85,16 @@ describe('kv', () => {
         expected: { FOO: 'bar', ZIP: 'zap' },
       },
       {
+        name: 'multiline trailing commas',
+        input: `
+          FOO=bar,
+          ZIP=zap,
+          BAZ=bam
+        `,
+        expected: { FOO: 'bar', ZIP: 'zap', BAZ: 'bam' },
+        error: '',
+      },
+      {
         name: 'multiline escaped',
         input: `
           FOO=bar\\\nbaz

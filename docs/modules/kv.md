@@ -50,7 +50,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:80](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L80)
+[kv.ts:84](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L84)
 
 ___
 
@@ -80,7 +80,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:106](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L106)
+[kv.ts:110](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L110)
 
 ___
 
@@ -129,7 +129,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:177](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L177)
+[kv.ts:181](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L181)
 
 ___
 
@@ -152,4 +152,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:150](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L150)
+[kv.ts:154](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L154)
