@@ -72,6 +72,11 @@ describe('errors', () => {
         input: new Error('Error: failed'),
         expected: 'failed',
       },
+      {
+        name: 'input object',
+        input: { message: 'message', error: 'error' },
+        expected: JSON.stringify({ message: 'message', error: 'error' }),
+      },
     ];
 
     cases.forEach((tc) => {
