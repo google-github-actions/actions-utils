@@ -26,7 +26,14 @@
 export function errorMessage(err: unknown): string {
   if (!err) return '';
 
-  const msg = (err instanceof Error ? err.message : `${err}`).trim().replace('Error: ', '').trim();
+  let msgText = `${err}`;
+  if (err instanceof Error) {
+    msgText = err.message;
+  } else if (typeof err === 'object') {
+    msgText = JSON.stringify(err);
+  }
+
+  const msg = msgText.trim().replace('Error: ', '').trim();
   if (!msg) return '';
 
   // If the first letter is a capital letter and the second letter is not a
