@@ -30,7 +30,7 @@ export function errorMessage(err: unknown): string {
   if (err instanceof Error) {
     msgText = err.message;
   } else if (typeof err === 'object') {
-    msgText = JSON.stringify(err).trim().replace('Error: ', '').trim();
+    msgText = JSON.stringify(err);
   }
 
   const msg = msgText.trim().replace('Error: ', '').trim();
