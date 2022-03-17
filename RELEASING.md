@@ -10,7 +10,7 @@ In order to release a new version of `actions-utils`, you will need to release a
 4. Run `npm run docs` to update the documentation
 5. Commit your changes and push with a meaningful release message, e.g. - `release 0.0.2`
 6. Create a Pull Request and get it merged into `main`
-7. For Googlers, follow the process at [go/npm-publish](http://go/npm-publish) to release the package to npm
+7. For Googlers, follow the process at [go/npm-publish](http://goto.google.com/npm-publish) to release the package to npm
 
 ## Updating Actions
 
