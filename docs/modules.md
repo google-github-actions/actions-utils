@@ -11,6 +11,7 @@
 - [encoding](modules/encoding.md)
 - [errors](modules/errors.md)
 - [fs](modules/fs.md)
+- [ignore](modules/ignore.md)
 - [index](modules/index.md)
 - [kv](modules/kv.md)
 - [random](modules/random.md)
