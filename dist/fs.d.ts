@@ -12,7 +12,7 @@ export declare function isEmptyDir(dir: string): Promise<boolean>;
  * writeSecureFile writes a file to disk with 0640 permissions and locks the
  * file during writing.
  *
- * @param outputPath Path in which to create random file in.
+ * @param outputPath Path in which to create the secure file.
  * @param data Data to write to file.
  *
  * @returns Path to written file.

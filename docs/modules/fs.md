@@ -73,7 +73,7 @@ file during writing.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `outputPath` | `string` | Path in which to create random file in. |
+| `outputPath` | `string` | Path in which to create the secure file. |
 | `data` | `string` \| `Buffer` | Data to write to file. |
 
 #### Returns
