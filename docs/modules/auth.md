@@ -10,15 +10,15 @@
 - [ExternalAccount](auth.md#externalaccount)
 - [ServiceAccountKey](auth.md#serviceaccountkey)
 
-### Properties
+### Variables
 
 - [default](auth.md#default)
 
 ### Functions
 
-- [isExternalAccount](auth.md#isexternalaccount)
-- [isServiceAccountKey](auth.md#isserviceaccountkey)
-- [parseCredential](auth.md#parsecredential)
+- [isExternalAccount](auth.md#isexternalaccount-1)
+- [isServiceAccountKey](auth.md#isserviceaccountkey-1)
+- [parseCredential](auth.md#parsecredential-1)
 
 ## Type aliases
 
@@ -97,7 +97,7 @@ ServiceAccountKeyCredential is an exported credential for a service account key.
 
 [auth.ts:28](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L28)
 
-## Properties
+## Variables
 
 ### default
 
@@ -110,6 +110,10 @@ ServiceAccountKeyCredential is an exported credential for a service account key.
 | `isExternalAccount` | (`credential`: [`Credential`](auth.md#credential)) => credential is ExternalAccount |
 | `isServiceAccountKey` | (`credential`: [`Credential`](auth.md#credential)) => credential is ServiceAccountKey |
 | `parseCredential` | (`input`: `string`) => [`Credential`](auth.md#credential) |
+
+#### Defined in
+
+[auth.ts:127](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L127)
 
 ## Functions
 

@@ -94,7 +94,7 @@ ___
 
 ### isExternalAccount
 
-Re-exports [isExternalAccount](auth.md#isexternalaccount)
+Re-exports [isExternalAccount](auth.md#isexternalaccount-1)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 ### isServiceAccountKey
 
-Re-exports [isServiceAccountKey](auth.md#isserviceaccountkey)
+Re-exports [isServiceAccountKey](auth.md#isserviceaccountkey-1)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 ### parseCredential
 
-Re-exports [parseCredential](auth.md#parsecredential)
+Re-exports [parseCredential](auth.md#parsecredential-1)
 
 ___
 
@@ -184,13 +184,13 @@ ___
 
 ### randomFilename
 
-Re-exports [randomFilename](random.md#randomfilename)
+Re-exports [randomFilename](random.md#randomfilename-1)
 
 ___
 
 ### randomFilepath
 
-Re-exports [randomFilepath](random.md#randomfilepath)
+Re-exports [randomFilepath](random.md#randomfilepath-1)
 
 ___
 
