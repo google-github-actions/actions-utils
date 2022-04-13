@@ -24,13 +24,29 @@
  * @return Error information as a string.
  */
 export function errorMessage(err: unknown): string {
-  if (!err) return '';
-
-  let msgText = `${err}`;
-  if (err instanceof Error) {
+  let msgText: string;
+  if (err === null) {
+    msgText = 'null';
+  } else if (err === undefined || typeof err === 'undefined') {
+    msgText = 'undefined';
+  } else if (typeof err === 'bigint' || err instanceof BigInt) {
+    msgText = err.toString();
+  } else if (typeof err === 'boolean' || err instanceof Boolean) {
+    msgText = err.toString();
+  } else if (err instanceof Error) {
     msgText = err.message;
-  } else if (typeof err === 'object') {
+  } else if (typeof err === 'function' || err instanceof Function) {
+    msgText = errorMessage(err());
+  } else if (typeof err === 'number' || err instanceof Number) {
+    msgText = err.toString();
+  } else if (typeof err === 'string' || err instanceof String) {
+    msgText = err.toString();
+  } else if (typeof err === 'symbol' || err instanceof Symbol) {
+    msgText = err.toString();
+  } else if (typeof err === 'object' || err instanceof Object) {
     msgText = JSON.stringify(err);
+  } else {
+    msgText = String(`[${typeof err}] ${err}`);
   }
 
   const msg = msgText.trim().replace('Error: ', '').trim();
