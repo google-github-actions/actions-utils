@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-export * from './auth';
-export * from './csv';
-export * from './encoding';
-export * from './errors';
-export * from './flags';
-export * from './fs';
-export * from './ignore';
-export * from './kv';
-export * from './random';
-export * from './time';
-export * from './validations';
-export * from './warnings';
+/**
+ * parseFlags takes an input string and parses it as posix-compliant flags.
+ *
+ * @param input Flag string input.
+ * @return Array of strings in the order in which they were defined as flags.
+ */
+export function parseFlags(input: string): string[] {
+  // Split on space or "=" if not in quotes
+  const result = input.replace('\n', '').match(/(".*?"|'.*?'|[^"\s=]+)+(?=\s*|\s*$)/g);
+  if (result) {
+    return result;
+  }
+  return [];
+}
