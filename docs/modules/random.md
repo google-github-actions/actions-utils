@@ -4,16 +4,16 @@
 
 ## Table of contents
 
-### Properties
+### Variables
 
 - [default](random.md#default)
 
 ### Functions
 
-- [randomFilename](random.md#randomfilename)
-- [randomFilepath](random.md#randomfilepath)
+- [randomFilename](random.md#randomfilename-1)
+- [randomFilepath](random.md#randomfilepath-1)
 
-## Properties
+## Variables
 
 ### default
 
@@ -25,6 +25,10 @@
 | :------ | :------ |
 | `randomFilename` | (`length`: `number`) => `string` |
 | `randomFilepath` | (`parent`: `string`, `length`: `number`) => `string` |
+
+#### Defined in
+
+[random.ts:52](https://github.com/google-github-actions/actions-utils/blob/main/src/random.ts#L52)
 
 ## Functions
 
