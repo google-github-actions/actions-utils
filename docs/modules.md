@@ -10,6 +10,7 @@
 - [csv](modules/csv.md)
 - [encoding](modules/encoding.md)
 - [errors](modules/errors.md)
+- [flags](modules/flags.md)
 - [fs](modules/fs.md)
 - [ignore](modules/ignore.md)
 - [index](modules/index.md)

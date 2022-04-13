@@ -21,6 +21,7 @@
 - [parseCSV](index.md#parsecsv)
 - [parseCredential](index.md#parsecredential)
 - [parseDuration](index.md#parseduration)
+- [parseFlags](index.md#parseflags)
 - [parseGcloudIgnore](index.md#parsegcloudignore)
 - [parseKVFile](index.md#parsekvfile)
 - [parseKVJSON](index.md#parsekvjson)
@@ -124,6 +125,12 @@ ___
 ### parseDuration
 
 Re-exports [parseDuration](time.md#parseduration)
+
+___
+
+### parseFlags
+
+Re-exports [parseFlags](flags.md#parseflags)
 
 ___
 

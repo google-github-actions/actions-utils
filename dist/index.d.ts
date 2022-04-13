@@ -2,6 +2,7 @@ export * from './auth';
 export * from './csv';
 export * from './encoding';
 export * from './errors';
+export * from './flags';
 export * from './fs';
 export * from './ignore';
 export * from './kv';
