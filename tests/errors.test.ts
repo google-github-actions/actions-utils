@@ -17,7 +17,7 @@
 import 'mocha';
 import { expect } from 'chai';
 
-import { errorMessage } from '../src/errors';
+import { errorMessage, isNotFoundError } from '../src/errors';
 
 describe('errors', () => {
   describe('#errorMessage', () => {
@@ -209,6 +209,59 @@ describe('errors', () => {
       const fn = tc.only ? it.only : it;
       fn(tc.name, () => {
         expect(errorMessage(tc.input)).to.eql(tc.expected);
+      });
+    });
+  });
+
+  describe('#isNotFoundError', () => {
+    const cases: {
+      only?: boolean;
+      name: string;
+      err: unknown;
+      exp: boolean;
+    }[] = [
+      {
+        name: 'empty string',
+        err: '',
+        exp: false,
+      },
+      {
+        name: 'string',
+        err: 'something went wrong',
+        exp: false,
+      },
+      {
+        name: 'string lowercase',
+        err: 'enoent',
+        exp: true,
+      },
+      {
+        name: 'string uppercase',
+        err: 'ENOENT',
+        exp: true,
+      },
+      {
+        name: 'substring',
+        err: 'the error was ENOENT: file not found',
+        exp: true,
+      },
+      {
+        name: 'error',
+        err: new Error('ENOENT: file not found'),
+        exp: true,
+      },
+      {
+        name: 'object',
+        err: { foo: 'bar' },
+        exp: false,
+      },
+    ];
+
+    cases.forEach((tc) => {
+      const fn = tc.only ? it.only : it;
+      fn(tc.name, async () => {
+        const result = isNotFoundError(tc.err);
+        expect(result).to.eq(tc.exp);
       });
     });
   });

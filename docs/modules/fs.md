@@ -6,11 +6,37 @@
 
 ### Functions
 
+- [forceRemove](fs.md#forceremove)
 - [isEmptyDir](fs.md#isemptydir)
 - [removeFile](fs.md#removefile)
 - [writeSecureFile](fs.md#writesecurefile)
 
 ## Functions
+
+### forceRemove
+
+▸ **forceRemove**(`pth`): `Promise`<`void`\>
+
+forceRemove forcibly removes a file or directory (recursively). If the file
+or directory does not exist, it does nothing. This is functionally equivalent
+to fs.rm, but avoids the need to handle errors for when the target file or
+directory does not exist.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pth` | `PathLike` | Path to the file or directory to remove. |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[fs.ts:29](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L29)
+
+___
 
 ### isEmptyDir
 
@@ -25,7 +51,7 @@ viewpoint of the caller.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `dir` | `string` | Path to a directory. |
+| `dir` | `PathLike` | Path to a directory. |
 
 #### Returns
 
@@ -33,7 +59,7 @@ viewpoint of the caller.
 
 #### Defined in
 
-[fs.ts:29](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L29)
+[fs.ts:48](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L48)
 
 ___
 
@@ -44,11 +70,13 @@ ___
 removeFile removes the file at the given path. If the file does not exist, it
 does nothing.
 
+**`deprecated`** Use #forceRemove instead.
+
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `filePath` | `string` | Path of the file on disk to delete. |
+| `filePath` | `PathLike` | Path of the file on disk to delete. |
 
 #### Returns
 
@@ -58,30 +86,36 @@ A boolean, true if the file was deleted, false otherwise.
 
 #### Defined in
 
-[fs.ts:60](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L60)
+[fs.ts:84](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L84)
 
 ___
 
 ### writeSecureFile
 
-▸ **writeSecureFile**(`outputPath`, `data`): `Promise`<`string`\>
+▸ **writeSecureFile**<`T`\>(`outputPath`, `data`): `Promise`<`T`\>
 
 writeSecureFile writes a file to disk with 0640 permissions and locks the
 file during writing.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `PathLike` |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `outputPath` | `string` | Path in which to create the secure file. |
+| `outputPath` | `T` | Path in which to create the secure file. |
 | `data` | `string` \| `Buffer` | Data to write to file. |
 
 #### Returns
 
-`Promise`<`string`\>
+`Promise`<`T`\>
 
 Path to written file.
 
 #### Defined in
 
-[fs.ts:47](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L47)
+[fs.ts:66](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L66)

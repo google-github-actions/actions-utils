@@ -17,7 +17,7 @@
 import { promises as fs } from 'fs';
 import { dirname, join as pathjoin } from 'path';
 
-import { errorMessage } from './errors';
+import { isNotFoundError } from './errors';
 
 /**
  * parseGcloudIgnore parses a gcloud ignore at the given filepath. It follows
@@ -39,8 +39,7 @@ export async function parseGcloudIgnore(pth: string): Promise<string[]> {
       .filter(shouldKeepIgnoreLine)
       .map((line) => line.trim());
   } catch (err) {
-    const msg = errorMessage(err);
-    if (!msg.toUpperCase().includes('ENOENT')) {
+    if (!isNotFoundError(err)) {
       throw err;
     }
   }

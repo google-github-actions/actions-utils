@@ -64,6 +64,20 @@ export function errorMessage(err: unknown): string {
 }
 
 /**
+ * isNotFoundError determines if the given error is "not found". Since there's
+ * literally no way to actually do this in Node, it inspects the string output
+ * for "ENOENT".
+ *
+ * @param err The error result to check.
+ *
+ * @return Boolean, true if the error represents NotFound, false otherwise.
+ */
+export function isNotFoundError(err: unknown): boolean {
+  const msg = errorMessage(err);
+  return msg.toUpperCase().includes('ENOENT');
+}
+
+/**
  * isUpper returns true if the given string is uppercase.
  *
  * @param str String or character to check.
