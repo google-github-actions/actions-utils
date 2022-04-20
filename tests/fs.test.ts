@@ -22,10 +22,37 @@ import { tmpdir } from 'os';
 import { promises as fs } from 'fs';
 import { constants as fsconstants } from 'fs';
 import { randomFilepath } from '../src/random';
+import { errorMessage, isNotFoundError } from '../src/errors';
 
-import { isEmptyDir, removeFile, writeSecureFile } from '../src/fs';
+import { isEmptyDir, forceRemove, removeFile, writeSecureFile } from '../src/fs';
 
 describe('fs', () => {
+  describe('#forceRemove', () => {
+    it('deletes a file', async () => {
+      const filepath = randomFilepath();
+      await fs.writeFile(filepath, 'my data');
+      await forceRemove(filepath);
+
+      try {
+        await fs.access(filepath, fsconstants.F_OK);
+        throw new Error(`expected error to be thrown`);
+      } catch (err) {
+        const msg = errorMessage(err);
+        expect(msg).to.include('ENOENT');
+      }
+    });
+
+    it('does nothing when a file does not exist', async () => {
+      const filepath = '/not/a/file.txt';
+      await forceRemove(filepath);
+    });
+
+    it('does nothing when a directory does not exist', async () => {
+      const filepath = '/not/a/file/directory';
+      await forceRemove(filepath);
+    });
+  });
+
   describe('#isEmptyDir', async () => {
     const cases = [
       {

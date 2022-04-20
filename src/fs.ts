@@ -14,9 +14,28 @@
  * limitations under the License.
  */
 
-import { promises as fs } from 'fs';
+import { promises as fs, PathLike } from 'fs';
 
-import { errorMessage } from './errors';
+import { errorMessage, isNotFoundError } from './errors';
+
+/**
+ * forceRemove forcibly removes a file or directory (recursively). If the file
+ * or directory does not exist, it does nothing. This is functionally equivalent
+ * to fs.rm, but avoids the need to handle errors for when the target file or
+ * directory does not exist.
+ *
+ * @param pth Path to the file or directory to remove.
+ */
+export async function forceRemove(pth: PathLike): Promise<void> {
+  try {
+    await fs.rm(pth, { force: true, recursive: true });
+  } catch (err: unknown) {
+    if (!isNotFoundError(err)) {
+      const msg = errorMessage(err);
+      throw new Error(`Failed to remove "${pth}": ${msg}`);
+    }
+  }
+}
 
 /**
  * isEmptyDir returns true if the given directory does not exist, or exists but
@@ -26,7 +45,7 @@ import { errorMessage } from './errors';
  *
  * @param dir Path to a directory.
  */
-export async function isEmptyDir(dir: string): Promise<boolean> {
+export async function isEmptyDir(dir: PathLike): Promise<boolean> {
   try {
     const files = await fs.readdir(dir);
     return files.length <= 0;
@@ -44,7 +63,10 @@ export async function isEmptyDir(dir: string): Promise<boolean> {
  *
  * @returns Path to written file.
  */
-export async function writeSecureFile(outputPath: string, data: string | Buffer): Promise<string> {
+export async function writeSecureFile<T extends PathLike>(
+  outputPath: T,
+  data: string | Buffer,
+): Promise<T> {
   await fs.writeFile(outputPath, data, { mode: 0o640, flag: 'wx' });
   return outputPath;
 }
@@ -56,17 +78,19 @@ export async function writeSecureFile(outputPath: string, data: string | Buffer)
  * @param filePath Path of the file on disk to delete.
  *
  * @returns A boolean, true if the file was deleted, false otherwise.
+ *
+ * @deprecated Use #forceRemove instead.
  */
-export async function removeFile(filePath: string): Promise<boolean> {
+export async function removeFile(filePath: PathLike): Promise<boolean> {
   try {
     await fs.unlink(filePath);
     return true;
   } catch (err) {
-    const msg = errorMessage(err);
-    if (msg.toUpperCase().includes('ENOENT')) {
+    if (isNotFoundError(err)) {
       return false;
     }
 
+    const msg = errorMessage(err);
     throw new Error(`Failed to remove "${filePath}": ${msg}`);
   }
 }

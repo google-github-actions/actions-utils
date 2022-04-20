@@ -21,8 +21,7 @@ import { promises as fs } from 'fs';
 import { tmpdir } from 'os';
 import { join as pathjoin } from 'path';
 
-import { errorMessage } from '../src/errors';
-import { writeSecureFile } from '../src/fs';
+import { forceRemove, writeSecureFile } from '../src/fs';
 import { randomFilepath, randomFilename } from '../src/random';
 
 import { parseGcloudIgnore } from '../src/ignore';
@@ -82,13 +81,7 @@ describe('ignore', () => {
     });
 
     afterEach(async function () {
-      try {
-        await fs.rm(this.dir, { force: true, recursive: true });
-      } catch (err) {
-        if (!errorMessage(err).toUpperCase().includes('ENOENT')) {
-          throw err;
-        }
-      }
+      await forceRemove(this.dir);
     });
 
     cases.forEach((tc) => {

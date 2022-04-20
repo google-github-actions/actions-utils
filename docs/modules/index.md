@@ -13,9 +13,11 @@
 - [allOf](index.md#allof)
 - [errorMessage](index.md#errormessage)
 - [exactlyOneOf](index.md#exactlyoneof)
+- [forceRemove](index.md#forceremove)
 - [fromBase64](index.md#frombase64)
 - [isEmptyDir](index.md#isemptydir)
 - [isExternalAccount](index.md#isexternalaccount)
+- [isNotFoundError](index.md#isnotfounderror)
 - [isPinnedToHead](index.md#ispinnedtohead)
 - [isServiceAccountKey](index.md#isserviceaccountkey)
 - [parseCSV](index.md#parsecsv)
@@ -83,6 +85,12 @@ Re-exports [exactlyOneOf](validations.md#exactlyoneof)
 
 ___
 
+### forceRemove
+
+Re-exports [forceRemove](fs.md#forceremove)
+
+___
+
 ### fromBase64
 
 Re-exports [fromBase64](encoding.md#frombase64)
@@ -98,6 +106,12 @@ ___
 ### isExternalAccount
 
 Re-exports [isExternalAccount](auth.md#isexternalaccount-1)
+
+___
+
+### isNotFoundError
+
+Re-exports [isNotFoundError](errors.md#isnotfounderror)
 
 ___
 
