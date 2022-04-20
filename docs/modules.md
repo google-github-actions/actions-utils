@@ -15,6 +15,7 @@
 - [ignore](modules/ignore.md)
 - [index](modules/index.md)
 - [kv](modules/kv.md)
+- [parallel](modules/parallel.md)
 - [path](modules/path.md)
 - [random](modules/random.md)
 - [testing](modules/testing.md)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-export * from './auth';
-export * from './csv';
-export * from './encoding';
-export * from './errors';
-export * from './flags';
-export * from './fs';
-export * from './ignore';
-export * from './kv';
-export * from './parallel';
-export * from './path';
-export * from './random';
-export * from './testing';
-export * from './time';
-export * from './validations';
-export * from './warnings';
+import 'mocha';
+import { expect } from 'chai';
+
+import { inParallel } from '../src/parallel';
+
+describe('#inParallel', () => {
+  it('executes tasks in parallel', async () => {
+    const task = async (a: number): Promise<number> => {
+      await new Promise((resolve) => setTimeout(resolve, Math.random() * 100));
+      return a;
+    };
+    const result = await inParallel(task, [[1], [3], [5], [7], [9], [11], [13]], {
+      concurrency: 3,
+    });
+    expect(result).to.eql([1, 3, 5, 7, 9, 11, 13]);
+  });
+});

@@ -8,6 +8,7 @@
 
 - [Credential](index.md#credential)
 - [ExternalAccount](index.md#externalaccount)
+- [InParallelOptions](index.md#inparalleloptions)
 - [KVPair](index.md#kvpair)
 - [ServiceAccountKey](index.md#serviceaccountkey)
 - [allOf](index.md#allof)
@@ -17,6 +18,7 @@
 - [exactlyOneOf](index.md#exactlyoneof)
 - [forceRemove](index.md#forceremove)
 - [fromBase64](index.md#frombase64)
+- [inParallel](index.md#inparallel)
 - [isEmptyDir](index.md#isemptydir)
 - [isExternalAccount](index.md#isexternalaccount)
 - [isNotFoundError](index.md#isnotfounderror)
@@ -56,6 +58,12 @@ ___
 ### ExternalAccount
 
 Re-exports [ExternalAccount](auth.md#externalaccount)
+
+___
+
+### InParallelOptions
+
+Re-exports [InParallelOptions](../interfaces/parallel.InParallelOptions.md)
 
 ___
 
@@ -110,6 +118,12 @@ ___
 ### fromBase64
 
 Re-exports [fromBase64](encoding.md#frombase64)
+
+___
+
+### inParallel
+
+Re-exports [inParallel](parallel.md#inparallel)
 
 ___
 
