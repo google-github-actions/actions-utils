@@ -11,6 +11,8 @@
 - [KVPair](index.md#kvpair)
 - [ServiceAccountKey](index.md#serviceaccountkey)
 - [allOf](index.md#allof)
+- [clearEnv](index.md#clearenv)
+- [clearInputs](index.md#clearinputs)
 - [errorMessage](index.md#errormessage)
 - [exactlyOneOf](index.md#exactlyoneof)
 - [forceRemove](index.md#forceremove)
@@ -35,6 +37,8 @@
 - [randomFilename](index.md#randomfilename)
 - [randomFilepath](index.md#randomfilepath)
 - [removeFile](index.md#removefile)
+- [setInput](index.md#setinput)
+- [setInputs](index.md#setinputs)
 - [toBase64](index.md#tobase64)
 - [toPlatformPath](index.md#toplatformpath)
 - [toPosixPath](index.md#toposixpath)
@@ -70,6 +74,18 @@ ___
 ### allOf
 
 Re-exports [allOf](validations.md#allof)
+
+___
+
+### clearEnv
+
+Re-exports [clearEnv](testing.md#clearenv)
+
+___
+
+### clearInputs
+
+Re-exports [clearInputs](testing.md#clearinputs)
 
 ___
 
@@ -214,6 +230,18 @@ ___
 ### removeFile
 
 Re-exports [removeFile](fs.md#removefile)
+
+___
+
+### setInput
+
+Re-exports [setInput](testing.md#setinput)
+
+___
+
+### setInputs
+
+Re-exports [setInputs](testing.md#setinputs)
 
 ___
 
