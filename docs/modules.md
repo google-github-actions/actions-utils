@@ -17,6 +17,7 @@
 - [kv](modules/kv.md)
 - [path](modules/path.md)
 - [random](modules/random.md)
+- [testing](modules/testing.md)
 - [time](modules/time.md)
 - [validations](modules/validations.md)
 - [warnings](modules/warnings.md)

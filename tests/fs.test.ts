@@ -22,7 +22,7 @@ import { tmpdir } from 'os';
 import { promises as fs } from 'fs';
 import { constants as fsconstants } from 'fs';
 import { randomFilepath } from '../src/random';
-import { errorMessage, isNotFoundError } from '../src/errors';
+import { errorMessage } from '../src/errors';
 
 import { isEmptyDir, forceRemove, removeFile, writeSecureFile } from '../src/fs';
 

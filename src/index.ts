@@ -24,6 +24,7 @@ export * from './ignore';
 export * from './kv';
 export * from './path';
 export * from './random';
+export * from './testing';
 export * from './time';
 export * from './validations';
 export * from './warnings';
