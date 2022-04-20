@@ -34,6 +34,9 @@
 - [randomFilepath](index.md#randomfilepath)
 - [removeFile](index.md#removefile)
 - [toBase64](index.md#tobase64)
+- [toPlatformPath](index.md#toplatformpath)
+- [toPosixPath](index.md#toposixpath)
+- [toWin32Path](index.md#towin32path)
 - [writeSecureFile](index.md#writesecurefile)
 
 ## References
@@ -203,6 +206,24 @@ ___
 ### toBase64
 
 Re-exports [toBase64](encoding.md#tobase64)
+
+___
+
+### toPlatformPath
+
+Re-exports [toPlatformPath](path.md#toplatformpath)
+
+___
+
+### toPosixPath
+
+Re-exports [toPosixPath](path.md#toposixpath)
+
+___
+
+### toWin32Path
+
+Re-exports [toWin32Path](path.md#towin32path)
 
 ___
 

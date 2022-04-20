@@ -15,6 +15,7 @@
 - [ignore](modules/ignore.md)
 - [index](modules/index.md)
 - [kv](modules/kv.md)
+- [path](modules/path.md)
 - [random](modules/random.md)
 - [time](modules/time.md)
 - [validations](modules/validations.md)
