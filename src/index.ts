@@ -22,6 +22,7 @@ export * from './flags';
 export * from './fs';
 export * from './ignore';
 export * from './kv';
+export * from './parallel';
 export * from './path';
 export * from './random';
 export * from './testing';
