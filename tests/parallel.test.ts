@@ -28,15 +28,15 @@ describe('#inParallel', () => {
 
     const start = Date.now();
 
-    const result = await inParallel(task, [[1], [1], [1], [3], [3], [9], [6]], {
+    const result = await inParallel(task, [[6], [9], [3], [3], [1], [1], [1]], {
       concurrency: 3,
     });
 
     const duration = Date.now() - start;
 
-    expect(result).to.eql([1, 1, 1, 3, 3, 9, 6]);
+    expect(result).to.eql([6, 9, 3, 3, 1, 1, 1]);
 
-    // Ideally this would be exactly 100:
+    // Ideally this would be exactly 100 (array.pop() is from the end):
     // - [1,1,1] execute in parallel for 10
     // - [3,3,9] execute in parallel for 30
     // - [9(-3),6] execute in parallel for 60

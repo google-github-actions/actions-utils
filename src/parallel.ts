@@ -28,6 +28,7 @@ export interface InParallelOptions {
 
 /**
  * inParallel executes the given function in parallel, up to max concurrency.
+ * There are no guarantees on the order in which promises start.
  *
  * @param fn The function to invoke, must be async.
  * @param args An array of array of parameters to invoke fn.

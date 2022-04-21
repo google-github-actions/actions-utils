@@ -19,6 +19,7 @@
 ▸ **inParallel**<`F`, `P`, `R`\>(`fn`, `args`, `opts?`): `Promise`<`Awaited`<`R`\>[]\>
 
 inParallel executes the given function in parallel, up to max concurrency.
+There are no guarantees on the order in which promises start.
 
 #### Type parameters
 
@@ -44,4 +45,4 @@ Array of results in the order of args.
 
 #### Defined in
 
-[parallel.ts:38](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L38)
+[parallel.ts:39](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L39)
