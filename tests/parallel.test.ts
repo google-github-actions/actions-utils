@@ -22,12 +22,28 @@ import { inParallel } from '../src/parallel';
 describe('#inParallel', () => {
   it('executes tasks in parallel', async () => {
     const task = async (a: number): Promise<number> => {
-      await new Promise((resolve) => setTimeout(resolve, Math.random() * 100));
+      await new Promise((resolve) => setTimeout(resolve, a * 10));
       return a;
     };
-    const result = await inParallel(task, [[1], [3], [5], [7], [9], [11], [13]], {
+
+    const start = Date.now();
+
+    const result = await inParallel(task, [[1], [1], [1], [3], [3], [9], [6]], {
       concurrency: 3,
     });
-    expect(result).to.eql([1, 3, 5, 7, 9, 11, 13]);
+
+    const duration = Date.now() - start;
+
+    expect(result).to.eql([1, 1, 1, 3, 3, 9, 6]);
+
+    // Ideally this would be exactly 100:
+    // - [1,1,1] execute in parallel for 10
+    // - [3,3,9] execute in parallel for 30
+    // - [9(-3),6] execute in parallel for 60
+    //
+    // However, there's a 100% buffer since other operations could cause some
+    // latency (cough OSX). If there was no parallelization, this would be at
+    // least 240.
+    expect(duration).to.be.below(200);
   });
 });

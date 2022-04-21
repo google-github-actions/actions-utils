@@ -48,9 +48,7 @@ export async function inParallel<
   }
 
   // Convert inputs to keep track of indicies.
-  const inputs = ([] as { idx: number; args: P }[]).concat(
-    args.map((args, idx) => ({ args, idx })),
-  );
+  const inputs = args.map((args, idx) => ({ args, idx }));
   const results: Awaited<R>[] = new Array(args.length);
   const promises = new Array(concurrency).fill(Promise.resolve());
 
