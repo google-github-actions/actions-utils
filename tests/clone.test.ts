@@ -70,6 +70,10 @@ describe('clone', () => {
 
       expect(input).to.eql({ foo: { bar: 'baz' } });
       expect(copied).to.eql({ foo: { bar: 'zoo' } });
+
+      input.foo.bar = 'zap';
+      expect(input.foo.bar).to.eql('zap');
+      expect(copied.foo.bar).to.eql('zoo');
     });
 
     it('copies deeply nested fields without structuredClone', () => {
@@ -79,6 +83,10 @@ describe('clone', () => {
 
       expect(input).to.eql({ foo: { bar: 'baz' } });
       expect(copied).to.eql({ foo: { bar: 'zoo' } });
+
+      input.foo.bar = 'zap';
+      expect(input.foo.bar).to.eql('zap');
+      expect(copied.foo.bar).to.eql('zoo');
     });
   });
 });
