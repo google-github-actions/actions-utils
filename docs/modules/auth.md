@@ -16,9 +16,9 @@
 
 ### Functions
 
-- [isExternalAccount](auth.md#isexternalaccount-1)
-- [isServiceAccountKey](auth.md#isserviceaccountkey-1)
-- [parseCredential](auth.md#parsecredential-1)
+- [isExternalAccount](auth.md#isexternalaccount)
+- [isServiceAccountKey](auth.md#isserviceaccountkey)
+- [parseCredential](auth.md#parsecredential)
 
 ## Type aliases
 

@@ -10,8 +10,8 @@
 
 ### Functions
 
-- [randomFilename](random.md#randomfilename-1)
-- [randomFilepath](random.md#randomfilepath-1)
+- [randomFilename](random.md#randomfilename)
+- [randomFilepath](random.md#randomfilepath)
 
 ## Variables
 
