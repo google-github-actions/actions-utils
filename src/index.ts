@@ -15,6 +15,7 @@
  */
 
 export * from './auth';
+export * from './clone';
 export * from './csv';
 export * from './encoding';
 export * from './errors';
