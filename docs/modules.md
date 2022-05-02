@@ -7,6 +7,7 @@
 ### Modules
 
 - [auth](modules/auth.md)
+- [clone](modules/clone.md)
 - [csv](modules/csv.md)
 - [encoding](modules/encoding.md)
 - [errors](modules/errors.md)

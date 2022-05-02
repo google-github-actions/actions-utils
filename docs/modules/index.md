@@ -14,6 +14,7 @@
 - [allOf](index.md#allof)
 - [clearEnv](index.md#clearenv)
 - [clearInputs](index.md#clearinputs)
+- [deepClone](index.md#deepclone)
 - [errorMessage](index.md#errormessage)
 - [exactlyOneOf](index.md#exactlyoneof)
 - [forceRemove](index.md#forceremove)
@@ -94,6 +95,12 @@ ___
 ### clearInputs
 
 Re-exports [clearInputs](testing.md#clearinputs)
+
+___
+
+### deepClone
+
+Re-exports [deepClone](clone.md#deepclone)
 
 ___
 
