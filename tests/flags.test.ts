@@ -17,7 +17,7 @@
 import 'mocha';
 import { expect } from 'chai';
 
-import { parseFlags } from '../src/flags';
+import { parseFlags, readUntil } from '../src/flags';
 
 describe('#parseFlags', () => {
   const cases: {
@@ -112,12 +112,113 @@ describe('#parseFlags', () => {
       `,
       exp: [`--foo`, `2`, `--bar`, `2Gi`, `--zip`, `"zap"`],
     },
+    {
+      name: 'with subflags quoted',
+      input: `--foo "--bar=1,--zip-zap"`,
+      exp: [`--foo`, `"--bar=1,--zip-zap"`],
+    },
+    {
+      name: 'with subflags equals',
+      input: `--foo=--bar=1,--zip-zap`,
+      exp: [`--foo`, `--bar=1,--zip-zap`],
+    },
+    {
+      name: 'with subflags quoted subquoted',
+      input: `--foo "--bar="1",--zip-zap"`,
+      exp: [`--foo`, `"--bar="1",--zip-zap"`],
+    },
+    {
+      name: 'with subflags equals subquoted',
+      input: `--foo=--bar="1",--zip-zap`,
+      exp: [`--foo`, `--bar="1",--zip-zap`],
+    },
+    {
+      name: 'with kv',
+      input: `--foo --env foo=bar,zip=zap`,
+      exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
+    },
+    {
+      name: 'with kv equals',
+      input: `--foo --env=foo=bar,zip=zap`,
+      exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
+    },
+    {
+      name: 'with kv quote',
+      input: `--foo --env "foo=bar,zip=zap"`,
+      exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
+    },
+    {
+      name: 'with kv equals quote',
+      input: `--foo --env="foo=bar,zip=zap"`,
+      exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
+    },
   ];
 
   cases.forEach((tc) => {
     const fn = tc.only ? it.only : it;
     fn(tc.name, () => {
       const result = parseFlags(tc.input);
+      expect(result).to.eql(tc.exp);
+    });
+  });
+});
+
+describe('#readUntil', () => {
+  const cases: {
+    only?: boolean;
+    name: string;
+    input: string;
+    ch: string;
+    exp: string | null;
+  }[] = [
+    {
+      name: `empty string`,
+      input: ``,
+      ch: ``,
+      exp: null,
+    },
+    {
+      name: `ch`,
+      input: `foo bar' baz`,
+      ch: `'`,
+      exp: `foo bar'`,
+    },
+    {
+      name: `ch end`,
+      input: `foo bar'`,
+      ch: `'`,
+      exp: `foo bar'`,
+    },
+    {
+      name: `ch start`,
+      input: `'foo bar`,
+      ch: `'`,
+      exp: `'`,
+    },
+    {
+      name: `ch first`,
+      input: `foo' 'bar'`,
+      ch: `'`,
+      exp: `foo'`,
+    },
+    {
+      name: `ch escaped`,
+      input: `foo\\' bar'`,
+      ch: `'`,
+      exp: `foo\\' bar'`,
+    },
+    {
+      name: `not found`,
+      input: `foo bar`,
+      ch: `'`,
+      exp: null,
+    },
+  ];
+
+  cases.forEach((tc) => {
+    const fn = tc.only ? it.only : it;
+    fn(tc.name, () => {
+      const result = readUntil(tc.input, tc.ch);
       expect(result).to.eql(tc.exp);
     });
   });
