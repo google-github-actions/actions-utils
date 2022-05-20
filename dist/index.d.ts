@@ -10,6 +10,7 @@ export * from './kv';
 export * from './parallel';
 export * from './path';
 export * from './random';
+export * from './retry';
 export * from './testing';
 export * from './time';
 export * from './validations';
