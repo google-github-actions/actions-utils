@@ -19,6 +19,7 @@
 - [parallel](modules/parallel.md)
 - [path](modules/path.md)
 - [random](modules/random.md)
+- [retry](modules/retry.md)
 - [testing](modules/testing.md)
 - [time](modules/time.md)
 - [validations](modules/validations.md)

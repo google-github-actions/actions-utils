@@ -7,6 +7,7 @@
 ### Functions
 
 - [parseDuration](time.md#parseduration)
+- [sleep](time.md#sleep)
 
 ## Functions
 
@@ -31,3 +32,25 @@ the empty string.
 #### Defined in
 
 [time.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/time.ts#L24)
+
+___
+
+### sleep
+
+▸ **sleep**(`ms?`): `Promise`<`void`\>
+
+sleep waits for a specified duration in milliseconds as a promise.
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `ms` | `number` | `0` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Defined in
+
+[time.ts:85](https://github.com/google-github-actions/actions-utils/blob/main/src/time.ts#L85)

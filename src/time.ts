@@ -76,3 +76,12 @@ export function parseDuration(input: string): number {
 
   return total;
 }
+
+/**
+ * sleep waits for a specified duration in milliseconds as a promise.
+ *
+ * @param ms. Duration in milliseconds to sleep.
+ */
+export async function sleep(ms = 0): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}

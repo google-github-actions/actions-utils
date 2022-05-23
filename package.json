@@ -9,7 +9,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write **/*.ts",
     "docs": "rm -rf docs/ && typedoc",
-    "test": "mocha -r ts-node/register -t 120s 'tests/**/*.test.ts'"
+    "test": "mocha -r ts-node/register -t 120s 'tests/**/*.test.ts'",
+    "all": "npm run format && npm run lint && npm run docs && npm run build"
   },
   "repository": {
     "type": "git",

@@ -10,6 +10,7 @@
 - [ExternalAccount](index.md#externalaccount)
 - [InParallelOptions](index.md#inparalleloptions)
 - [KVPair](index.md#kvpair)
+- [RetryOptions](index.md#retryoptions)
 - [ServiceAccountKey](index.md#serviceaccountkey)
 - [allOf](index.md#allof)
 - [clearEnv](index.md#clearenv)
@@ -42,10 +43,12 @@
 - [removeFile](index.md#removefile)
 - [setInput](index.md#setinput)
 - [setInputs](index.md#setinputs)
+- [sleep](index.md#sleep)
 - [toBase64](index.md#tobase64)
 - [toPlatformPath](index.md#toplatformpath)
 - [toPosixPath](index.md#toposixpath)
 - [toWin32Path](index.md#towin32path)
+- [withRetries](index.md#withretries)
 - [writeSecureFile](index.md#writesecurefile)
 
 ## References
@@ -71,6 +74,12 @@ ___
 ### KVPair
 
 Re-exports [KVPair](kv.md#kvpair)
+
+___
+
+### RetryOptions
+
+Re-exports [RetryOptions](../interfaces/retry.RetryOptions.md)
 
 ___
 
@@ -266,6 +275,12 @@ Re-exports [setInputs](testing.md#setinputs)
 
 ___
 
+### sleep
+
+Re-exports [sleep](time.md#sleep)
+
+___
+
 ### toBase64
 
 Re-exports [toBase64](encoding.md#tobase64)
@@ -287,6 +302,12 @@ ___
 ### toWin32Path
 
 Re-exports [toWin32Path](path.md#towin32path)
+
+___
+
+### withRetries
+
+Re-exports [withRetries](retry.md#withretries)
 
 ___
 

@@ -17,7 +17,7 @@
 import 'mocha';
 import { expect } from 'chai';
 
-import { parseDuration } from '../src/time';
+import { parseDuration, sleep } from '../src/time';
 
 describe('time', () => {
   describe('#parseDuration', () => {
@@ -78,6 +78,50 @@ describe('time', () => {
             parseDuration(tc.input);
           }).to.throw(tc.error);
         }
+      });
+    });
+  });
+
+  describe('#sleep', () => {
+    const cases: {
+      name: string;
+      input: number | undefined;
+      expMinDuration: number;
+    }[] = [
+      {
+        name: 'undefined',
+        input: undefined,
+        expMinDuration: 0,
+      },
+      {
+        name: 'zero',
+        input: 0,
+        expMinDuration: 0,
+      },
+      {
+        name: 'negative',
+        input: -100,
+        expMinDuration: 0,
+      },
+      {
+        name: '100 milliseconds',
+        input: 100,
+        expMinDuration: 0,
+      },
+      {
+        name: '5 seconds',
+        input: 5 * 1000,
+        expMinDuration: 4.9,
+      },
+    ];
+
+    cases.forEach((tc) => {
+      it(tc.name, async () => {
+        const start = new Date().getTime();
+        await sleep(tc.input);
+        const end = new Date().getTime();
+
+        expect(end - start).to.be.greaterThanOrEqual(tc.expMinDuration);
       });
     });
   });
