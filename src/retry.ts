@@ -87,6 +87,9 @@ export function withRetries<T>(fn: () => Promise<T>, opts: RetryOptions): () => 
       }
     } while (attemptLimit > 0);
 
-    throw new Error(`retry function failed with ${opts.retries} attempts: ${errMessage}`);
+    // We always try once.
+    const attempts = opts.retries + 1;
+    const attemptsMsg = attempts === 1 ? `1 attempt` : `${attempts} attempts`;
+    throw new Error(`retry function failed after ${attemptsMsg}: ${errMessage}`);
   };
 }
