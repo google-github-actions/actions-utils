@@ -91,7 +91,7 @@ describe('retry', () => {
       {
         name: 'end in failure',
         input: { retries: 3, backoff: 500 },
-        error: 'retry function failed with 3 attempts: failed!',
+        error: 'retry function failed after 4 attempts: failed!',
         expCalls: 4,
         expDuration: [2000, 2300],
       },
