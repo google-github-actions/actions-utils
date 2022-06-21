@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-### Type aliases
+### Type Aliases
 
 - [KVPair](kv.md#kvpair)
 
@@ -16,7 +16,7 @@
 - [parseKVStringAndFile](kv.md#parsekvstringandfile)
 - [parseKVYAML](kv.md#parsekvyaml)
 
-## Type aliases
+## Type Aliases
 
 ### KVPair
 
