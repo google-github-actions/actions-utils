@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-### Type aliases
+### Type Aliases
 
 - [Credential](auth.md#credential)
 - [ExternalAccount](auth.md#externalaccount)
@@ -20,7 +20,7 @@
 - [isServiceAccountKey](auth.md#isserviceaccountkey)
 - [parseCredential](auth.md#parsecredential)
 
-## Type aliases
+## Type Aliases
 
 ### Credential
 

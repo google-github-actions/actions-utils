@@ -1,4 +1,5 @@
 /// <reference types="node" />
+/// <reference types="node" />
 import { PathLike } from 'fs';
 /**
  * forceRemove forcibly removes a file or directory (recursively). If the file
