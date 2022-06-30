@@ -40,6 +40,7 @@
 - [presence](index.md#presence)
 - [randomFilename](index.md#randomfilename)
 - [randomFilepath](index.md#randomfilepath)
+- [readUntil](index.md#readuntil)
 - [removeFile](index.md#removefile)
 - [setInput](index.md#setinput)
 - [setInputs](index.md#setinputs)
@@ -254,6 +255,12 @@ ___
 ### randomFilepath
 
 Re-exports [randomFilepath](random.md#randomfilepath)
+
+___
+
+### readUntil
+
+Re-exports [readUntil](flags.md#readuntil)
 
 ___
 
