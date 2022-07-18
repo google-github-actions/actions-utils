@@ -34,8 +34,8 @@ KVPair represents a key=value pair of strings.
 
 ▸ **parseKVFile**(`filePath`): [`KVPair`](kv.md#kvpair)
 
-Read and parse an env var file. If the file contents begin with a curly brace
-("{"), the content is assumed to be JSON and is parsed as JSON. Otherwise,
+Read and parse an env var file. If the file contents begin with a curly
+brace, the content is assumed to be JSON and is parsed as JSON. Otherwise,
 the contents are parsed as a subset of YAML.
 
 #### Parameters

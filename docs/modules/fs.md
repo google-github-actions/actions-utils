@@ -70,7 +70,9 @@ ___
 removeFile removes the file at the given path. If the file does not exist, it
 does nothing.
 
-**`deprecated`** Use #forceRemove instead.
+**`Deprecated`**
+
+Use #forceRemove instead.
 
 #### Parameters
 

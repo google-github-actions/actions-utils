@@ -75,8 +75,8 @@ export function parseKVString(input: string): KVPair {
 }
 
 /**
- * Read and parse an env var file. If the file contents begin with a curly brace
- * ("{"), the content is assumed to be JSON and is parsed as JSON. Otherwise,
+ * Read and parse an env var file. If the file contents begin with a curly
+ * brace, the content is assumed to be JSON and is parsed as JSON. Otherwise,
  * the contents are parsed as a subset of YAML.
  *
  * @param filePath Path to the file on disk to parse.
