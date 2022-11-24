@@ -1,11 +1,11 @@
 /**
  * Credential is a generic exported credential.
  */
-export declare type Credential = ServiceAccountKey | ExternalAccount;
+export type Credential = ServiceAccountKey | ExternalAccount;
 /**
  * ServiceAccountKeyCredential is an exported credential for a service account key.
  */
-export declare type ServiceAccountKey = {
+export type ServiceAccountKey = {
     type: string;
     project_id: string;
     private_key_id: string;
@@ -21,7 +21,7 @@ export declare type ServiceAccountKey = {
  * ExternalAccount is an exported credential for an external account
  * like a workload identity pool.
  */
-export declare type ExternalAccount = {
+export type ExternalAccount = {
     type: string;
     audience: string;
     subject_token_type: string;

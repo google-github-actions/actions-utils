@@ -1,7 +1,7 @@
 /**
  * KVPair represents a key=value pair of strings.
  */
-export declare type KVPair = Record<string, string>;
+export type KVPair = Record<string, string>;
 /**
  * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
  * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
