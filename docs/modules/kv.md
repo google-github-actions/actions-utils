@@ -26,7 +26,7 @@ KVPair represents a key=value pair of strings.
 
 #### Defined in
 
-[kv.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L25)
+[kv.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L26)
 
 ## Functions
 
@@ -50,7 +50,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:84](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L84)
+[kv.ts:85](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L85)
 
 ___
 
@@ -80,7 +80,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:110](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L110)
+[kv.ts:120](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L120)
 
 ___
 
@@ -105,7 +105,7 @@ is trimmed.
 
 #### Defined in
 
-[kv.ts:35](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L35)
+[kv.ts:36](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L36)
 
 ___
 
@@ -129,7 +129,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:181](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L181)
+[kv.ts:191](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L191)
 
 ___
 
@@ -152,4 +152,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:154](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L154)
+[kv.ts:164](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L164)
