@@ -249,18 +249,26 @@ describe('kv', () => {
   describe('#parseKVFile', () => {
     it('reads the file as json', async () => {
       const filepath = randomFilepath();
-      await fs.writeFile(filepath, `{"FOO": "bar"}`);
+      await fs.writeFile(filepath, `{"FOO": "bar", "ZIP": "zap"}`);
 
       const result = parseKVFile(filepath);
-      expect(result).to.eql({ FOO: 'bar' });
+      expect(result).to.eql({ FOO: 'bar', ZIP: 'zap' });
+    });
+
+    it('reads the file as key=value lines', async () => {
+      const filepath = randomFilepath();
+      await fs.writeFile(filepath, `FOO=bar\nZIP=zap`);
+
+      const result = parseKVFile(filepath);
+      expect(result).to.eql({ FOO: 'bar', ZIP: 'zap' });
     });
 
     it('reads the file as yaml', async () => {
       const filepath = randomFilepath();
-      await fs.writeFile(filepath, `FOO: 'bar'`);
+      await fs.writeFile(filepath, `FOO: 'bar'\nZIP: 'zap'`);
 
       const result = parseKVFile(filepath);
-      expect(result).to.eql({ FOO: 'bar' });
+      expect(result).to.eql({ FOO: 'bar', ZIP: 'zap' });
     });
 
     it('throws an error when the file does not exist', () => {
@@ -285,13 +293,7 @@ describe('kv', () => {
     it('merges kvString and kvFile', async () => {
       const kvString = `FOO=other foo`;
       const kvFile = randomFilepath();
-      await fs.writeFile(
-        kvFile,
-        `
-        FOO: 'bar'
-        ZIP: 'zap'
-      `,
-      );
+      await fs.writeFile(kvFile, `FOO: 'bar'\nZIP: 'zap'`);
 
       const result = parseKVStringAndFile(kvString, kvFile);
       expect(result).to.eql({ FOO: 'other foo', ZIP: 'zap' });

@@ -776,6 +776,7 @@ exports.parseKVStringAndFile = exports.parseKVYAML = exports.parseKVJSON = expor
 const yaml_1 = __importDefault(__nccwpck_require__(4083));
 const fs_1 = __nccwpck_require__(7147);
 const errors_1 = __nccwpck_require__(6976);
+const validations_1 = __nccwpck_require__(596);
 /**
  * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
  * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
@@ -828,9 +829,15 @@ exports.parseKVString = parseKVString;
  */
 function parseKVFile(filePath) {
     try {
-        const content = (0, fs_1.readFileSync)(filePath, 'utf-8');
-        if (content && content.trim() && content.trim()[0] === '{') {
+        const content = (0, validations_1.presence)((0, fs_1.readFileSync)(filePath, 'utf-8'));
+        if (!content || content.length < 1) {
+            return {};
+        }
+        if (content[0] === '{' || content[0] === '[') {
             return parseKVJSON(content);
+        }
+        if (content.match(/^.+=.+/gi)) {
+            return parseKVString(content);
         }
         return parseKVYAML(content);
     }

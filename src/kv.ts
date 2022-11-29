@@ -18,6 +18,7 @@ import YAML from 'yaml';
 import { readFileSync } from 'fs';
 
 import { errorMessage } from './errors';
+import { presence } from './validations';
 
 /**
  * KVPair represents a key=value pair of strings.
@@ -83,10 +84,19 @@ export function parseKVString(input: string): KVPair {
  */
 export function parseKVFile(filePath: string): KVPair {
   try {
-    const content = readFileSync(filePath, 'utf-8');
-    if (content && content.trim() && content.trim()[0] === '{') {
+    const content = presence(readFileSync(filePath, 'utf-8'));
+    if (!content || content.length < 1) {
+      return {};
+    }
+
+    if (content[0] === '{' || content[0] === '[') {
       return parseKVJSON(content);
     }
+
+    if (content.match(/^.+=.+/gi)) {
+      return parseKVString(content);
+    }
+
     return parseKVYAML(content);
   } catch (err) {
     const msg = errorMessage(err);
