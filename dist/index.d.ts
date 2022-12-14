@@ -6,6 +6,7 @@ export * from './errors';
 export * from './flags';
 export * from './fs';
 export * from './ignore';
+export * from './input';
 export * from './kv';
 export * from './parallel';
 export * from './path';

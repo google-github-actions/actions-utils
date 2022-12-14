@@ -736,6 +736,7 @@ __exportStar(__nccwpck_require__(6976), exports);
 __exportStar(__nccwpck_require__(3252), exports);
 __exportStar(__nccwpck_require__(9219), exports);
 __exportStar(__nccwpck_require__(546), exports);
+__exportStar(__nccwpck_require__(6747), exports);
 __exportStar(__nccwpck_require__(575), exports);
 __exportStar(__nccwpck_require__(9497), exports);
 __exportStar(__nccwpck_require__(5737), exports);
@@ -745,6 +746,51 @@ __exportStar(__nccwpck_require__(9017), exports);
 __exportStar(__nccwpck_require__(7575), exports);
 __exportStar(__nccwpck_require__(596), exports);
 __exportStar(__nccwpck_require__(9324), exports);
+
+
+/***/ }),
+
+/***/ 6747:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/*
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.parseBoolean = void 0;
+const truths = {
+    '1': true,
+    't': true,
+    'T': true,
+    'true': true,
+    'True': true,
+    'TRUE': true,
+};
+/**
+ * parseBoolean converts a string into a boolean. Unparseable or invalid values
+ * return false.
+ *
+ * @param input The value to check
+ * @return boolean
+ */
+function parseBoolean(input) {
+    const trimmed = (input || '').trim();
+    return !!truths[trimmed];
+}
+exports.parseBoolean = parseBoolean;
 
 
 /***/ }),
