@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-export * from './auth';
-export * from './clone';
-export * from './csv';
-export * from './encoding';
-export * from './errors';
-export * from './flags';
-export * from './fs';
-export * from './ignore';
-export * from './input';
-export * from './kv';
-export * from './parallel';
-export * from './path';
-export * from './random';
-export * from './retry';
-export * from './testing';
-export * from './time';
-export * from './validations';
-export * from './warnings';
+const truths: Record<string, boolean> = {
+  '1': true,
+  't': true,
+  'T': true,
+  'true': true,
+  'True': true,
+  'TRUE': true,
+};
+
+/**
+ * parseBoolean converts a string into a boolean. Unparseable or invalid values
+ * return false.
+ *
+ * @param input The value to check
+ * @return boolean
+ */
+export function parseBoolean(input?: string): boolean {
+  const trimmed = (input || '').trim();
+  return !!truths[trimmed];
+}

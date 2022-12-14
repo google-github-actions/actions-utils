@@ -26,6 +26,7 @@
 - [isNotFoundError](index.md#isnotfounderror)
 - [isPinnedToHead](index.md#ispinnedtohead)
 - [isServiceAccountKey](index.md#isserviceaccountkey)
+- [parseBoolean](index.md#parseboolean)
 - [parseCSV](index.md#parsecsv)
 - [parseCredential](index.md#parsecredential)
 - [parseDuration](index.md#parseduration)
@@ -171,6 +172,12 @@ ___
 ### isServiceAccountKey
 
 Re-exports [isServiceAccountKey](auth.md#isserviceaccountkey)
+
+___
+
+### parseBoolean
+
+Re-exports [parseBoolean](input.md#parseboolean)
 
 ___
 

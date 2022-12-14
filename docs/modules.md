@@ -15,6 +15,7 @@
 - [fs](modules/fs.md)
 - [ignore](modules/ignore.md)
 - [index](modules/index.md)
+- [input](modules/input.md)
 - [kv](modules/kv.md)
 - [parallel](modules/parallel.md)
 - [path](modules/path.md)
