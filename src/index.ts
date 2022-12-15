@@ -18,6 +18,7 @@ export * from './auth';
 export * from './clone';
 export * from './csv';
 export * from './encoding';
+export * from './env';
 export * from './errors';
 export * from './flags';
 export * from './fs';

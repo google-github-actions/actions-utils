@@ -10,6 +10,7 @@
 - [clone](modules/clone.md)
 - [csv](modules/csv.md)
 - [encoding](modules/encoding.md)
+- [env](modules/env.md)
 - [errors](modules/errors.md)
 - [flags](modules/flags.md)
 - [fs](modules/fs.md)
