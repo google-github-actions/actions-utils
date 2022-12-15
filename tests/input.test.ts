@@ -19,7 +19,7 @@ import { expect } from 'chai';
 
 import { parseBoolean } from '../src/input';
 
-describe('time', () => {
+describe('input', () => {
   describe('#parseBoolean', () => {
     const cases: {
       only?: boolean;

@@ -10,6 +10,7 @@
 - [ExternalAccount](index.md#externalaccount)
 - [InParallelOptions](index.md#inparalleloptions)
 - [KVPair](index.md#kvpair)
+- [ProcessEnv](index.md#processenv)
 - [RetryOptions](index.md#retryoptions)
 - [ServiceAccountKey](index.md#serviceaccountkey)
 - [allOf](index.md#allof)
@@ -46,6 +47,7 @@
 - [setInput](index.md#setinput)
 - [setInputs](index.md#setinputs)
 - [sleep](index.md#sleep)
+- [stubEnv](index.md#stubenv)
 - [toBase64](index.md#tobase64)
 - [toPlatformPath](index.md#toplatformpath)
 - [toPosixPath](index.md#toposixpath)
@@ -76,6 +78,12 @@ ___
 ### KVPair
 
 Re-exports [KVPair](kv.md#kvpair)
+
+___
+
+### ProcessEnv
+
+Re-exports [ProcessEnv](env.md#processenv)
 
 ___
 
@@ -292,6 +300,12 @@ ___
 ### sleep
 
 Re-exports [sleep](time.md#sleep)
+
+___
+
+### stubEnv
+
+Re-exports [stubEnv](env.md#stubenv)
 
 ___
 
