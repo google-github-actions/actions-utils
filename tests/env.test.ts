@@ -79,11 +79,14 @@ describe('env', () => {
     });
 
     it('works with process.env', () => {
-      const restore = stubEnv({ FOO: 'bar' });
+      process.env.FOO = 'original';
+      const restore = stubEnv({ FOO: 'bar', ZIP: 'zap' });
       expect(process.env.FOO).to.eql('bar');
+      expect(process.env.ZIP).to.eql('zap');
 
       restore();
-      expect(process.env.FOO).to.eql(undefined);
+      expect(process.env.FOO).to.eql('original');
+      expect(process.env.ZIP).to.eql(undefined);
     });
   });
 });
