@@ -21,14 +21,57 @@ import { promises as fs } from 'fs';
 import { randomFilepath } from '../src/random';
 
 import {
+  joinKVString,
   parseKVString,
   parseKVFile,
   parseKVJSON,
   parseKVYAML,
   parseKVStringAndFile,
+  KVPair,
 } from '../src/kv';
 
 describe('kv', () => {
+  describe('#joinKVString', () => {
+    const cases: {
+      only?: boolean;
+      name: string;
+      input: KVPair;
+      expected: string;
+    }[] = [
+      {
+        name: 'empty',
+        input: {},
+        expected: '',
+      },
+      {
+        name: 'single entry',
+        input: { FOO: 'bar' },
+        expected: 'FOO=bar',
+      },
+      {
+        name: 'multiple entries',
+        input: { FOO: 'bar', ZIP: 'zap', BIZ: 'baz' },
+        expected: 'FOO=bar,ZIP=zap,BIZ=baz',
+      },
+      {
+        name: 'empty values',
+        input: { FOO: '', ZIP: 'zap' },
+        expected: 'FOO=,ZIP=zap',
+      },
+      {
+        name: 'whitespace',
+        input: { FOO: '   ', ZIP: 'zap\n' },
+        expected: 'FOO=   ,ZIP=zap\n',
+      },
+    ];
+
+    cases.forEach((tc) => {
+      const fn = tc.only ? it.only : it;
+      fn(tc.name, () => {
+        expect(joinKVString(tc.input)).to.eql(tc.expected);
+      });
+    });
+  });
   describe('#parseKVString', () => {
     const cases = [
       {

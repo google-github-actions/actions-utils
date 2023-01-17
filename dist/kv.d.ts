@@ -3,6 +3,13 @@
  */
 export type KVPair = Record<string, string>;
 /**
+ * joinKVString joins the given KVPair using the provided separator.
+ *
+ * @param input KVPair to serialize.
+ * @param separator Join separator.
+ */
+export declare function joinKVString(input: KVPair, separator?: string): string;
+/**
  * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
  * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
  * escaped with a backslash ("\,", "\\n"). All leading and trailing whitespace

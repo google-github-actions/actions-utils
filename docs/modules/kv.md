@@ -10,6 +10,7 @@
 
 ### Functions
 
+- [joinKVString](kv.md#joinkvstring)
 - [parseKVFile](kv.md#parsekvfile)
 - [parseKVJSON](kv.md#parsekvjson)
 - [parseKVString](kv.md#parsekvstring)
@@ -29,6 +30,29 @@ KVPair represents a key=value pair of strings.
 [kv.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L26)
 
 ## Functions
+
+### joinKVString
+
+▸ **joinKVString**(`input`, `separator?`): `string`
+
+joinKVString joins the given KVPair using the provided separator.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `input` | [`KVPair`](kv.md#kvpair) | `undefined` | KVPair to serialize. |
+| `separator` | `string` | `','` | Join separator. |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[kv.ts:34](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L34)
+
+___
 
 ### parseKVFile
 
@@ -50,7 +74,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:85](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L85)
+[kv.ts:99](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L99)
 
 ___
 
@@ -80,7 +104,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:120](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L120)
+[kv.ts:134](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L134)
 
 ___
 
@@ -105,7 +129,7 @@ is trimmed.
 
 #### Defined in
 
-[kv.ts:36](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L36)
+[kv.ts:50](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L50)
 
 ___
 
@@ -129,7 +153,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:191](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L191)
+[kv.ts:205](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L205)
 
 ___
 
@@ -152,4 +176,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:164](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L164)
+[kv.ts:178](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L178)

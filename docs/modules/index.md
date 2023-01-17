@@ -27,6 +27,7 @@
 - [isNotFoundError](index.md#isnotfounderror)
 - [isPinnedToHead](index.md#ispinnedtohead)
 - [isServiceAccountKey](index.md#isserviceaccountkey)
+- [joinKVString](index.md#joinkvstring)
 - [parseBoolean](index.md#parseboolean)
 - [parseCSV](index.md#parsecsv)
 - [parseCredential](index.md#parsecredential)
@@ -180,6 +181,12 @@ ___
 ### isServiceAccountKey
 
 Re-exports [isServiceAccountKey](auth.md#isserviceaccountkey)
+
+___
+
+### joinKVString
+
+Re-exports [joinKVString](kv.md#joinkvstring)
 
 ___
 
