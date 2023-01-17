@@ -880,11 +880,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.parseKVStringAndFile = exports.parseKVYAML = exports.parseKVJSON = exports.parseKVFile = exports.parseKVString = void 0;
+exports.parseKVStringAndFile = exports.parseKVYAML = exports.parseKVJSON = exports.parseKVFile = exports.parseKVString = exports.joinKVString = void 0;
 const yaml_1 = __importDefault(__nccwpck_require__(4083));
 const fs_1 = __nccwpck_require__(7147);
 const errors_1 = __nccwpck_require__(6976);
 const validations_1 = __nccwpck_require__(596);
+/**
+ * joinKVString joins the given KVPair using the provided separator.
+ *
+ * @param input KVPair to serialize.
+ * @param separator Join separator.
+ */
+function joinKVString(input, separator = ',') {
+    return Object.entries(input)
+        .map(([k, v]) => {
+        return `${k}=${v}`;
+    })
+        .join(separator);
+}
+exports.joinKVString = joinKVString;
 /**
  * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
  * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
