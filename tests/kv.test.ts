@@ -72,8 +72,15 @@ describe('kv', () => {
       });
     });
   });
+
   describe('#parseKVString', () => {
-    const cases = [
+    const cases: {
+      only?: boolean;
+      name: string;
+      input: string;
+      expected?: Record<string, string>;
+      error?: string;
+    }[] = [
       {
         name: 'empty string',
         input: '',
@@ -135,7 +142,6 @@ describe('kv', () => {
           BAZ=bam
         `,
         expected: { FOO: 'bar', ZIP: 'zap', BAZ: 'bam' },
-        error: '',
       },
       {
         name: 'multiline escaped',
@@ -143,6 +149,20 @@ describe('kv', () => {
           FOO=bar\\\nbaz
         `,
         expected: { FOO: 'bar\nbaz' },
+      },
+      {
+        name: 'certificate',
+        input: `
+          FOO=-----BEGIN PRIVATE KEY-----\\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDRJRbmz9Qi7or8\\\nG342x0t5eILuU/DmDz/K+aF+HCmKpiNMM3VVXop5r70jtuDwTg2Hj4Wq+/VUFy9m\\\n7N2c6NcjhekEZZbtGBoaiddffX7S54Y5La4ynJooLwkHm2mLp2et5gIjhwHiRvXa\\\nftyRyC/83GkAjs88l5eGxNE=\\\n-----END PRIVATE KEY-----
+        `,
+        expected: {
+          FOO: `-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDRJRbmz9Qi7or8
+G342x0t5eILuU/DmDz/K+aF+HCmKpiNMM3VVXop5r70jtuDwTg2Hj4Wq+/VUFy9m
+7N2c6NcjhekEZZbtGBoaiddffX7S54Y5La4ynJooLwkHm2mLp2et5gIjhwHiRvXa
+ftyRyC/83GkAjs88l5eGxNE=
+-----END PRIVATE KEY-----`,
+        },
       },
       {
         name: 'escaped comma key',
@@ -182,7 +202,8 @@ describe('kv', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
+      const fn = tc.only ? it.only : it;
+      fn(tc.name, () => {
         if (tc.expected) {
           expect(parseKVString(tc.input)).to.eql(tc.expected);
         } else if (tc.error) {
