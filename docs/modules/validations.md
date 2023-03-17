@@ -14,7 +14,7 @@
 
 ### allOf
 
-▸ **allOf**(...`inputs`): `boolean`
+▸ **allOf**(`...inputs`): `boolean`
 
 allOf iterates over the inputs and ensures all of the elements are truthy. If
 any elements are falsey, it returns false. If no inputs are given, the result
@@ -40,7 +40,7 @@ ___
 
 ### exactlyOneOf
 
-▸ **exactlyOneOf**(...`inputs`): `boolean`
+▸ **exactlyOneOf**(`...inputs`): `boolean`
 
 exactlyOneOf iterates over the inputs and ensures one and only one of the
 elements is truthy. If more than one element is truthy, it returns false. If
