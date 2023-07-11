@@ -27,7 +27,7 @@ There are no guarantees on the order in which promises start.
 | :------ | :------ |
 | `F` | extends (...`args`: `any`[]) => `Promise`<`Awaited`<`R`\>\> |
 | `P` | extends `any`[] |
-| `R` | extends `Promise`<`Awaited`<`R`\>, `R`\> |
+| `R` | extends `Promise`<`Awaited`<`R`\>\> |
 
 #### Parameters
 
