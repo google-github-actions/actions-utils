@@ -46,6 +46,9 @@ export function joinKVString(input: KVPair, separator = ','): string {
  * is trimmed.
  *
  * @param input String with key/value pairs to parse.
+ * @param allowEmptyValues Boolean indicating whether empty values are allowed.
+ *
+ * They will be parsed as empty string ("")
  */
 export function parseKVString(input: string, allowEmptyValues = false): KVPair {
   input = (input || '').trim();
