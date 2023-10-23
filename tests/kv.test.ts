@@ -78,6 +78,9 @@ describe('kv', () => {
       only?: boolean;
       name: string;
       input: string;
+      flags?: {
+        allowEmptyValues: boolean;
+      };
       expected?: Record<string, string>;
       error?: string;
     }[] = [
@@ -195,6 +198,12 @@ ftyRyC/83GkAjs88l5eGxNE=
         error: 'Failed to parse',
       },
       {
+        name: 'missing value with allowEmptyValues=true',
+        input: 'FOO=',
+        flags: { allowEmptyValues: true },
+        expected: { FOO: '' },
+      },
+      {
         name: 'no equal',
         input: 'FOO',
         error: 'Failed to parse',
@@ -205,7 +214,11 @@ ftyRyC/83GkAjs88l5eGxNE=
       const fn = tc.only ? it.only : it;
       fn(tc.name, () => {
         if (tc.expected) {
-          expect(parseKVString(tc.input)).to.eql(tc.expected);
+          if (tc.flags) {
+            expect(parseKVString(tc.input, tc.flags.allowEmptyValues)).to.eql(tc.expected);
+          } else {
+            expect(parseKVString(tc.input)).to.eql(tc.expected);
+          }
         } else if (tc.error) {
           expect(() => {
             parseKVString(tc.input);
