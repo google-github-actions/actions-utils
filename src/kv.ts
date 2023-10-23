@@ -47,7 +47,7 @@ export function joinKVString(input: KVPair, separator = ','): string {
  *
  * @param input String with key/value pairs to parse.
  */
-export function parseKVString(input: string): KVPair {
+export function parseKVString(input: string, allowEmptyValues = false): KVPair {
   input = (input || '').trim();
   if (!input) {
     return {};
@@ -79,7 +79,7 @@ export function parseKVString(input: string): KVPair {
       .trim()
       .replace(/\\([,\n])/gi, '$1');
 
-    if (!k || !v) {
+    if (!k || (!v && !allowEmptyValues)) {
       throw new SyntaxError(`Failed to parse KEY=VALUE pair "${pair}": no value`);
     }
 
