@@ -70,10 +70,6 @@ ___
 removeFile removes the file at the given path. If the file does not exist, it
 does nothing.
 
-**`Deprecated`**
-
-Use #forceRemove instead.
-
 #### Parameters
 
 | Name | Type | Description |
@@ -85,6 +81,10 @@ Use #forceRemove instead.
 `Promise`<`boolean`\>
 
 A boolean, true if the file was deleted, false otherwise.
+
+**`Deprecated`**
+
+Use #forceRemove instead.
 
 #### Defined in
 

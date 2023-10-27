@@ -26,24 +26,24 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
   "dependencies": {
-    "yaml": "^2.3.1"
+    "yaml": "^2.3.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.x",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "^20.4.1",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vercel/ncc": "0.36.1",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "^20.8.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "@vercel/ncc": "0.38.1",
     "chai": "^4.3.x",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "mocha": "^10.2.0",
-    "prettier": "^3.0.0",
+    "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
-    "typedoc": "^0.24.8",
-    "typedoc-plugin-markdown": "^3.15.3",
-    "typescript": "^5.1.6"
+    "typedoc": "^0.25.2",
+    "typedoc-plugin-markdown": "^3.16.0",
+    "typescript": "^5.2.2"
   }
 }
