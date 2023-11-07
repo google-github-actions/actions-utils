@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/google-github-actions/actions-utils"
+    "url": "git+https://github.com/google-github-actions/actions-utils.git"
   },
   "files": [
     "CONTRIBUTING.md",
