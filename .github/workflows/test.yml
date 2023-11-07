@@ -18,11 +18,11 @@ jobs:
     name: 'install-and-compile'
     runs-on: 'ubuntu-latest'
     steps:
-    - uses: 'actions/checkout@v3'
+    - uses: 'actions/checkout@v4'
 
     - uses: 'actions/setup-node@v3'
       with:
-        node-version: '16.x'
+        node-version: '20.x'
 
     - name: 'npm build'
       run: 'npm ci && npm run build && npm run docs'
@@ -49,11 +49,11 @@ jobs:
         - 'macos-latest'
 
     steps:
-    - uses: 'actions/checkout@v3'
+    - uses: 'actions/checkout@v4'
 
     - uses: 'actions/setup-node@v3'
       with:
-        node-version: '16.x'
+        node-version: '20.x'
 
     - name: 'npm build'
       run: 'npm ci && npm run build'
