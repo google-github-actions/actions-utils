@@ -37,7 +37,7 @@ ___
 
 ### sleep
 
-▸ **sleep**(`ms?`): `Promise`<`void`\>
+▸ **sleep**(`ms?`): `Promise`\<`void`\>
 
 sleep waits for a specified duration in milliseconds as a promise.
 
@@ -49,7 +49,7 @@ sleep waits for a specified duration in milliseconds as a promise.
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 

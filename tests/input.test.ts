@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { parseBoolean } from '../src/input';
 
-describe('input', () => {
-  describe('#parseBoolean', () => {
+describe('input', async () => {
+  describe('#parseBoolean', async () => {
     const cases: {
-      only?: boolean;
       name: string;
       input: string | undefined;
       expected: boolean;
@@ -85,9 +84,9 @@ describe('input', () => {
     ];
 
     cases.forEach((tc) => {
-      const fn = tc.only ? it.only : it;
-      fn(tc.name, () => {
-        expect(parseBoolean(tc.input)).to.eql(tc.expected);
+      it(tc.name, async () => {
+        const actual = parseBoolean(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });

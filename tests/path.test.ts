@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import * as path from 'path';
 
 import { toPlatformPath, toPosixPath, toWin32Path } from '../src/path';
 
-describe('#toPosixPath', () => {
+describe('#toPosixPath', async () => {
   const cases: {
-    only?: boolean;
     name: string;
     input: string;
     expected: string;
@@ -66,17 +65,15 @@ describe('#toPosixPath', () => {
   ];
 
   cases.forEach((tc) => {
-    const fn = tc.only ? it.only : it;
-    fn(tc.name, () => {
-      const result = toPosixPath(tc.input);
-      expect(result).to.eql(tc.expected);
+    it(tc.name, async () => {
+      const actual = toPosixPath(tc.input);
+      assert.deepStrictEqual(actual, tc.expected);
     });
   });
 });
 
-describe('#toWin32Path', () => {
+describe('#toWin32Path', async () => {
   const cases: {
-    only?: boolean;
     name: string;
     input: string;
     expected: string;
@@ -119,17 +116,15 @@ describe('#toWin32Path', () => {
   ];
 
   cases.forEach((tc) => {
-    const fn = tc.only ? it.only : it;
-    fn(tc.name, () => {
-      const result = toWin32Path(tc.input);
-      expect(result).to.eql(tc.expected);
+    it(tc.name, async () => {
+      const actual = toWin32Path(tc.input);
+      assert.deepStrictEqual(actual, tc.expected);
     });
   });
 });
 
-describe('#toPlatformPath', () => {
+describe('#toPlatformPath', async () => {
   const cases: {
-    only?: boolean;
     name: string;
     input: string;
     expected: string;
@@ -172,10 +167,9 @@ describe('#toPlatformPath', () => {
   ];
 
   cases.forEach((tc) => {
-    const fn = tc.only ? it.only : it;
-    fn(tc.name, () => {
-      const result = toPlatformPath(tc.input);
-      expect(result).to.eql(tc.expected);
+    it(tc.name, async () => {
+      const actual = toPlatformPath(tc.input);
+      assert.deepStrictEqual(actual, tc.expected);
     });
   });
 });

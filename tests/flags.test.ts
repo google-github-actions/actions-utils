@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { parseFlags, readUntil } from '../src/flags';
 
-describe('#parseFlags', () => {
+describe('#parseFlags', async () => {
   const cases: {
-    only?: boolean;
     name: string;
     input: string;
     exp: string[];
@@ -155,17 +154,15 @@ describe('#parseFlags', () => {
   ];
 
   cases.forEach((tc) => {
-    const fn = tc.only ? it.only : it;
-    fn(tc.name, () => {
+    it(tc.name, async () => {
       const result = parseFlags(tc.input);
-      expect(result).to.eql(tc.exp);
+      assert.deepStrictEqual(result, tc.exp);
     });
   });
 });
 
-describe('#readUntil', () => {
+describe('#readUntil', async () => {
   const cases: {
-    only?: boolean;
     name: string;
     input: string;
     ch: string;
@@ -216,10 +213,9 @@ describe('#readUntil', () => {
   ];
 
   cases.forEach((tc) => {
-    const fn = tc.only ? it.only : it;
-    fn(tc.name, () => {
+    it(tc.name, async () => {
       const result = readUntil(tc.input, tc.ch);
-      expect(result).to.eql(tc.exp);
+      assert.deepStrictEqual(result, tc.exp);
     });
   });
 });

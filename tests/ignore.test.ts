@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { afterEach, beforeEach, describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { promises as fs } from 'fs';
 import { tmpdir } from 'os';
@@ -26,10 +28,9 @@ import { randomFilepath, randomFilename } from '../src/random';
 
 import { parseGcloudIgnore } from '../src/ignore';
 
-describe('ignore', () => {
-  describe('#parseGcloudIgnore', () => {
+describe('ignore', async () => {
+  describe('#parseGcloudIgnore', async () => {
     const cases: {
-      only?: boolean;
       name: string;
       contents?: string;
       extraContents?: string;
@@ -75,29 +76,28 @@ describe('ignore', () => {
       },
     ];
 
-    beforeEach(async function () {
-      this.dir = pathjoin(tmpdir(), randomFilename());
-      await fs.mkdir(this.dir, { recursive: true });
+    beforeEach(async (t: any) => {
+      t.dir = pathjoin(tmpdir(), randomFilename());
+      await fs.mkdir(t.dir, { recursive: true });
     });
 
-    afterEach(async function () {
-      await forceRemove(this.dir);
+    afterEach(async (t: any) => {
+      await forceRemove(t.dir);
     });
 
     cases.forEach((tc) => {
-      const runTest = tc.only ? it.only : it;
-      runTest(tc.name, async function () {
-        const pth = randomFilepath(this.dir);
+      it(tc.name, async (t: any) => {
+        const pth = randomFilepath(t.dir);
         if (tc.contents) {
           await writeSecureFile(pth, tc.contents);
         }
 
         if (tc.extraContents) {
-          await writeSecureFile(pathjoin(this.dir, '.gitignore'), tc.extraContents);
+          await writeSecureFile(pathjoin(t.dir, '.gitignore'), tc.extraContents);
         }
 
         const result = await parseGcloudIgnore(pth);
-        expect(result).to.eql(tc.expected);
+        assert.deepStrictEqual(result, tc.expected);
       });
     });
   });

@@ -48,13 +48,13 @@ like a workload identity pool.
 | `audience` | `string` |
 | `client_id?` | `string` |
 | `client_secret?` | `string` |
-| `credential_source` | { `environment_id?`: `string` ; `file?`: `string` ; `format?`: { `subject_token_field_name?`: `string` ; `type`: ``"json"`` \| ``"text"``  } ; `headers?`: { `[key: string]`: `string`;  } ; `region_url?`: `string` ; `regional_cred_verification_url`: `string` ; `url?`: `string`  } |
+| `credential_source` | \{ `environment_id?`: `string` ; `file?`: `string` ; `format?`: \{ `subject_token_field_name?`: `string` ; `type`: ``"json"`` \| ``"text"``  } ; `headers?`: \{ `[key: string]`: `string`;  } ; `region_url?`: `string` ; `regional_cred_verification_url`: `string` ; `url?`: `string`  } |
 | `credential_source.environment_id?` | `string` |
 | `credential_source.file?` | `string` |
-| `credential_source.format?` | { `subject_token_field_name?`: `string` ; `type`: ``"json"`` \| ``"text"``  } |
+| `credential_source.format?` | \{ `subject_token_field_name?`: `string` ; `type`: ``"json"`` \| ``"text"``  } |
 | `credential_source.format.subject_token_field_name?` | `string` |
 | `credential_source.format.type` | ``"json"`` \| ``"text"`` |
-| `credential_source.headers?` | { `[key: string]`: `string`;  } |
+| `credential_source.headers?` | \{ `[key: string]`: `string`;  } |
 | `credential_source.region_url?` | `string` |
 | `credential_source.regional_cred_verification_url` | `string` |
 | `credential_source.url?` | `string` |

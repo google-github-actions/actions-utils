@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { parseDuration, sleep } from '../src/time';
 
-describe('time', () => {
-  describe('#parseDuration', () => {
+describe('time', async () => {
+  describe('#parseDuration', async () => {
     const cases = [
       {
         name: 'empty string',
@@ -72,17 +72,18 @@ describe('time', () => {
     cases.forEach((tc) => {
       it(tc.name, async () => {
         if (tc.expected) {
-          expect(parseDuration(tc.input)).to.eq(tc.expected);
+          const actual = parseDuration(tc.input);
+          assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          expect(() => {
+          assert.rejects(async () => {
             parseDuration(tc.input);
-          }).to.throw(tc.error);
+          }, new RegExp(tc.error));
         }
       });
     });
   });
 
-  describe('#sleep', () => {
+  describe('#sleep', async () => {
     const cases: {
       name: string;
       input: number | undefined;
@@ -121,7 +122,8 @@ describe('time', () => {
         await sleep(tc.input);
         const end = new Date().getTime();
 
-        expect(end - start).to.be.greaterThanOrEqual(tc.expMinDuration);
+        const diff = end - start;
+        assert.ok(diff >= tc.expMinDuration);
       });
     });
   });

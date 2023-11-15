@@ -16,7 +16,7 @@
 
 ### ProcessEnv
 
-Ƭ **ProcessEnv**: `Record`<`string`, `string` \| `undefined`\>
+Ƭ **ProcessEnv**: `Record`\<`string`, `string` \| `undefined`\>
 
 ProcessEnv is a wrapper that defines an environment structure.
 

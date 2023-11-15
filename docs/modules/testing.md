@@ -87,7 +87,7 @@ information.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `inputs` | `Record`<`string`, `string`\> | List of inputs. |
+| `inputs` | `Record`\<`string`, `string`\> | List of inputs. |
 
 #### Returns
 

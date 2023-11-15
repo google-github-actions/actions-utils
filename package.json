@@ -9,8 +9,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write **/*.ts",
     "docs": "rm -rf docs/ && typedoc --plugin typedoc-plugin-markdown",
-    "test": "mocha -r ts-node/register -t 120s 'tests/**/*.test.ts'",
-    "all": "npm run format && npm run lint && npm run docs && npm run build"
+    "test": "bash ./bin/runTests.sh"
   },
   "repository": {
     "type": "git",
@@ -26,24 +25,20 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
   "dependencies": {
-    "yaml": "^2.3.3"
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.x",
-    "@types/mocha": "^10.0.3",
-    "@types/node": "^20.8.9",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
+    "@types/node": "^20.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
     "@vercel/ncc": "0.38.1",
-    "chai": "^4.3.x",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "mocha": "^10.2.0",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "ts-node": "^10.9.1",
-    "typedoc": "^0.25.2",
-    "typedoc-plugin-markdown": "^3.16.0",
+    "typedoc": "^0.25.3",
+    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "^5.2.2"
   }
 }

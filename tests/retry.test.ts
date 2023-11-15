@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { RetryOptions, withRetries } from '../src/retry';
 
-describe('retry', () => {
-  describe('#withRetries', () => {
+describe('retry', async () => {
+  describe('#withRetries', async () => {
     const cases: {
       name: string;
       input: RetryOptions;
@@ -115,11 +115,12 @@ describe('retry', () => {
           } catch (e: unknown) {
             const end = new Date().getTime();
 
-            expect((e as Error).message).to.eq(tc.error);
-            tc?.expCalls && expect(count).to.eq(tc.expCalls);
-            if (tc?.expDuration) {
-              expect(end - start).to.be.greaterThanOrEqual(tc.expDuration[0]);
-              expect(end - start).to.be.lessThanOrEqual(tc.expDuration[1]);
+            assert.deepStrictEqual((e as Error).message, tc.error);
+            assert.deepStrictEqual(count, tc.expCalls);
+            if (tc.expDuration) {
+              const diff = end - start;
+              assert.ok(diff >= tc.expDuration[0]);
+              assert.ok(diff <= tc.expDuration[1]);
             }
           }
         } else {
@@ -137,10 +138,11 @@ describe('retry', () => {
           await run();
           const end = new Date().getTime();
 
-          tc?.expCalls && expect(count).to.eq(tc.expCalls);
-          if (tc?.expDuration) {
-            expect(end - start).to.be.greaterThanOrEqual(tc.expDuration[0]);
-            expect(end - start).to.be.lessThanOrEqual(tc.expDuration[1]);
+          assert.deepStrictEqual(count, tc.expCalls);
+          if (tc.expDuration) {
+            const diff = end - start;
+            assert.ok(diff >= tc.expDuration[0]);
+            assert.ok(diff <= tc.expDuration[1]);
           }
         }
       });

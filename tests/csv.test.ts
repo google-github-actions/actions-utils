@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { parseCSV } from '../src/csv';
 
@@ -51,7 +51,8 @@ describe('time', () => {
 
     cases.forEach((tc) => {
       it(tc.name, async () => {
-        expect(parseCSV(tc.input)).to.eql(tc.expected);
+        const actual = parseCSV(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });

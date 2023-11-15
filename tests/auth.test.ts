@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { isExternalAccount, isServiceAccountKey, parseCredential } from '../src/auth';
 
@@ -72,13 +72,14 @@ describe('Util', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
+      it(tc.name, async () => {
         if (tc.expected) {
-          expect(parseCredential(tc.input)).to.eql(tc.expected);
+          const actual = parseCredential(tc.input);
+          assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          expect(() => {
+          assert.rejects(async () => {
             parseCredential(tc.input);
-          }).to.throw(tc.error);
+          }, new RegExp(tc.error));
         }
       });
     });
@@ -99,9 +100,10 @@ describe('Util', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
+      it(tc.name, async () => {
         const credential = parseCredential(tc.input);
-        expect(isServiceAccountKey(credential)).to.eq(tc.expected);
+        const actual = isServiceAccountKey(credential);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });
@@ -121,9 +123,10 @@ describe('Util', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
+      it(tc.name, async () => {
         const credential = parseCredential(tc.input);
-        expect(isExternalAccount(credential)).to.eq(tc.expected);
+        const actual = isExternalAccount(credential);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });

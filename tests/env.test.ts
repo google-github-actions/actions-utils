@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { deepClone } from '../src/clone';
 
@@ -24,7 +24,6 @@ import { stubEnv, ProcessEnv } from '../src/env';
 describe('env', () => {
   describe('#stubEnv', () => {
     const cases: {
-      only?: boolean;
       name: string;
       existing: ProcessEnv;
       input: ProcessEnv;
@@ -67,26 +66,25 @@ describe('env', () => {
     ];
 
     cases.forEach((tc) => {
-      const fn = tc.only ? it.only : it;
-      fn(tc.name, () => {
+      it(tc.name, async () => {
         const original = deepClone(tc.existing);
         const restore = stubEnv(tc.input, tc.existing);
-        expect(tc.existing).to.eql(tc.expected);
+        assert.deepStrictEqual(tc.existing, tc.expected);
 
         restore();
-        expect(tc.existing).to.eql(original);
+        assert.deepStrictEqual(tc.existing, original);
       });
     });
 
-    it('works with process.env', () => {
+    it('works with process.env', async () => {
       process.env.FOO = 'original';
       const restore = stubEnv({ FOO: 'bar', ZIP: 'zap' });
-      expect(process.env.FOO).to.eql('bar');
-      expect(process.env.ZIP).to.eql('zap');
+      assert.deepStrictEqual(process.env.FOO, 'bar');
+      assert.deepStrictEqual(process.env.ZIP, 'zap');
 
       restore();
-      expect(process.env.FOO).to.eql('original');
-      expect(process.env.ZIP).to.eql(undefined);
+      assert.deepStrictEqual(process.env.FOO, 'original');
+      assert.deepStrictEqual(process.env.ZIP, undefined);
     });
   });
 });

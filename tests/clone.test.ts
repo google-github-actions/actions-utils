@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { deepClone } from '../src/clone';
 
@@ -58,35 +58,35 @@ describe('clone', () => {
 
     cases.forEach((tc) => {
       it(tc.name, async () => {
-        expect(deepClone(tc.input, true)).to.eql(tc.expected);
-        expect(deepClone(tc.input, false)).to.eql(tc.expected);
+        assert.deepStrictEqual(deepClone(tc.input, true), tc.expected);
+        assert.deepStrictEqual(deepClone(tc.input, false), tc.expected);
       });
     });
 
-    it('copies deeply nested fields with structuredClone', () => {
+    it('copies deeply nested fields with structuredClone', async () => {
       const input = { foo: { bar: 'baz' } };
       const copied = deepClone(input, true);
       copied.foo.bar = 'zoo';
 
-      expect(input).to.eql({ foo: { bar: 'baz' } });
-      expect(copied).to.eql({ foo: { bar: 'zoo' } });
+      assert.deepStrictEqual(input, { foo: { bar: 'baz' } });
+      assert.deepStrictEqual(copied, { foo: { bar: 'zoo' } });
 
       input.foo.bar = 'zap';
-      expect(input.foo.bar).to.eql('zap');
-      expect(copied.foo.bar).to.eql('zoo');
+      assert.deepStrictEqual(input.foo.bar, 'zap');
+      assert.deepStrictEqual(copied.foo.bar, 'zoo');
     });
 
-    it('copies deeply nested fields without structuredClone', () => {
+    it('copies deeply nested fields without structuredClone', async () => {
       const input = { foo: { bar: 'baz' } };
       const copied = deepClone(input, false);
       copied.foo.bar = 'zoo';
 
-      expect(input).to.eql({ foo: { bar: 'baz' } });
-      expect(copied).to.eql({ foo: { bar: 'zoo' } });
+      assert.deepStrictEqual(input, { foo: { bar: 'baz' } });
+      assert.deepStrictEqual(copied, { foo: { bar: 'zoo' } });
 
       input.foo.bar = 'zap';
-      expect(input.foo.bar).to.eql('zap');
-      expect(copied.foo.bar).to.eql('zoo');
+      assert.deepStrictEqual(input.foo.bar, 'zap');
+      assert.deepStrictEqual(copied.foo.bar, 'zoo');
     });
   });
 });
