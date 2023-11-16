@@ -28,9 +28,10 @@ describe('#inParallel', async () => {
 
     const start = Date.now();
 
-    const result = await inParallel(task, [[6], [9], [3], [3], [1], [1], [1]], {
-      concurrency: 3,
+    const tasks = [6, 9, 3, 3, 1, 1, 1].map((x) => async (): Promise<number> => {
+      return await task(x);
     });
+    const result = await inParallel(tasks, 3);
 
     const duration = Date.now() - start;
 
@@ -44,6 +45,7 @@ describe('#inParallel', async () => {
     // However, there's a 100% buffer since other operations could cause some
     // latency (cough OSX). If there was no parallelization, this would be at
     // least 240.
-    assert.ok(duration < 200);
+    const expected = 200;
+    assert.ok(duration < expected, `expected ${duration} to be less than ${expected}`);
   });
 });

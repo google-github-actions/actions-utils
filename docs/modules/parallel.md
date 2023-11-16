@@ -4,10 +4,6 @@
 
 ## Table of contents
 
-### Interfaces
-
-- [InParallelOptions](../interfaces/parallel.InParallelOptions.md)
-
 ### Functions
 
 - [inParallel](parallel.md#inparallel)
@@ -16,7 +12,7 @@
 
 ### inParallel
 
-▸ **inParallel**\<`F`, `P`, `R`\>(`fn`, `args`, `opts?`): `Promise`\<`Awaited`\<`R`\>[]\>
+▸ **inParallel**\<`F`, `R`\>(`tasks`, `concurrency`): `Promise`\<`R`[]\>
 
 inParallel executes the given function in parallel, up to max concurrency.
 There are no guarantees on the order in which promises start.
@@ -25,24 +21,22 @@ There are no guarantees on the order in which promises start.
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `any`[]) => `Promise`\<`Awaited`\<`R`\>\> |
-| `P` | extends `any`[] |
+| `F` | extends () => `Promise`\<`Awaited`\<`R`\>\> |
 | `R` | extends `Promise`\<`Awaited`\<`R`\>\> |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `fn` | `F` | The function to invoke, must be async. |
-| `args` | `P`[] | An array of array of parameters to invoke fn. |
-| `opts?` | [`InParallelOptions`](../interfaces/parallel.InParallelOptions.md) | Optional configuration. |
+| `tasks` | () => `Promise`\<`R`\>[] | The tasks to invoke, must be async. |
+| `concurrency` | `undefined` \| `number` | Optional configuration. |
 
 #### Returns
 
-`Promise`\<`Awaited`\<`R`\>[]\>
+`Promise`\<`R`[]\>
 
 Array of results in the order of args.
 
 #### Defined in
 
-[parallel.ts:39](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L39)
+[parallel.ts:30](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L30)
