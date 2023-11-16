@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { afterEach, describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { isPinnedToHead, pinnedToHeadWarning } from '../src/warnings';
 
-describe('warnings', () => {
-  describe('#isPinnedToHead', () => {
-    afterEach(() => {
+describe('warnings', async () => {
+  describe('#isPinnedToHead', async () => {
+    afterEach(async () => {
       delete process.env.GITHUB_ACTION_REF;
     });
 
@@ -49,25 +49,27 @@ describe('warnings', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
+      it(tc.name, async () => {
         process.env.GITHUB_ACTION_REF = tc.ref;
-        expect(isPinnedToHead()).to.eql(tc.expected);
+        const actual = isPinnedToHead();
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });
 
-  describe('#pinnedToHeadWarning', () => {
-    afterEach(() => {
+  describe('#pinnedToHeadWarning', async () => {
+    afterEach(async () => {
       delete process.env.GITHUB_ACTION_REF;
       delete process.env.GITHUB_ACTION_REPOSITORY;
     });
 
-    it('builds a warning string', () => {
+    it('builds a warning string', async () => {
       process.env.GITHUB_ACTION_REF = 'my-ref';
       process.env.GITHUB_ACTION_REPOSITORY = 'my-org/my-repo';
 
-      expect(pinnedToHeadWarning('v0')).to.include('my-org/my-repo@my-ref');
-      expect(pinnedToHeadWarning('v0')).to.include('my-org/my-repo@v0');
+      const actual = pinnedToHeadWarning('v0');
+      assert.match(actual, /my-org\/my-repo@my-ref/);
+      assert.match(actual, /my-org\/my-repo@v0/);
     });
   });
 });

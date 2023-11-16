@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { errorMessage, isNotFoundError } from '../src/errors';
 
-describe('errors', () => {
-  describe('#errorMessage', () => {
+describe('errors', async () => {
+  describe('#errorMessage', async () => {
     const cases: {
-      only?: boolean;
       name: string;
       input: unknown;
       expected: string;
@@ -206,16 +205,15 @@ describe('errors', () => {
     ];
 
     cases.forEach((tc) => {
-      const fn = tc.only ? it.only : it;
-      fn(tc.name, () => {
-        expect(errorMessage(tc.input)).to.eql(tc.expected);
+      it(tc.name, async () => {
+        const actual = errorMessage(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });
 
-  describe('#isNotFoundError', () => {
+  describe('#isNotFoundError', async () => {
     const cases: {
-      only?: boolean;
       name: string;
       err: unknown;
       exp: boolean;
@@ -258,10 +256,9 @@ describe('errors', () => {
     ];
 
     cases.forEach((tc) => {
-      const fn = tc.only ? it.only : it;
-      fn(tc.name, async () => {
+      it(tc.name, async () => {
         const result = isNotFoundError(tc.err);
-        expect(result).to.eq(tc.exp);
+        assert.deepStrictEqual(result, tc.exp);
       });
     });
   });

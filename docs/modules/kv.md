@@ -21,7 +21,7 @@
 
 ### KVPair
 
-Ƭ **KVPair**: `Record`<`string`, `string`\>
+Ƭ **KVPair**: `Record`\<`string`, `string`\>
 
 KVPair represents a key=value pair of strings.
 

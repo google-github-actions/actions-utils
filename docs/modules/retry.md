@@ -16,7 +16,7 @@
 
 ### withRetries
 
-▸ **withRetries**<`T`\>(`fn`, `opts`): () => `Promise`<`T`\>
+▸ **withRetries**\<`T`\>(`fn`, `opts`): () => `Promise`\<`T`\>
 
 withRetry implements a retry mechanism with fibonacci backoff
 
@@ -30,7 +30,7 @@ withRetry implements a retry mechanism with fibonacci backoff
 
 | Name | Type |
 | :------ | :------ |
-| `fn` | () => `Promise`<`T`\> |
+| `fn` | () => `Promise`\<`T`\> |
 | `opts` | [`RetryOptions`](../interfaces/retry.RetryOptions.md) |
 
 #### Returns
@@ -39,11 +39,11 @@ withRetry implements a retry mechanism with fibonacci backoff
 
 fn. A function to start the retry process as a promise
 
-▸ (): `Promise`<`T`\>
+▸ (): `Promise`\<`T`\>
 
 ##### Returns
 
-`Promise`<`T`\>
+`Promise`\<`T`\>
 
 **`Throws`**
 

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { tmpdir } from 'os';
 import { join as pathjoin } from 'path';
 
 import { randomFilename, randomFilepath } from '../src/random';
 
-describe('random', () => {
-  describe('#randomFilename', () => {
+describe('random', async () => {
+  describe('#randomFilename', async () => {
     const cases = [
       {
         name: 'no args',
@@ -38,15 +38,15 @@ describe('random', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
-        const result = randomFilename(...tc.input);
-        expect(result.length).to.eq(tc.expected);
-        expect(result).to.not.eq(randomFilename(...tc.input));
+      it(tc.name, async () => {
+        const actual = randomFilename(...tc.input);
+        assert.deepStrictEqual(actual.length, tc.expected);
+        assert.notEqual(actual, randomFilename(...tc.input));
       });
     });
   });
 
-  describe('#randomFilepath', () => {
+  describe('#randomFilepath', async () => {
     const cases = [
       {
         name: 'no args',
@@ -61,11 +61,11 @@ describe('random', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
-        const result = randomFilepath(...tc.input);
+      it(tc.name, async () => {
+        const actual = randomFilepath(...tc.input);
         const expected = tc.expected.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
-        expect(result).to.match(new RegExp(`^${expected}`));
-        expect(result).to.not.eq(randomFilepath(...tc.input));
+        assert.match(actual, new RegExp(`^${expected}`));
+        assert.notEqual(actual, randomFilepath(...tc.input));
       });
     });
   });

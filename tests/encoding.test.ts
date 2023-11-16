@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { fromBase64, toBase64 } from '../src/encoding';
 
@@ -41,7 +41,8 @@ describe('encoding', () => {
 
     cases.forEach((tc) => {
       it(tc.name, async () => {
-        expect(fromBase64(tc.input)).to.eq(tc.expected);
+        const actual = fromBase64(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });
@@ -72,7 +73,8 @@ describe('encoding', () => {
 
     cases.forEach((tc) => {
       it(tc.name, async () => {
-        expect(toBase64(tc.input)).to.eq(tc.expected);
+        const actual = toBase64(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });

@@ -12,7 +12,7 @@
 
 ### parseGcloudIgnore
 
-▸ **parseGcloudIgnore**(`pth`): `Promise`<`string`[]\>
+▸ **parseGcloudIgnore**(`pth`): `Promise`\<`string`[]\>
 
 parseGcloudIgnore parses a gcloud ignore at the given filepath. It follows
 the parsing rules defined at
@@ -27,7 +27,7 @@ parsing any included files.
 
 #### Returns
 
-`Promise`<`string`[]\>
+`Promise`\<`string`[]\>
 
 Ordered list of strings from the various ignore files.
 

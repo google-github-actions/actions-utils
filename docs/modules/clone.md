@@ -12,7 +12,7 @@
 
 ### deepClone
 
-▸ **deepClone**<`T`\>(`input`, `useStructuredClone?`): `T`
+▸ **deepClone**\<`T`\>(`input`, `useStructuredClone?`): `T`
 
 deepClone builds a deep copy (clone) of the given input. By default, it uses
 structuredClone if defined. Otherwise, it uses v8 to serialize and

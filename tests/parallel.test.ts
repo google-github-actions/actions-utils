@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { inParallel } from '../src/parallel';
 
-describe('#inParallel', () => {
+describe('#inParallel', async () => {
   it('executes tasks in parallel', async () => {
     const task = async (a: number): Promise<number> => {
       await new Promise((resolve) => setTimeout(resolve, a * 10));
@@ -34,7 +34,7 @@ describe('#inParallel', () => {
 
     const duration = Date.now() - start;
 
-    expect(result).to.eql([6, 9, 3, 3, 1, 1, 1]);
+    assert.deepStrictEqual(result, [6, 9, 3, 3, 1, 1, 1]);
 
     // Ideally this would be exactly 100 (array.pop() is from the end):
     // - [1,1,1] execute in parallel for 10
@@ -44,6 +44,6 @@ describe('#inParallel', () => {
     // However, there's a 100% buffer since other operations could cause some
     // latency (cough OSX). If there was no parallelization, this would be at
     // least 240.
-    expect(duration).to.be.below(200);
+    assert.ok(duration < 200);
   });
 });

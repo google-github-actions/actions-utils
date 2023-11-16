@@ -14,55 +14,55 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { afterEach, describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { setInput, setInputs, clearInputs, clearEnv } from '../src/testing';
 
-describe('testing', () => {
-  afterEach(() => {
+describe('testing', async () => {
+  afterEach(async () => {
     clearInputs();
   });
 
-  describe('#setInput', () => {
-    it('sets a single input', () => {
+  describe('#setInput', async () => {
+    it('sets a single input', async () => {
       setInput('foo', 'bar');
-      expect(process.env['INPUT_FOO']).to.eql('bar');
+      assert.deepStrictEqual(process.env['INPUT_FOO'], 'bar');
     });
 
-    it('sets an input with special characters', () => {
+    it('sets an input with special characters', async () => {
       setInput('apple pie', 'bar');
-      expect(process.env['INPUT_APPLE_PIE']).to.eql('bar');
+      assert.deepStrictEqual(process.env['INPUT_APPLE_PIE'], 'bar');
     });
   });
 
-  describe('#setInputs', () => {
-    it('sets multiple inputs', () => {
+  describe('#setInputs', async () => {
+    it('sets multiple inputs', async () => {
       setInputs({
         foo: 'bar',
         zip: 'zap',
       });
-      expect(process.env['INPUT_FOO']).to.eql('bar');
-      expect(process.env['INPUT_ZIP']).to.eql('zap');
+      assert.deepStrictEqual(process.env['INPUT_FOO'], 'bar');
+      assert.deepStrictEqual(process.env['INPUT_ZIP'], 'zap');
     });
   });
 
-  describe('#clearInputs', () => {
-    it('clears inputs', () => {
+  describe('#clearInputs', async () => {
+    it('clears inputs', async () => {
       process.env['INPUT_A'] = 'foo';
       process.env['INPUT_B'] = 'foo';
       process.env['NOT_INPUT_C'] = 'foo';
 
       clearInputs();
 
-      expect(process.env['INPUT_A']).to.eql(undefined);
-      expect(process.env['INPUT_B']).to.eql(undefined);
-      expect(process.env['NOT_INPUT_C']).to.eql('foo');
+      assert.deepStrictEqual(process.env['INPUT_A'], undefined);
+      assert.deepStrictEqual(process.env['INPUT_B'], undefined);
+      assert.deepStrictEqual(process.env['NOT_INPUT_C'], 'foo');
     });
   });
 
-  describe('#clearEnv', () => {
-    it('clears matching inputs', () => {
+  describe('#clearEnv', async () => {
+    it('clears matching inputs', async () => {
       process.env['INPUT_A'] = 'foo';
       process.env['INPUT_B'] = 'bar';
       process.env['NOT_INPUT_C'] = 'foo';
@@ -71,9 +71,9 @@ describe('testing', () => {
         return key.startsWith('NOT_') || value === 'bar';
       });
 
-      expect(process.env['INPUT_A']).to.eql('foo');
-      expect(process.env['INPUT_B']).to.eql(undefined);
-      expect(process.env['NOT_INPUT_C']).to.eql(undefined);
+      assert.deepStrictEqual(process.env['INPUT_A'], 'foo');
+      assert.deepStrictEqual(process.env['INPUT_B'], undefined);
+      assert.deepStrictEqual(process.env['NOT_INPUT_C'], undefined);
     });
   });
 });

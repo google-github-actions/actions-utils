@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import 'mocha';
-import { expect } from 'chai';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 
 import { allOf, exactlyOneOf, presence } from '../src/validations';
 
-describe('validations', () => {
-  describe('#presence', () => {
+describe('validations', async () => {
+  describe('#presence', async () => {
     const cases = [
       {
         name: 'null',
@@ -55,13 +55,14 @@ describe('validations', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
-        expect(presence(tc.input)).to.eql(tc.expected);
+      it(tc.name, async () => {
+        const actual = presence(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });
 
-  describe('#exactlyOneOf', () => {
+  describe('#exactlyOneOf', async () => {
     const cases = [
       {
         name: 'null',
@@ -106,13 +107,14 @@ describe('validations', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
-        expect(exactlyOneOf(...tc.input)).to.eql(tc.expected);
+      it(tc.name, async () => {
+        const actual = exactlyOneOf(...tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });
 
-  describe('#allOf', () => {
+  describe('#allOf', async () => {
     const cases = [
       {
         name: 'null',
@@ -157,8 +159,9 @@ describe('validations', () => {
     ];
 
     cases.forEach((tc) => {
-      it(tc.name, () => {
-        expect(allOf(...tc.input)).to.eql(tc.expected);
+      it(tc.name, async () => {
+        const actual = allOf(...tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
       });
     });
   });

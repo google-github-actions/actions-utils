@@ -15,7 +15,7 @@
 
 ### forceRemove
 
-▸ **forceRemove**(`pth`): `Promise`<`void`\>
+▸ **forceRemove**(`pth`): `Promise`\<`void`\>
 
 forceRemove forcibly removes a file or directory (recursively). If the file
 or directory does not exist, it does nothing. This is functionally equivalent
@@ -30,7 +30,7 @@ directory does not exist.
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
@@ -40,7 +40,7 @@ ___
 
 ### isEmptyDir
 
-▸ **isEmptyDir**(`dir`): `Promise`<`boolean`\>
+▸ **isEmptyDir**(`dir`): `Promise`\<`boolean`\>
 
 isEmptyDir returns true if the given directory does not exist, or exists but
 contains no files. It also returns true if the current user does not have
@@ -55,7 +55,7 @@ viewpoint of the caller.
 
 #### Returns
 
-`Promise`<`boolean`\>
+`Promise`\<`boolean`\>
 
 #### Defined in
 
@@ -65,7 +65,7 @@ ___
 
 ### removeFile
 
-▸ **removeFile**(`filePath`): `Promise`<`boolean`\>
+▸ **removeFile**(`filePath`): `Promise`\<`boolean`\>
 
 removeFile removes the file at the given path. If the file does not exist, it
 does nothing.
@@ -78,7 +78,7 @@ does nothing.
 
 #### Returns
 
-`Promise`<`boolean`\>
+`Promise`\<`boolean`\>
 
 A boolean, true if the file was deleted, false otherwise.
 
@@ -94,7 +94,7 @@ ___
 
 ### writeSecureFile
 
-▸ **writeSecureFile**<`T`\>(`outputPath`, `data`): `Promise`<`T`\>
+▸ **writeSecureFile**\<`T`\>(`outputPath`, `data`): `Promise`\<`T`\>
 
 writeSecureFile writes a file to disk with 0640 permissions and locks the
 file during writing.
@@ -114,7 +114,7 @@ file during writing.
 
 #### Returns
 
-`Promise`<`T`\>
+`Promise`\<`T`\>
 
 Path to written file.
 

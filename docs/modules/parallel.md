@@ -16,7 +16,7 @@
 
 ### inParallel
 
-▸ **inParallel**<`F`, `P`, `R`\>(`fn`, `args`, `opts?`): `Promise`<`Awaited`<`R`\>[]\>
+▸ **inParallel**\<`F`, `P`, `R`\>(`fn`, `args`, `opts?`): `Promise`\<`Awaited`\<`R`\>[]\>
 
 inParallel executes the given function in parallel, up to max concurrency.
 There are no guarantees on the order in which promises start.
@@ -25,9 +25,9 @@ There are no guarantees on the order in which promises start.
 
 | Name | Type |
 | :------ | :------ |
-| `F` | extends (...`args`: `any`[]) => `Promise`<`Awaited`<`R`\>\> |
+| `F` | extends (...`args`: `any`[]) => `Promise`\<`Awaited`\<`R`\>\> |
 | `P` | extends `any`[] |
-| `R` | extends `Promise`<`Awaited`<`R`\>\> |
+| `R` | extends `Promise`\<`Awaited`\<`R`\>\> |
 
 #### Parameters
 
@@ -39,7 +39,7 @@ There are no guarantees on the order in which promises start.
 
 #### Returns
 
-`Promise`<`Awaited`<`R`\>[]\>
+`Promise`\<`Awaited`\<`R`\>[]\>
 
 Array of results in the order of args.
 
