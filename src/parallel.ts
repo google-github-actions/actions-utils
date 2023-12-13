@@ -16,58 +16,47 @@
 
 import { cpus as oscpus } from 'os';
 
-/**
- * InParallelOptions are optional input parameters to inParallel.
- */
-export interface InParallelOptions {
-  /**
-   * concurrency controls the number of concurrent executions.
-   */
-  concurrency?: number;
-}
+import { errorMessage } from './errors';
 
 /**
  * inParallel executes the given function in parallel, up to max concurrency.
  * There are no guarantees on the order in which promises start.
  *
- * @param fn The function to invoke, must be async.
- * @param args An array of array of parameters to invoke fn.
- * @param opts Optional configuration.
+ * @param tasks The tasks to invoke, must be async.
+ * @param concurrency Optional configuration.
  *
  * @return Array of results in the order of args.
  */
-export async function inParallel<
-  F extends (...args: any[]) => Promise<Awaited<R>>, // eslint-disable-line @typescript-eslint/no-explicit-any
-  P extends Parameters<F>,
-  R extends ReturnType<F>,
->(fn: F, args: P[], opts?: InParallelOptions): Promise<Awaited<R>[]> {
+export async function inParallel<F extends () => Promise<Awaited<R>>, R extends ReturnType<F>>(
+  tasks: (() => Promise<R> | Promise<R>)[],
+  concurrency: number | undefined,
+): Promise<R[]> {
   // Concurrency is the minimum of the number of arguments or concurrency. This
   // prevents additional undefined entries in the results array.
-  const concurrency = Math.min(opts?.concurrency || oscpus().length - 1);
+  concurrency = Math.min(concurrency || oscpus().length - 1);
   if (concurrency < 1) {
     throw new Error(`concurrency must be at least 1`);
   }
 
-  // Convert inputs to keep track of indicies.
-  const inputs = args.map((args, idx) => ({ args, idx }));
-  const results: Awaited<R>[] = new Array(args.length);
-  const promises = new Array(concurrency).fill(Promise.resolve());
+  const results: R[] = [];
+  const errors: string[] = [];
 
-  const sub = async (p: Promise<Awaited<R>>): Promise<Awaited<R>> => {
-    const nextArgs = inputs.pop();
-    if (nextArgs === undefined) {
-      return p;
+  const runTasks = async (iter: IterableIterator<[number, () => Promise<R> | Promise<R>]>) => {
+    for (const [idx, task] of iter) {
+      try {
+        results[idx] = await task();
+      } catch (err) {
+        errors.push(errorMessage(err));
+      }
     }
-
-    await p;
-    const next = fn.apply(fn, nextArgs.args);
-    next.then((r: Awaited<R>) => {
-      results[nextArgs.idx] = r;
-    });
-    return sub(next);
   };
 
-  await Promise.all(promises.map(sub));
+  const workers = new Array(concurrency).fill(tasks.entries()).map(runTasks);
+  await Promise.allSettled(workers);
+
+  if (errors.length > 0) {
+    throw new Error(errors.join('\n'));
+  }
 
   return results;
 }

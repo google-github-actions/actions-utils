@@ -1092,41 +1092,41 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.inParallel = void 0;
 const os_1 = __nccwpck_require__(2037);
+const errors_1 = __nccwpck_require__(6976);
 /**
  * inParallel executes the given function in parallel, up to max concurrency.
  * There are no guarantees on the order in which promises start.
  *
- * @param fn The function to invoke, must be async.
- * @param args An array of array of parameters to invoke fn.
- * @param opts Optional configuration.
+ * @param tasks The tasks to invoke, must be async.
+ * @param concurrency Optional configuration.
  *
  * @return Array of results in the order of args.
  */
-function inParallel(fn, args, opts) {
+function inParallel(tasks, concurrency) {
     return __awaiter(this, void 0, void 0, function* () {
         // Concurrency is the minimum of the number of arguments or concurrency. This
         // prevents additional undefined entries in the results array.
-        const concurrency = Math.min((opts === null || opts === void 0 ? void 0 : opts.concurrency) || (0, os_1.cpus)().length - 1);
+        concurrency = Math.min(concurrency || (0, os_1.cpus)().length - 1);
         if (concurrency < 1) {
             throw new Error(`concurrency must be at least 1`);
         }
-        // Convert inputs to keep track of indicies.
-        const inputs = args.map((args, idx) => ({ args, idx }));
-        const results = new Array(args.length);
-        const promises = new Array(concurrency).fill(Promise.resolve());
-        const sub = (p) => __awaiter(this, void 0, void 0, function* () {
-            const nextArgs = inputs.pop();
-            if (nextArgs === undefined) {
-                return p;
+        const results = [];
+        const errors = [];
+        const runTasks = (iter) => __awaiter(this, void 0, void 0, function* () {
+            for (const [idx, task] of iter) {
+                try {
+                    results[idx] = yield task();
+                }
+                catch (err) {
+                    errors.push((0, errors_1.errorMessage)(err));
+                }
             }
-            yield p;
-            const next = fn.apply(fn, nextArgs.args);
-            next.then((r) => {
-                results[nextArgs.idx] = r;
-            });
-            return sub(next);
         });
-        yield Promise.all(promises.map(sub));
+        const workers = new Array(concurrency).fill(tasks.entries()).map(runTasks);
+        yield Promise.allSettled(workers);
+        if (errors.length > 0) {
+            throw new Error(errors.join('\n'));
+        }
         return results;
     });
 }

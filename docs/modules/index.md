@@ -8,7 +8,6 @@
 
 - [Credential](index.md#credential)
 - [ExternalAccount](index.md#externalaccount)
-- [InParallelOptions](index.md#inparalleloptions)
 - [KVPair](index.md#kvpair)
 - [ProcessEnv](index.md#processenv)
 - [RetryOptions](index.md#retryoptions)
@@ -67,12 +66,6 @@ ___
 ### ExternalAccount
 
 Re-exports [ExternalAccount](auth.md#externalaccount)
-
-___
-
-### InParallelOptions
-
-Re-exports [InParallelOptions](../interfaces/parallel.InParallelOptions.md)
 
 ___
 
