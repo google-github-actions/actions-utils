@@ -29,7 +29,7 @@ import { errorMessage } from './errors';
  */
 export async function inParallel<F extends () => Promise<Awaited<R>>, R extends ReturnType<F>>(
   tasks: (() => Promise<R> | Promise<R>)[],
-  concurrency: number | undefined,
+  concurrency?: number,
 ): Promise<R[]> {
   // Concurrency is the minimum of the number of arguments or concurrency. This
   // prevents additional undefined entries in the results array.
