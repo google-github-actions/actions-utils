@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { promises as fs } from 'fs';
 import { randomFilepath } from '../src/random';
@@ -30,13 +30,9 @@ import {
   KVPair,
 } from '../src/kv';
 
-describe('kv', async () => {
-  describe('#joinKVString', async () => {
-    const cases: {
-      name: string;
-      input: KVPair;
-      expected: string;
-    }[] = [
+describe('kv', { concurrency: true }, async () => {
+  test('#joinKVString', async (suite) => {
+    const cases = [
       {
         name: 'empty',
         input: {},
@@ -64,21 +60,16 @@ describe('kv', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
-        const actual = joinKVString(tc.input);
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const actual = joinKVString(tc.input as KVPair);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#parseKVString', async () => {
-    const cases: {
-      name: string;
-      input: string;
-      expected?: Record<string, string>;
-      error?: string;
-    }[] = [
+  test('#parseKVString', async (suite) => {
+    const cases = [
       {
         name: 'empty string',
         input: '',
@@ -199,21 +190,21 @@ ftyRyC/83GkAjs88l5eGxNE=
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         if (tc.expected) {
           const actual = parseKVString(tc.input);
           assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          assert.rejects(async () => {
+          await assert.rejects(async () => {
             parseKVString(tc.input);
           }, new RegExp(tc.error));
         }
       });
-    });
+    }
   });
 
-  describe('#parseKVJSON', async () => {
+  test('#parseKVJSON', async (suite) => {
     const cases = [
       {
         name: 'empty string',
@@ -242,21 +233,21 @@ ftyRyC/83GkAjs88l5eGxNE=
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         if (tc.expected) {
           const actual = parseKVJSON(tc.input);
           assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          assert.rejects(async () => {
+          await assert.rejects(async () => {
             parseKVJSON(tc.input);
           }, new RegExp(tc.error));
         }
       });
-    });
+    }
   });
 
-  describe('#parseKVYAML', async () => {
+  test('#parseKVYAML', async (suite) => {
     const cases = [
       {
         name: 'empty string',
@@ -296,22 +287,22 @@ ftyRyC/83GkAjs88l5eGxNE=
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         if (tc.expected) {
           const actual = parseKVYAML(tc.input);
           assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          assert.rejects(async () => {
+          await assert.rejects(async () => {
             parseKVYAML(tc.input);
           }, new RegExp(tc.error));
         }
       });
-    });
+    }
   });
 
-  describe('#parseKVFile', async () => {
-    it('reads the file as json', async () => {
+  test('#parseKVFile', async (suite) => {
+    await suite.test('reads the file as json', async () => {
       const filepath = randomFilepath();
       await fs.writeFile(filepath, `{"FOO": "bar", "ZIP": "zap"}`);
 
@@ -319,7 +310,7 @@ ftyRyC/83GkAjs88l5eGxNE=
       assert.deepStrictEqual(result, { FOO: 'bar', ZIP: 'zap' });
     });
 
-    it('reads the file as key=value lines', async () => {
+    await suite.test('reads the file as key=value lines', async () => {
       const filepath = randomFilepath();
       await fs.writeFile(filepath, `FOO=bar\nZIP=zap`);
 
@@ -327,7 +318,7 @@ ftyRyC/83GkAjs88l5eGxNE=
       assert.deepStrictEqual(result, { FOO: 'bar', ZIP: 'zap' });
     });
 
-    it('reads the file as yaml', async () => {
+    await suite.test('reads the file as yaml', async () => {
       const filepath = randomFilepath();
       await fs.writeFile(filepath, `FOO: 'bar'\nZIP: 'zap'`);
 
@@ -335,15 +326,15 @@ ftyRyC/83GkAjs88l5eGxNE=
       assert.deepStrictEqual(result, { FOO: 'bar', ZIP: 'zap' });
     });
 
-    it('throws an error when the file does not exist', async () => {
-      assert.rejects(async () => {
+    await suite.test('throws an error when the file does not exist', async () => {
+      await assert.rejects(async () => {
         parseKVFile('/path/that/definitely/does/not/exist');
       }, /failed to read file/i);
     });
   });
 
-  describe('#parseKVStringAndFile', async () => {
-    it('handles null kvString and kvFilePath', async () => {
+  test('#parseKVStringAndFile', async (suite) => {
+    await suite.test('handles null kvString and kvFilePath', async () => {
       const kvString = '';
       const kvFile = '';
 
@@ -351,7 +342,7 @@ ftyRyC/83GkAjs88l5eGxNE=
       assert.deepStrictEqual(result, {});
     });
 
-    it('merges kvString and kvFile', async () => {
+    await suite.test('merges kvString and kvFile', async () => {
       const kvString = `FOO=other foo`;
       const kvFile = randomFilepath();
       await fs.writeFile(kvFile, `FOO: 'bar'\nZIP: 'zap'`);

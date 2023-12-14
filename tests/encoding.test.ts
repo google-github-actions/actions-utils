@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { fromBase64, toBase64 } from '../src/encoding';
 
-describe('encoding', () => {
-  describe('#fromBase64', () => {
+describe('encoding', { concurrency: true }, async () => {
+  test('#fromBase64', async (suite) => {
     const cases = [
       {
         name: 'decodes',
@@ -39,15 +39,15 @@ describe('encoding', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = fromBase64(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#toBase64', () => {
+  test('#toBase64', async (suite) => {
     const cases = [
       {
         name: 'empty string',
@@ -71,11 +71,11 @@ describe('encoding', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = toBase64(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 });

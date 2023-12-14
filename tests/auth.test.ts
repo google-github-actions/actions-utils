@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { isExternalAccount, isServiceAccountKey, parseCredential } from '../src/auth';
 
-describe('Util', () => {
-  describe('#parseCredential', () => {
+describe('auth', { concurrency: true }, async () => {
+  test('#parseCredential', async (suite) => {
     const cases = [
       {
         name: 'empty string',
@@ -71,21 +71,21 @@ describe('Util', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         if (tc.expected) {
           const actual = parseCredential(tc.input);
           assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          assert.rejects(async () => {
+          await assert.rejects(async () => {
             parseCredential(tc.input);
           }, new RegExp(tc.error));
         }
       });
-    });
+    }
   });
 
-  describe('#isServiceAccountKey', () => {
+  test('#isServiceAccountKey', async (suite) => {
     const cases = [
       {
         name: 'returns true for service account keys',
@@ -99,16 +99,16 @@ describe('Util', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const credential = parseCredential(tc.input);
         const actual = isServiceAccountKey(credential);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#isExternalAccount', () => {
+  test('#isExternalAccount', async (suite) => {
     const cases = [
       {
         name: 'returns true for account credentials',
@@ -122,12 +122,12 @@ describe('Util', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const credential = parseCredential(tc.input);
         const actual = isExternalAccount(credential);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 });

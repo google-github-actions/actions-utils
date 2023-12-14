@@ -14,208 +14,201 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { parseFlags, readUntil } from '../src/flags';
 
-describe('#parseFlags', async () => {
-  const cases: {
-    name: string;
-    input: string;
-    exp: string[];
-  }[] = [
-    {
-      name: `empty string`,
-      input: ``,
-      exp: [],
-    },
-    {
-      name: `empty string spaces`,
-      input: ``,
-      exp: [],
-    },
-    {
-      name: `empty string multi-lines`,
-      input: `
+describe('flags', { concurrency: true }, async () => {
+  test('#parseFlags', async (suite) => {
+    const cases = [
+      {
+        name: `empty string`,
+        input: ``,
+        exp: [],
+      },
+      {
+        name: `empty string spaces`,
+        input: ``,
+        exp: [],
+      },
+      {
+        name: `empty string multi-lines`,
+        input: `
 
       `,
-      exp: [],
-    },
-    {
-      name: `with equals`,
-      input: `--foo=2 --bar=2Gi`,
-      exp: [`--foo`, `2`, `--bar`, `2Gi`],
-    },
-    {
-      name: `with spaces`,
-      input: `--foo 2 --bar 2Gi`,
-      exp: [`--foo`, `2`, `--bar`, `2Gi`],
-    },
-    {
-      name: `with equals and spaces`,
-      input: `--foo 2 --bar=2Gi`,
-      exp: [`--foo`, `2`, `--bar`, `2Gi`],
-    },
-    {
-      name: `with equals and double quotes`,
-      input: `--bar="2Gi"`,
-      exp: [`--bar`, `"2Gi"`],
-    },
-    {
-      name: `with space and double quotes`,
-      input: `--bar "2Gi"`,
-      exp: [`--bar`, `"2Gi"`],
-    },
-    {
-      name: `with equals and space and double quotes`,
-      input: `--bar="2Gi" --foo "2"`,
-      exp: [`--bar`, `"2Gi"`, `--foo`, `"2"`],
-    },
-    {
-      name: `with equals and space and some double quotes`,
-      input: `--foo 2 --bar="2Gi"`,
-      exp: [`--foo`, `2`, `--bar`, `"2Gi"`],
-    },
-    {
-      name: `with equals and single quotes`,
-      input: `--bar='2Gi'`,
-      exp: [`--bar`, `'2Gi'`],
-    },
-    {
-      name: `with space and single quotes`,
-      input: `--bar '2Gi'`,
-      exp: [`--bar`, `'2Gi'`],
-    },
-    {
-      name: `with equals and space and single quotes`,
-      input: `--foo '2' --bar='2Gi'`,
-      exp: [`--foo`, `'2'`, `--bar`, `'2Gi'`],
-    },
-    {
-      name: `with equals and space and some single quotes`,
-      input: `--foo 2 --bar='2Gi' `,
-      exp: [`--foo`, `2`, `--bar`, `'2Gi'`],
-    },
-    {
-      name: `with double and single quotes`,
-      input: `--foo="2" --bar='2Gi'`,
-      exp: [`--foo`, `"2"`, `--bar`, `'2Gi'`],
-    },
-    {
-      name: 'with multi-line separators',
-      input: `
+        exp: [],
+      },
+      {
+        name: `with equals`,
+        input: `--foo=2 --bar=2Gi`,
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
+      },
+      {
+        name: `with spaces`,
+        input: `--foo 2 --bar 2Gi`,
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
+      },
+      {
+        name: `with equals and spaces`,
+        input: `--foo 2 --bar=2Gi`,
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
+      },
+      {
+        name: `with equals and double quotes`,
+        input: `--bar="2Gi"`,
+        exp: [`--bar`, `"2Gi"`],
+      },
+      {
+        name: `with space and double quotes`,
+        input: `--bar "2Gi"`,
+        exp: [`--bar`, `"2Gi"`],
+      },
+      {
+        name: `with equals and space and double quotes`,
+        input: `--bar="2Gi" --foo "2"`,
+        exp: [`--bar`, `"2Gi"`, `--foo`, `"2"`],
+      },
+      {
+        name: `with equals and space and some double quotes`,
+        input: `--foo 2 --bar="2Gi"`,
+        exp: [`--foo`, `2`, `--bar`, `"2Gi"`],
+      },
+      {
+        name: `with equals and single quotes`,
+        input: `--bar='2Gi'`,
+        exp: [`--bar`, `'2Gi'`],
+      },
+      {
+        name: `with space and single quotes`,
+        input: `--bar '2Gi'`,
+        exp: [`--bar`, `'2Gi'`],
+      },
+      {
+        name: `with equals and space and single quotes`,
+        input: `--foo '2' --bar='2Gi'`,
+        exp: [`--foo`, `'2'`, `--bar`, `'2Gi'`],
+      },
+      {
+        name: `with equals and space and some single quotes`,
+        input: `--foo 2 --bar='2Gi' `,
+        exp: [`--foo`, `2`, `--bar`, `'2Gi'`],
+      },
+      {
+        name: `with double and single quotes`,
+        input: `--foo="2" --bar='2Gi'`,
+        exp: [`--foo`, `"2"`, `--bar`, `'2Gi'`],
+      },
+      {
+        name: 'with multi-line separators',
+        input: `
         --foo 2
         --bar=2Gi
         --zip "zap"
       `,
-      exp: [`--foo`, `2`, `--bar`, `2Gi`, `--zip`, `"zap"`],
-    },
-    {
-      name: 'with subflags quoted',
-      input: `--foo "--bar=1,--zip-zap"`,
-      exp: [`--foo`, `"--bar=1,--zip-zap"`],
-    },
-    {
-      name: 'with subflags equals',
-      input: `--foo=--bar=1,--zip-zap`,
-      exp: [`--foo`, `--bar=1,--zip-zap`],
-    },
-    {
-      name: 'with subflags quoted subquoted',
-      input: `--foo "--bar="1",--zip-zap"`,
-      exp: [`--foo`, `"--bar="1",--zip-zap"`],
-    },
-    {
-      name: 'with subflags equals subquoted',
-      input: `--foo=--bar="1",--zip-zap`,
-      exp: [`--foo`, `--bar="1",--zip-zap`],
-    },
-    {
-      name: 'with kv',
-      input: `--foo --env foo=bar,zip=zap`,
-      exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
-    },
-    {
-      name: 'with kv equals',
-      input: `--foo --env=foo=bar,zip=zap`,
-      exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
-    },
-    {
-      name: 'with kv quote',
-      input: `--foo --env "foo=bar,zip=zap"`,
-      exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
-    },
-    {
-      name: 'with kv equals quote',
-      input: `--foo --env="foo=bar,zip=zap"`,
-      exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
-    },
-  ];
+        exp: [`--foo`, `2`, `--bar`, `2Gi`, `--zip`, `"zap"`],
+      },
+      {
+        name: 'with subflags quoted',
+        input: `--foo "--bar=1,--zip-zap"`,
+        exp: [`--foo`, `"--bar=1,--zip-zap"`],
+      },
+      {
+        name: 'with subflags equals',
+        input: `--foo=--bar=1,--zip-zap`,
+        exp: [`--foo`, `--bar=1,--zip-zap`],
+      },
+      {
+        name: 'with subflags quoted subquoted',
+        input: `--foo "--bar="1",--zip-zap"`,
+        exp: [`--foo`, `"--bar="1",--zip-zap"`],
+      },
+      {
+        name: 'with subflags equals subquoted',
+        input: `--foo=--bar="1",--zip-zap`,
+        exp: [`--foo`, `--bar="1",--zip-zap`],
+      },
+      {
+        name: 'with kv',
+        input: `--foo --env foo=bar,zip=zap`,
+        exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
+      },
+      {
+        name: 'with kv equals',
+        input: `--foo --env=foo=bar,zip=zap`,
+        exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
+      },
+      {
+        name: 'with kv quote',
+        input: `--foo --env "foo=bar,zip=zap"`,
+        exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
+      },
+      {
+        name: 'with kv equals quote',
+        input: `--foo --env="foo=bar,zip=zap"`,
+        exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
+      },
+    ];
 
-  cases.forEach((tc) => {
-    it(tc.name, async () => {
-      const result = parseFlags(tc.input);
-      assert.deepStrictEqual(result, tc.exp);
-    });
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const result = parseFlags(tc.input);
+        assert.deepStrictEqual(result, tc.exp);
+      });
+    }
   });
-});
 
-describe('#readUntil', async () => {
-  const cases: {
-    name: string;
-    input: string;
-    ch: string;
-    exp: string | null;
-  }[] = [
-    {
-      name: `empty string`,
-      input: ``,
-      ch: ``,
-      exp: null,
-    },
-    {
-      name: `ch`,
-      input: `foo bar' baz`,
-      ch: `'`,
-      exp: `foo bar'`,
-    },
-    {
-      name: `ch end`,
-      input: `foo bar'`,
-      ch: `'`,
-      exp: `foo bar'`,
-    },
-    {
-      name: `ch start`,
-      input: `'foo bar`,
-      ch: `'`,
-      exp: `'`,
-    },
-    {
-      name: `ch first`,
-      input: `foo' 'bar'`,
-      ch: `'`,
-      exp: `foo'`,
-    },
-    {
-      name: `ch escaped`,
-      input: `foo\\' bar'`,
-      ch: `'`,
-      exp: `foo\\' bar'`,
-    },
-    {
-      name: `not found`,
-      input: `foo bar`,
-      ch: `'`,
-      exp: null,
-    },
-  ];
+  test('#readUntil', async (suite) => {
+    const cases = [
+      {
+        name: `empty string`,
+        input: ``,
+        ch: ``,
+        exp: null,
+      },
+      {
+        name: `ch`,
+        input: `foo bar' baz`,
+        ch: `'`,
+        exp: `foo bar'`,
+      },
+      {
+        name: `ch end`,
+        input: `foo bar'`,
+        ch: `'`,
+        exp: `foo bar'`,
+      },
+      {
+        name: `ch start`,
+        input: `'foo bar`,
+        ch: `'`,
+        exp: `'`,
+      },
+      {
+        name: `ch first`,
+        input: `foo' 'bar'`,
+        ch: `'`,
+        exp: `foo'`,
+      },
+      {
+        name: `ch escaped`,
+        input: `foo\\' bar'`,
+        ch: `'`,
+        exp: `foo\\' bar'`,
+      },
+      {
+        name: `not found`,
+        input: `foo bar`,
+        ch: `'`,
+        exp: null,
+      },
+    ];
 
-  cases.forEach((tc) => {
-    it(tc.name, async () => {
-      const result = readUntil(tc.input, tc.ch);
-      assert.deepStrictEqual(result, tc.exp);
-    });
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const result = readUntil(tc.input, tc.ch);
+        assert.deepStrictEqual(result, tc.exp);
+      });
+    }
   });
 });

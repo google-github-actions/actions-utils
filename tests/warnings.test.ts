@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { isPinnedToHead, pinnedToHeadWarning } from '../src/warnings';
 
-describe('warnings', async () => {
-  describe('#isPinnedToHead', async () => {
-    afterEach(async () => {
+describe('warnings', { concurrency: true }, async () => {
+  test('#isPinnedToHead', async (suite) => {
+    suite.afterEach(async () => {
       delete process.env.GITHUB_ACTION_REF;
     });
 
@@ -48,22 +48,22 @@ describe('warnings', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         process.env.GITHUB_ACTION_REF = tc.ref;
         const actual = isPinnedToHead();
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#pinnedToHeadWarning', async () => {
-    afterEach(async () => {
+  test('#pinnedToHeadWarning', async (suite) => {
+    suite.afterEach(async () => {
       delete process.env.GITHUB_ACTION_REF;
       delete process.env.GITHUB_ACTION_REPOSITORY;
     });
 
-    it('builds a warning string', async () => {
+    await suite.test('builds a warning string', async () => {
       process.env.GITHUB_ACTION_REF = 'my-ref';
       process.env.GITHUB_ACTION_REPOSITORY = 'my-org/my-repo';
 

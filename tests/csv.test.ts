@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { parseCSV } from '../src/csv';
 
-describe('time', () => {
-  describe('#parseCSV', () => {
+describe('csv', { concurrency: true }, async () => {
+  test('#parseCSV', async (suite) => {
     const cases = [
       {
         name: 'empty string',
@@ -49,11 +49,11 @@ describe('time', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = parseCSV(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 });

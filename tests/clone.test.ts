@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { deepClone } from '../src/clone';
 
-describe('clone', () => {
-  describe('#deepClone', () => {
+describe('clone', { concurrency: true }, async () => {
+  test('#deepClone', async (suite) => {
     const cases = [
       {
         name: 'null',
@@ -56,14 +56,14 @@ describe('clone', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         assert.deepStrictEqual(deepClone(tc.input, true), tc.expected);
         assert.deepStrictEqual(deepClone(tc.input, false), tc.expected);
       });
-    });
+    }
 
-    it('copies deeply nested fields with structuredClone', async () => {
+    await suite.test('copies deeply nested fields with structuredClone', async () => {
       const input = { foo: { bar: 'baz' } };
       const copied = deepClone(input, true);
       copied.foo.bar = 'zoo';
@@ -76,7 +76,7 @@ describe('clone', () => {
       assert.deepStrictEqual(copied.foo.bar, 'zoo');
     });
 
-    it('copies deeply nested fields without structuredClone', async () => {
+    await suite.test('copies deeply nested fields without structuredClone', async () => {
       const input = { foo: { bar: 'baz' } };
       const copied = deepClone(input, false);
       copied.foo.bar = 'zoo';

@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { allOf, exactlyOneOf, presence } from '../src/validations';
 
-describe('validations', async () => {
-  describe('#presence', async () => {
+describe('validations', { concurrency: true }, async () => {
+  test('#presence', async (suite) => {
     const cases = [
       {
         name: 'null',
@@ -54,15 +54,15 @@ describe('validations', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = presence(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#exactlyOneOf', async () => {
+  test('#exactlyOneOf', async (suite) => {
     const cases = [
       {
         name: 'null',
@@ -106,15 +106,15 @@ describe('validations', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = exactlyOneOf(...tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#allOf', async () => {
+  test('#allOf', async (suite) => {
     const cases = [
       {
         name: 'null',
@@ -158,11 +158,11 @@ describe('validations', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = allOf(...tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 });

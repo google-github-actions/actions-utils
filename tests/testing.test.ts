@@ -14,30 +14,30 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, it } from 'node:test';
-import assert from 'node:assert';
+import { afterEach, describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { setInput, setInputs, clearInputs, clearEnv } from '../src/testing';
 
-describe('testing', async () => {
+describe('testing', { concurrency: true }, async () => {
   afterEach(async () => {
     clearInputs();
   });
 
-  describe('#setInput', async () => {
-    it('sets a single input', async () => {
+  test('#setInput', async (suite) => {
+    await suite.test('sets a single input', async () => {
       setInput('foo', 'bar');
       assert.deepStrictEqual(process.env['INPUT_FOO'], 'bar');
     });
 
-    it('sets an input with special characters', async () => {
+    await suite.test('sets an input with special characters', async () => {
       setInput('apple pie', 'bar');
       assert.deepStrictEqual(process.env['INPUT_APPLE_PIE'], 'bar');
     });
   });
 
-  describe('#setInputs', async () => {
-    it('sets multiple inputs', async () => {
+  test('#setInputs', async (suite) => {
+    await suite.test('sets multiple inputs', async () => {
       setInputs({
         foo: 'bar',
         zip: 'zap',
@@ -47,8 +47,8 @@ describe('testing', async () => {
     });
   });
 
-  describe('#clearInputs', async () => {
-    it('clears inputs', async () => {
+  test('#clearInputs', async (suite) => {
+    await suite.test('clears inputs', async () => {
       process.env['INPUT_A'] = 'foo';
       process.env['INPUT_B'] = 'foo';
       process.env['NOT_INPUT_C'] = 'foo';
@@ -61,8 +61,8 @@ describe('testing', async () => {
     });
   });
 
-  describe('#clearEnv', async () => {
-    it('clears matching inputs', async () => {
+  test('#clearEnv', async (suite) => {
+    await suite.test('clears matching inputs', async () => {
       process.env['INPUT_A'] = 'foo';
       process.env['INPUT_B'] = 'bar';
       process.env['NOT_INPUT_C'] = 'foo';

@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { afterEach, beforeEach, describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { promises as fs } from 'fs';
 import { tmpdir } from 'os';
@@ -28,14 +26,11 @@ import { randomFilepath, randomFilename } from '../src/random';
 
 import { parseGcloudIgnore } from '../src/ignore';
 
-describe('ignore', async () => {
-  describe('#parseGcloudIgnore', async () => {
-    const cases: {
-      name: string;
-      contents?: string;
-      extraContents?: string;
-      expected: string[];
-    }[] = [
+describe('ignore', { concurrency: true }, async () => {
+  let dir: string;
+
+  test('#parseGcloudIgnore', async (suite) => {
+    const cases = [
       {
         name: 'non-existent file',
         contents: undefined,
@@ -76,29 +71,29 @@ describe('ignore', async () => {
       },
     ];
 
-    beforeEach(async (t: any) => {
-      t.dir = pathjoin(tmpdir(), randomFilename());
-      await fs.mkdir(t.dir, { recursive: true });
+    suite.beforeEach(async () => {
+      dir = pathjoin(tmpdir(), randomFilename());
+      await fs.mkdir(dir, { recursive: true });
     });
 
-    afterEach(async (t: any) => {
-      await forceRemove(t.dir);
+    suite.afterEach(async () => {
+      await forceRemove(dir);
     });
 
-    cases.forEach((tc) => {
-      it(tc.name, async (t: any) => {
-        const pth = randomFilepath(t.dir);
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const pth = randomFilepath(dir);
         if (tc.contents) {
           await writeSecureFile(pth, tc.contents);
         }
 
         if (tc.extraContents) {
-          await writeSecureFile(pathjoin(t.dir, '.gitignore'), tc.extraContents);
+          await writeSecureFile(pathjoin(dir, '.gitignore'), tc.extraContents);
         }
 
         const result = await parseGcloudIgnore(pth);
         assert.deepStrictEqual(result, tc.expected);
       });
-    });
+    }
   });
 });
