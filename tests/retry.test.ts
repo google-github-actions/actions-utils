@@ -14,20 +14,14 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
-import { RetryOptions, withRetries } from '../src/retry';
+import { withRetries } from '../src/retry';
 
-describe('retry', async () => {
-  describe('#withRetries', async () => {
-    const cases: {
-      name: string;
-      input: RetryOptions;
-      expCalls?: number;
-      expDuration?: [min: number, max: number];
-      error?: string;
-    }[] = [
+describe('retry', { concurrency: true }, async () => {
+  test('#withRetries', async (suite) => {
+    const cases = [
       {
         name: 'uses defaults',
         input: { retries: 1 },
@@ -97,8 +91,8 @@ describe('retry', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         if (tc.error) {
           let start = 0;
           let count = 0;
@@ -146,6 +140,6 @@ describe('retry', async () => {
           }
         }
       });
-    });
+    }
   });
 });

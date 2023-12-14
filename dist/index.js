@@ -1089,6 +1089,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.inParallel = void 0;
 const os_1 = __nccwpck_require__(2037);
@@ -1112,16 +1119,29 @@ function inParallel(tasks, concurrency) {
         }
         const results = [];
         const errors = [];
-        const runTasks = (iter) => __awaiter(this, void 0, void 0, function* () {
-            for (const [idx, task] of iter) {
-                try {
-                    results[idx] = yield task();
-                }
-                catch (err) {
-                    errors.push((0, errors_1.errorMessage)(err));
+        const runTasks = (iter) => { var _a, iter_1, iter_1_1; return __awaiter(this, void 0, void 0, function* () {
+            var _b, e_1, _c, _d;
+            try {
+                for (_a = true, iter_1 = __asyncValues(iter); iter_1_1 = yield iter_1.next(), _b = iter_1_1.done, !_b; _a = true) {
+                    _d = iter_1_1.value;
+                    _a = false;
+                    const [idx, task] = _d;
+                    try {
+                        results[idx] = yield task();
+                    }
+                    catch (err) {
+                        errors.push((0, errors_1.errorMessage)(err));
+                    }
                 }
             }
-        });
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (!_a && !_b && (_c = iter_1.return)) yield _c.call(iter_1);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
+        }); };
         const workers = new Array(concurrency).fill(tasks.entries()).map(runTasks);
         yield Promise.allSettled(workers);
         if (errors.length > 0) {

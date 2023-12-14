@@ -14,21 +14,16 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { deepClone } from '../src/clone';
 
-import { stubEnv, ProcessEnv } from '../src/env';
+import { stubEnv } from '../src/env';
 
-describe('env', () => {
-  describe('#stubEnv', () => {
-    const cases: {
-      name: string;
-      existing: ProcessEnv;
-      input: ProcessEnv;
-      expected: ProcessEnv;
-    }[] = [
+describe('env', { concurrency: true }, async () => {
+  test('#stubEnv', async (suite) => {
+    const cases = [
       {
         name: 'sets',
         existing: {},
@@ -65,8 +60,8 @@ describe('env', () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const original = deepClone(tc.existing);
         const restore = stubEnv(tc.input, tc.existing);
         assert.deepStrictEqual(tc.existing, tc.expected);
@@ -74,9 +69,9 @@ describe('env', () => {
         restore();
         assert.deepStrictEqual(tc.existing, original);
       });
-    });
+    }
 
-    it('works with process.env', async () => {
+    await suite.test('works with process.env', async () => {
       process.env.FOO = 'original';
       const restore = stubEnv({ FOO: 'bar', ZIP: 'zap' });
       assert.deepStrictEqual(process.env.FOO, 'bar');

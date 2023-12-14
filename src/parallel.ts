@@ -42,7 +42,7 @@ export async function inParallel<F extends () => Promise<Awaited<R>>, R extends 
   const errors: string[] = [];
 
   const runTasks = async (iter: IterableIterator<[number, () => Promise<R> | Promise<R>]>) => {
-    for (const [idx, task] of iter) {
+    for await (const [idx, task] of iter) {
       try {
         results[idx] = await task();
       } catch (err) {

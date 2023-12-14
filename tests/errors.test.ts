@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { errorMessage, isNotFoundError } from '../src/errors';
 
-describe('errors', async () => {
-  describe('#errorMessage', async () => {
-    const cases: {
-      name: string;
-      input: unknown;
-      expected: string;
-    }[] = [
+describe('errors', { concurrency: true }, async () => {
+  test('#errorMessage', async (suite) => {
+    const cases = [
       {
         name: 'null',
         input: null,
@@ -204,20 +200,16 @@ describe('errors', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = errorMessage(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 
-  describe('#isNotFoundError', async () => {
-    const cases: {
-      name: string;
-      err: unknown;
-      exp: boolean;
-    }[] = [
+  test('#isNotFoundError', async (suite) => {
+    const cases = [
       {
         name: 'empty string',
         err: '',
@@ -255,11 +247,11 @@ describe('errors', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const result = isNotFoundError(tc.err);
         assert.deepStrictEqual(result, tc.exp);
       });
-    });
+    }
   });
 });

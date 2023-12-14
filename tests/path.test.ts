@@ -14,162 +14,152 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import * as path from 'path';
 
 import { toPlatformPath, toPosixPath, toWin32Path } from '../src/path';
 
-describe('#toPosixPath', async () => {
-  const cases: {
-    name: string;
-    input: string;
-    expected: string;
-  }[] = [
-    {
-      name: 'empty string',
-      input: '',
-      expected: '',
-    },
-    {
-      name: 'single value',
-      input: 'foo',
-      expected: 'foo',
-    },
-    {
-      name: 'with posix relative',
-      input: 'foo/bar/baz',
-      expected: 'foo/bar/baz',
-    },
-    {
-      name: 'with posix absolute',
-      input: '/foo/bar/baz',
-      expected: '/foo/bar/baz',
-    },
-    {
-      name: 'with win32 relative',
-      input: 'foo\\bar\\baz',
-      expected: 'foo/bar/baz',
-    },
-    {
-      name: 'with win32 absolute',
-      input: '\\foo\\bar\\baz',
-      expected: '/foo/bar/baz',
-    },
-    {
-      name: 'with a mix',
-      input: '\\foo/bar/baz',
-      expected: '/foo/bar/baz',
-    },
-  ];
+describe('path', { concurrency: true }, async () => {
+  test('#toPosixPath', async (suite) => {
+    const cases = [
+      {
+        name: 'empty string',
+        input: '',
+        expected: '',
+      },
+      {
+        name: 'single value',
+        input: 'foo',
+        expected: 'foo',
+      },
+      {
+        name: 'with posix relative',
+        input: 'foo/bar/baz',
+        expected: 'foo/bar/baz',
+      },
+      {
+        name: 'with posix absolute',
+        input: '/foo/bar/baz',
+        expected: '/foo/bar/baz',
+      },
+      {
+        name: 'with win32 relative',
+        input: 'foo\\bar\\baz',
+        expected: 'foo/bar/baz',
+      },
+      {
+        name: 'with win32 absolute',
+        input: '\\foo\\bar\\baz',
+        expected: '/foo/bar/baz',
+      },
+      {
+        name: 'with a mix',
+        input: '\\foo/bar/baz',
+        expected: '/foo/bar/baz',
+      },
+    ];
 
-  cases.forEach((tc) => {
-    it(tc.name, async () => {
-      const actual = toPosixPath(tc.input);
-      assert.deepStrictEqual(actual, tc.expected);
-    });
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const actual = toPosixPath(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
+      });
+    }
   });
-});
 
-describe('#toWin32Path', async () => {
-  const cases: {
-    name: string;
-    input: string;
-    expected: string;
-  }[] = [
-    {
-      name: 'empty string',
-      input: '',
-      expected: '',
-    },
-    {
-      name: 'single value',
-      input: 'foo',
-      expected: 'foo',
-    },
-    {
-      name: 'with posix relative',
-      input: 'foo/bar/baz',
-      expected: 'foo\\bar\\baz',
-    },
-    {
-      name: 'with posix absolute',
-      input: '/foo/bar/baz',
-      expected: '\\foo\\bar\\baz',
-    },
-    {
-      name: 'with win32 relative',
-      input: 'foo\\bar\\baz',
-      expected: 'foo\\bar\\baz',
-    },
-    {
-      name: 'with win32 absolute',
-      input: '\\foo\\bar\\baz',
-      expected: '\\foo\\bar\\baz',
-    },
-    {
-      name: 'with a mix',
-      input: '\\foo/bar\\baz',
-      expected: '\\foo\\bar\\baz',
-    },
-  ];
+  test('#toWin32Path', async (suite) => {
+    const cases = [
+      {
+        name: 'empty string',
+        input: '',
+        expected: '',
+      },
+      {
+        name: 'single value',
+        input: 'foo',
+        expected: 'foo',
+      },
+      {
+        name: 'with posix relative',
+        input: 'foo/bar/baz',
+        expected: 'foo\\bar\\baz',
+      },
+      {
+        name: 'with posix absolute',
+        input: '/foo/bar/baz',
+        expected: '\\foo\\bar\\baz',
+      },
+      {
+        name: 'with win32 relative',
+        input: 'foo\\bar\\baz',
+        expected: 'foo\\bar\\baz',
+      },
+      {
+        name: 'with win32 absolute',
+        input: '\\foo\\bar\\baz',
+        expected: '\\foo\\bar\\baz',
+      },
+      {
+        name: 'with a mix',
+        input: '\\foo/bar\\baz',
+        expected: '\\foo\\bar\\baz',
+      },
+    ];
 
-  cases.forEach((tc) => {
-    it(tc.name, async () => {
-      const actual = toWin32Path(tc.input);
-      assert.deepStrictEqual(actual, tc.expected);
-    });
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const actual = toWin32Path(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
+      });
+    }
   });
-});
 
-describe('#toPlatformPath', async () => {
-  const cases: {
-    name: string;
-    input: string;
-    expected: string;
-  }[] = [
-    {
-      name: 'empty string',
-      input: '',
-      expected: '',
-    },
-    {
-      name: 'single value',
-      input: 'foo',
-      expected: 'foo',
-    },
-    {
-      name: 'with posix relative',
-      input: 'foo/bar/baz',
-      expected: path.join('foo', 'bar', 'baz'),
-    },
-    {
-      name: 'with posix absolute',
-      input: '/foo/bar/baz',
-      expected: path.join(path.sep, 'foo', 'bar', 'baz'),
-    },
-    {
-      name: 'with win32 relative',
-      input: 'foo\\bar\\baz',
-      expected: path.join('foo', 'bar', 'baz'),
-    },
-    {
-      name: 'with win32 absolute',
-      input: '\\foo\\bar\\baz',
-      expected: path.join(path.sep, 'foo', 'bar', 'baz'),
-    },
-    {
-      name: 'with a mix',
-      input: '\\foo/bar\\baz',
-      expected: path.join(path.sep, 'foo', 'bar', 'baz'),
-    },
-  ];
+  test('#toPlatformPath', async (suite) => {
+    const cases = [
+      {
+        name: 'empty string',
+        input: '',
+        expected: '',
+      },
+      {
+        name: 'single value',
+        input: 'foo',
+        expected: 'foo',
+      },
+      {
+        name: 'with posix relative',
+        input: 'foo/bar/baz',
+        expected: path.join('foo', 'bar', 'baz'),
+      },
+      {
+        name: 'with posix absolute',
+        input: '/foo/bar/baz',
+        expected: path.join(path.sep, 'foo', 'bar', 'baz'),
+      },
+      {
+        name: 'with win32 relative',
+        input: 'foo\\bar\\baz',
+        expected: path.join('foo', 'bar', 'baz'),
+      },
+      {
+        name: 'with win32 absolute',
+        input: '\\foo\\bar\\baz',
+        expected: path.join(path.sep, 'foo', 'bar', 'baz'),
+      },
+      {
+        name: 'with a mix',
+        input: '\\foo/bar\\baz',
+        expected: path.join(path.sep, 'foo', 'bar', 'baz'),
+      },
+    ];
 
-  cases.forEach((tc) => {
-    it(tc.name, async () => {
-      const actual = toPlatformPath(tc.input);
-      assert.deepStrictEqual(actual, tc.expected);
-    });
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const actual = toPlatformPath(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
+      });
+    }
   });
 });

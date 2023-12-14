@@ -14,38 +14,40 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { inParallel } from '../src/parallel';
 
-describe('#inParallel', async () => {
-  it('executes tasks in parallel', async () => {
-    const task = async (a: number): Promise<number> => {
-      await new Promise((resolve) => setTimeout(resolve, a * 10));
-      return a;
-    };
+describe('parallel', { concurrency: true }, async () => {
+  test('#inParallel', async (suite) => {
+    await suite.test('executes tasks in parallel', async () => {
+      const task = async (a: number): Promise<number> => {
+        await new Promise((resolve) => setTimeout(resolve, a * 10));
+        return a;
+      };
 
-    const start = Date.now();
+      const start = Date.now();
 
-    const tasks = [6, 9, 3, 3, 1, 1, 1].map((x) => async (): Promise<number> => {
-      return await task(x);
+      const tasks = [6, 9, 3, 3, 1, 1, 1].map((x) => async (): Promise<number> => {
+        return await task(x);
+      });
+      const result = await inParallel(tasks, 3);
+
+      const duration = Date.now() - start;
+
+      assert.deepStrictEqual(result, [6, 9, 3, 3, 1, 1, 1]);
+
+      // Ideally this would be exactly 100 (array.pop() is from the end):
+      // - [1,1,1] execute in parallel for 10
+      // - [3,3,9] execute in parallel for 30
+      // - [9(-3),6] execute in parallel for 60
+      //
+      // However, there's a 100% buffer since other operations could cause some
+      // latency (cough OSX). If there was no parallelization, this would be at
+      // least 240.
+      const expected = 200;
+      assert.ok(duration < expected, `expected ${duration} to be less than ${expected}`);
     });
-    const result = await inParallel(tasks, 3);
-
-    const duration = Date.now() - start;
-
-    assert.deepStrictEqual(result, [6, 9, 3, 3, 1, 1, 1]);
-
-    // Ideally this would be exactly 100 (array.pop() is from the end):
-    // - [1,1,1] execute in parallel for 10
-    // - [3,3,9] execute in parallel for 30
-    // - [9(-3),6] execute in parallel for 60
-    //
-    // However, there's a 100% buffer since other operations could cause some
-    // latency (cough OSX). If there was no parallelization, this would be at
-    // least 240.
-    const expected = 200;
-    assert.ok(duration < expected, `expected ${duration} to be less than ${expected}`);
   });
 });

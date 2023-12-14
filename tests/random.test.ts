@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { tmpdir } from 'os';
 import { join as pathjoin } from 'path';
 
 import { randomFilename, randomFilepath } from '../src/random';
 
-describe('random', async () => {
-  describe('#randomFilename', async () => {
+describe('random', { concurrency: true }, async () => {
+  test('#randomFilename', async (suite) => {
     const cases = [
       {
         name: 'no args',
@@ -37,16 +37,16 @@ describe('random', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = randomFilename(...tc.input);
         assert.deepStrictEqual(actual.length, tc.expected);
         assert.notEqual(actual, randomFilename(...tc.input));
       });
-    });
+    }
   });
 
-  describe('#randomFilepath', async () => {
+  test('#randomFilepath', async (suite) => {
     const cases = [
       {
         name: 'no args',
@@ -60,13 +60,13 @@ describe('random', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = randomFilepath(...tc.input);
         const expected = tc.expected.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
         assert.match(actual, new RegExp(`^${expected}`));
         assert.notEqual(actual, randomFilepath(...tc.input));
       });
-    });
+    }
   });
 });

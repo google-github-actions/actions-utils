@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { parseDuration, sleep } from '../src/time';
 
-describe('time', async () => {
-  describe('#parseDuration', async () => {
+describe('time', { concurrency: true }, async () => {
+  test('#parseDuration', async (suite) => {
     const cases = [
       {
         name: 'empty string',
@@ -69,26 +69,22 @@ describe('time', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         if (tc.expected) {
           const actual = parseDuration(tc.input);
           assert.deepStrictEqual(actual, tc.expected);
         } else if (tc.error) {
-          assert.rejects(async () => {
+          await assert.rejects(async () => {
             parseDuration(tc.input);
           }, new RegExp(tc.error));
         }
       });
-    });
+    }
   });
 
-  describe('#sleep', async () => {
-    const cases: {
-      name: string;
-      input: number | undefined;
-      expMinDuration: number;
-    }[] = [
+  test('#sleep', async (suite) => {
+    const cases = [
       {
         name: 'undefined',
         input: undefined,
@@ -116,8 +112,8 @@ describe('time', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const start = new Date().getTime();
         await sleep(tc.input);
         const end = new Date().getTime();
@@ -125,6 +121,6 @@ describe('time', async () => {
         const diff = end - start;
         assert.ok(diff >= tc.expMinDuration);
       });
-    });
+    }
   });
 });

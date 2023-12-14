@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'node:test';
-import assert from 'node:assert';
+import { describe, test } from 'node:test';
+import assert from 'node:assert/strict';
 
 import { parseBoolean } from '../src/input';
 
-describe('input', async () => {
-  describe('#parseBoolean', async () => {
-    const cases: {
-      name: string;
-      input: string | undefined;
-      expected: boolean;
-    }[] = [
+describe('input', { concurrency: true }, async () => {
+  test('#parseBoolean', async (suite) => {
+    const cases = [
       {
         name: 'undefined',
         input: undefined,
@@ -83,11 +79,11 @@ describe('input', async () => {
       },
     ];
 
-    cases.forEach((tc) => {
-      it(tc.name, async () => {
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
         const actual = parseBoolean(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
-    });
+    }
   });
 });
