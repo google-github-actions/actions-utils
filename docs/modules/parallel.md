@@ -12,7 +12,7 @@
 
 ### inParallel
 
-▸ **inParallel**\<`F`, `R`\>(`tasks`, `concurrency`): `Promise`\<`R`[]\>
+▸ **inParallel**\<`F`, `R`\>(`tasks`, `concurrency?`): `Promise`\<`R`[]\>
 
 inParallel executes the given function in parallel, up to max concurrency.
 There are no guarantees on the order in which promises start.
@@ -29,7 +29,7 @@ There are no guarantees on the order in which promises start.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `tasks` | () => `Promise`\<`R`\>[] | The tasks to invoke, must be async. |
-| `concurrency` | `undefined` \| `number` | Optional configuration. |
+| `concurrency?` | `number` | Optional configuration. |
 
 #### Returns
 

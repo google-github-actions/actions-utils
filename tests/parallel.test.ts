@@ -49,5 +49,10 @@ describe('parallel', { concurrency: true }, async () => {
       const expected = 200;
       assert.ok(duration < expected, `expected ${duration} to be less than ${expected}`);
     });
+
+    await suite.test('uses a default concurrency', async () => {
+      // Just check type signature
+      await inParallel([async () => {}]);
+    });
   });
 });

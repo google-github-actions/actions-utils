@@ -7,4 +7,4 @@
  *
  * @return Array of results in the order of args.
  */
-export declare function inParallel<F extends () => Promise<Awaited<R>>, R extends ReturnType<F>>(tasks: (() => Promise<R> | Promise<R>)[], concurrency: number | undefined): Promise<R[]>;
+export declare function inParallel<F extends () => Promise<Awaited<R>>, R extends ReturnType<F>>(tasks: (() => Promise<R> | Promise<R>)[], concurrency?: number): Promise<R[]>;
