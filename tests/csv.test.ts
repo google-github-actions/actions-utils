@@ -17,7 +17,7 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseCSV } from '../src/csv';
+import { parseCSV, parseMultilineCSV } from '../src/csv';
 
 describe('csv', { concurrency: true }, async () => {
   test('#parseCSV', async (suite) => {
@@ -52,6 +52,63 @@ describe('csv', { concurrency: true }, async () => {
     for await (const tc of cases) {
       await suite.test(tc.name, async () => {
         const actual = parseCSV(tc.input);
+        assert.deepStrictEqual(actual, tc.expected);
+      });
+    }
+  });
+
+  test('#parseMultilineCSV', async (suite) => {
+    const cases = [
+      {
+        name: 'empty string',
+        input: '',
+        expected: [],
+      },
+      {
+        name: 'padded string',
+        input: '   ',
+        expected: [],
+      },
+      {
+        name: 'single item',
+        input: 'apple',
+        expected: ['apple'],
+      },
+      {
+        name: 'multiple items',
+        input: 'apple, banana, berries',
+        expected: ['apple', 'banana', 'berries'],
+      },
+      {
+        name: 'escaped',
+        input: 'new york\\, new york, banana, berries',
+        expected: ['new york, new york', 'banana', 'berries'],
+      },
+      {
+        name: 'multiple lines empty',
+        input: '\n\n\n\n',
+        expected: [],
+      },
+      {
+        name: 'multiple lines padded',
+        input: '\n  \n\n  \n',
+        expected: [],
+      },
+      {
+        name: 'multiple lines single item',
+        input: '\n\napple\n',
+        expected: ['apple'],
+      },
+      {
+        name: 'multiple lines multiple items',
+        input: 'apple\nbanana,berries\n\nnew york\nnew york',
+        expected: ['apple', 'banana', 'berries', 'new york', 'new york'],
+      },
+    ];
+
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const actual = parseMultilineCSV(tc.input);
         assert.deepStrictEqual(actual, tc.expected);
       });
     }

@@ -38,6 +38,7 @@
 - [parseKVString](index.md#parsekvstring)
 - [parseKVStringAndFile](index.md#parsekvstringandfile)
 - [parseKVYAML](index.md#parsekvyaml)
+- [parseMultilineCSV](index.md#parsemultilinecsv)
 - [pinnedToHeadWarning](index.md#pinnedtoheadwarning)
 - [presence](index.md#presence)
 - [randomFilename](index.md#randomfilename)
@@ -246,6 +247,12 @@ ___
 ### parseKVYAML
 
 Re-exports [parseKVYAML](kv.md#parsekvyaml)
+
+___
+
+### parseMultilineCSV
+
+Re-exports [parseMultilineCSV](csv.md#parsemultilinecsv)
 
 ___
 
