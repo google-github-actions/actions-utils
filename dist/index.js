@@ -166,7 +166,7 @@ exports.deepClone = deepClone;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.parseCSV = void 0;
+exports.parseMultilineCSV = exports.parseCSV = void 0;
 /**
  * parseCSV accepts a comma-separated list of items. Whitespace around entries
  * is removed.
@@ -187,6 +187,30 @@ function parseCSV(input) {
     return list;
 }
 exports.parseCSV = parseCSV;
+/**
+ * parseMultilineCSV parses a CSV input where entries can be separated by
+ * newlines. This is specific for GitHub Actions, since the YAML syntax does not
+ * allow complex types, and sometimes splitting long entries over multiple lines
+ * assists with readability.
+ *
+ * @param input String representing a comma-separated list
+ *
+ * @returns Array of strings, in the same order they were supplied.
+ */
+function parseMultilineCSV(input) {
+    const result = [];
+    for (const line of (input || '').split(/\r|\n/)) {
+        const pieces = parseCSV(line);
+        for (const piece of pieces) {
+            const trimmed = (piece || '').trim();
+            if (trimmed) {
+                result.push(trimmed);
+            }
+        }
+    }
+    return result;
+}
+exports.parseMultilineCSV = parseMultilineCSV;
 
 
 /***/ }),
