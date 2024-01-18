@@ -22,6 +22,7 @@ import { randomFilepath } from '../src/random';
 
 import {
   joinKVString,
+  joinKVStringForGCloud,
   parseKVString,
   parseKVFile,
   parseKVJSON,
@@ -68,12 +69,49 @@ describe('kv', { concurrency: true }, async () => {
     }
   });
 
+  test('#joinKVStringForGCloud', async (suite) => {
+    const cases = [
+      {
+        name: 'empty',
+        input: {},
+        expected: /^$/,
+      },
+      {
+        name: 'single entry',
+        input: { FOO: 'bar' },
+        expected: /\^[a-f0-9]+\^FOO=bar/,
+      },
+      {
+        name: 'iterates',
+        input: { abcdefghijklmnopqrstuvwxyz: '01234567890' },
+        expected: /\^[a-f0-9]{2,}\^abcdefghijklmnopqrstuvwxyz=01234567890/,
+      },
+    ];
+
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        const actual = joinKVStringForGCloud(tc.input as KVPair);
+        assert.match(actual, tc.expected);
+      });
+    }
+  });
+
   test('#parseKVString', async (suite) => {
     const cases = [
       {
         name: 'empty string',
         input: '',
         expected: {},
+      },
+      {
+        name: 'no value',
+        input: 'FOO',
+        expected: { FOO: '' },
+      },
+      {
+        name: 'empty value',
+        input: 'FOO=',
+        expected: { FOO: '' },
       },
       {
         name: 'single value',
@@ -112,7 +150,7 @@ describe('kv', { concurrency: true }, async () => {
       },
       {
         name: 'trims',
-        input: '  FOO= bar, ZIP=zap ',
+        input: '  FOO= bar, ZIP= zap ',
         expected: { FOO: 'bar', ZIP: 'zap' },
       },
       {
@@ -155,13 +193,18 @@ ftyRyC/83GkAjs88l5eGxNE=
       },
       {
         name: 'escaped comma key',
-        input: 'FOO\\,BAR=baz,ZIP=zap',
+        input: String.raw`FOO\,BAR=baz,ZIP=zap`,
         expected: { 'FOO,BAR': 'baz', 'ZIP': 'zap' },
       },
       {
         name: 'double escaped comma key',
-        input: 'FOO\\\\,BAR=baz,ZIP=zap',
-        expected: { 'FOO\\,BAR': 'baz', 'ZIP': 'zap' },
+        input: String.raw`FOO\\\,BAR=baz,ZIP=zap`,
+        expected: { [String.raw`FOO\,BAR`]: 'baz', ZIP: 'zap' },
+      },
+      {
+        name: 'escaped slash key',
+        input: String.raw`FOO\\BAR=baz,ZIP=zap`,
+        expected: { [String.raw`FOO\BAR`]: 'baz', ZIP: 'zap' },
       },
       {
         name: 'escaped comma value',
@@ -170,23 +213,18 @@ ftyRyC/83GkAjs88l5eGxNE=
       },
       {
         name: 'double escaped comma value',
-        input: 'FOO=bar\\\\,baz,ZIP=zap',
-        expected: { FOO: 'bar\\,baz', ZIP: 'zap' },
+        input: String.raw`FOO=bar\\\,baz,ZIP=zap`,
+        expected: { FOO: String.raw`bar\,baz`, ZIP: 'zap' },
+      },
+      {
+        name: 'escaped slash value',
+        input: String.raw`FOO=BAR\\baz,ZIP=zap`,
+        expected: { FOO: String.raw`BAR\baz`, ZIP: 'zap' },
       },
       {
         name: 'missing key',
         input: '=bar',
-        error: 'Failed to parse',
-      },
-      {
-        name: 'missing value',
-        input: 'FOO=',
-        error: 'Failed to parse',
-      },
-      {
-        name: 'no equal',
-        input: 'FOO',
-        error: 'Failed to parse',
+        error: 'Invalid start sequence for value',
       },
     ];
 

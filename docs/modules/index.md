@@ -27,6 +27,7 @@
 - [isPinnedToHead](index.md#ispinnedtohead)
 - [isServiceAccountKey](index.md#isserviceaccountkey)
 - [joinKVString](index.md#joinkvstring)
+- [joinKVStringForGCloud](index.md#joinkvstringforgcloud)
 - [parseBoolean](index.md#parseboolean)
 - [parseCSV](index.md#parsecsv)
 - [parseCredential](index.md#parsecredential)
@@ -181,6 +182,12 @@ ___
 ### joinKVString
 
 Re-exports [joinKVString](kv.md#joinkvstring)
+
+___
+
+### joinKVStringForGCloud
+
+Re-exports [joinKVStringForGCloud](kv.md#joinkvstringforgcloud)
 
 ___
 

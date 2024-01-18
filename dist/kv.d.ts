@@ -10,6 +10,14 @@ export type KVPair = Record<string, string>;
  */
 export declare function joinKVString(input: KVPair, separator?: string): string;
 /**
+ * joinKVStringForGCloud creates a string suitable for using with gcloud by
+ * choosing a custom escape delimiter sequence that does not exist in the input
+ * string.
+ *
+ * @param input KVPair to serialize.
+ */
+export declare function joinKVStringForGCloud(input: KVPair): string;
+/**
  * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
  * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
  * escaped with a backslash ("\,", "\\n"). All leading and trailing whitespace
