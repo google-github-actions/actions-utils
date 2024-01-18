@@ -5,4 +5,4 @@
  * @param input The value to check
  * @return boolean
  */
-export declare function parseBoolean(input?: string): boolean;
+export declare function parseBoolean(input?: string, defaultValue?: boolean): boolean;
