@@ -33,9 +33,26 @@ describe('input', { concurrency: true }, async () => {
         expected: false,
       },
       {
+        name: 'undefined a with custom default',
+        input: undefined,
+        defaultValue: true,
+        expected: true,
+      },
+      {
+        name: 'empty string a with custom default',
+        input: '',
+        defaultValue: true,
+        expected: true,
+      },
+      {
         name: 'nonsense',
         input: '149585',
-        expected: false,
+        error: 'invalid boolean value "149585"',
+      },
+      {
+        name: '1',
+        input: '1',
+        expected: true,
       },
       {
         name: 't',
@@ -63,13 +80,18 @@ describe('input', { concurrency: true }, async () => {
         expected: true,
       },
       {
-        name: '1',
-        input: '1',
-        expected: true,
-      },
-      {
         name: '0',
         input: '0',
+        expected: false,
+      },
+      {
+        name: 'f',
+        input: 'f',
+        expected: false,
+      },
+      {
+        name: 'F',
+        input: 'F',
         expected: false,
       },
       {
@@ -77,12 +99,31 @@ describe('input', { concurrency: true }, async () => {
         input: 'false',
         expected: false,
       },
+      {
+        name: 'False',
+        input: 'False',
+        expected: false,
+      },
+      {
+        name: 'FALSE',
+        input: 'FALSE',
+        expected: false,
+      },
     ];
 
     for await (const tc of cases) {
       await suite.test(tc.name, async () => {
-        const actual = parseBoolean(tc.input);
-        assert.deepStrictEqual(actual, tc.expected);
+        if (tc.error) {
+          assert.throws(
+            () => {
+              parseBoolean(tc.input, tc.defaultValue);
+            },
+            { message: tc.error },
+          );
+        } else {
+          const actual = parseBoolean(tc.input, tc.defaultValue);
+          assert.deepStrictEqual(actual, tc.expected);
+        }
       });
     }
   });

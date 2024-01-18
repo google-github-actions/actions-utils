@@ -14,13 +14,20 @@
  * limitations under the License.
  */
 
-const truths: Record<string, boolean> = {
+const booleanTable: Record<string, boolean> = {
   '1': true,
   't': true,
   'T': true,
   'true': true,
   'True': true,
   'TRUE': true,
+
+  '0': false,
+  'f': false,
+  'F': false,
+  'false': false,
+  'False': false,
+  'FALSE': false,
 };
 
 /**
@@ -30,7 +37,15 @@ const truths: Record<string, boolean> = {
  * @param input The value to check
  * @return boolean
  */
-export function parseBoolean(input?: string): boolean {
-  const trimmed = (input || '').trim();
-  return !!truths[trimmed];
+export function parseBoolean(input?: string, defaultValue: boolean = false): boolean {
+  const key = (input || '').trim();
+  if (key === '') {
+    return defaultValue;
+  }
+
+  if (!(key in booleanTable)) {
+    throw new Error(`invalid boolean value "${key}"`);
+  }
+
+  return booleanTable[key];
 }
