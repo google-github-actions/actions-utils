@@ -17,7 +17,7 @@
 import { afterEach, describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { setInput, setInputs, clearInputs, clearEnv } from '../src/testing';
+import { assertMembers, setInput, setInputs, clearInputs, clearEnv } from '../src/testing';
 
 describe('testing', { concurrency: true }, async () => {
   afterEach(async () => {
@@ -75,5 +75,89 @@ describe('testing', { concurrency: true }, async () => {
       assert.deepStrictEqual(process.env['INPUT_B'], undefined);
       assert.deepStrictEqual(process.env['NOT_INPUT_C'], undefined);
     });
+  });
+
+  test('#assertMembers', async (suite) => {
+    const cases = [
+      {
+        name: 'both empty',
+        actual: [],
+        expected: [],
+      },
+      {
+        name: 'actual length one',
+        actual: ['a'],
+        expected: [],
+      },
+      {
+        name: 'expected length one',
+        actual: [],
+        expected: ['a'],
+        error: true,
+      },
+      {
+        name: 'both length one match',
+        actual: ['a'],
+        expected: ['a'],
+      },
+      {
+        name: 'both length one different',
+        actual: ['a'],
+        expected: ['b'],
+        error: true,
+      },
+      {
+        name: 'exact window',
+        actual: ['a', 'b'],
+        expected: ['a', 'b'],
+      },
+      {
+        name: 'misordered window',
+        actual: ['a', 'b'],
+        expected: ['b', 'a'],
+        error: true,
+      },
+      {
+        name: 'sliding window start',
+        actual: ['a', 'b', 'c', 'd'],
+        expected: ['a', 'b'],
+      },
+      {
+        name: 'sliding window middle',
+        actual: ['a', 'b', 'c', 'd'],
+        expected: ['b', 'c'],
+      },
+      {
+        name: 'sliding window end',
+        actual: ['a', 'b', 'c', 'd'],
+        expected: ['c', 'd'],
+      },
+      {
+        name: 'sliding window smaller not found',
+        actual: ['a', 'b', 'c', 'd'],
+        expected: ['e', 'f'],
+        error: true,
+      },
+      {
+        name: 'sliding window larger not found',
+        actual: ['a', 'b', 'c', 'd'],
+        expected: ['e', 'f', 'g', 'h', 'i'],
+        error: true,
+      },
+    ];
+
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        if (tc.error) {
+          assert.throws(() => {
+            assertMembers(tc.actual, tc.expected);
+          }, /elements from expected are not in actual/);
+        } else {
+          assert.doesNotThrow(() => {
+            assertMembers(tc.actual, tc.expected);
+          });
+        }
+      });
+    }
   });
 });

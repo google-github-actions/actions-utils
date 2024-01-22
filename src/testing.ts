@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import assert from 'node:assert';
+
 /**
  * setInput sets the given name as a GitHub Actions input. It uses the reverse
  * logic for how GitHub Actions searches for a named input.
@@ -54,5 +56,52 @@ export function clearEnv(fn: (key: string, value?: string) => boolean): void {
     if (fn(key, process.env[key])) {
       delete process.env[key];
     }
+  });
+}
+
+/**
+ * skipIfMissingEnv is a helper function for skipping a test if an environment
+ * variable is missing (unset).
+ *
+ * @param envs List of environment variables
+ * @return false or string indicating the test was skipped
+ */
+export function skipIfMissingEnv(...envs: string[]): string | boolean {
+  for (const env of envs) {
+    if (!(env in process.env)) {
+      return `missing $${env}`;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * assertMembers is an assertion that verifies the expected contains all of the
+ * given members, in the order in which they were expected.
+ *
+ * @param actual The value to check again
+ * @param expected The subset of values to assert
+ */
+export function assertMembers<T>(actual: T[], expected: T[]): void {
+  for (let i = 0; i <= actual.length - expected.length; i++) {
+    let found = true;
+    for (let j = 0; j < expected.length; j++) {
+      if (actual[i + j] !== expected[j]) {
+        found = false;
+        break;
+      }
+    }
+
+    if (found) {
+      return;
+    }
+  }
+
+  throw new assert.AssertionError({
+    message: 'elements from expected are not in actual',
+    actual: actual,
+    expected: expected,
+    operator: 'subArray',
   });
 }

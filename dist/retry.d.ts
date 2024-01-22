@@ -19,8 +19,8 @@ export interface RetryOptions {
 /**
  * withRetry implements a retry mechanism with fibonacci backoff
  *
- * @param fn. A function to retry on failure
- * @param opts. The retry options
+ * @param fn A function to retry on failure
+ * @param opts The retry options
  * @returns fn. A function to start the retry process as a promise
  * @throws {Error}
  */

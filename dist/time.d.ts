@@ -9,6 +9,6 @@ export declare function parseDuration(input: string): number;
 /**
  * sleep waits for a specified duration in milliseconds as a promise.
  *
- * @param ms. Duration in milliseconds to sleep.
+ * @param ms Duration in milliseconds to sleep.
  */
 export declare function sleep(ms?: number): Promise<void>;

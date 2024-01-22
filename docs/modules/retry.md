@@ -28,10 +28,10 @@ withRetry implements a retry mechanism with fibonacci backoff
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `fn` | () => `Promise`\<`T`\> |
-| `opts` | [`RetryOptions`](../interfaces/retry.RetryOptions.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `fn` | () => `Promise`\<`T`\> | A function to retry on failure |
+| `opts` | [`RetryOptions`](../interfaces/retry.RetryOptions.md) | The retry options |
 
 #### Returns
 
