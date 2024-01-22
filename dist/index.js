@@ -1269,7 +1269,7 @@ const path_1 = __nccwpck_require__(1017);
  * toPosixPath converts the given path to the posix form. On Windows, \\ will be
  * replaced with /.
  *
- * @param pth. Path to transform.
+ * @param pth Path to transform.
  * @return string Posix path.
  */
 function toPosixPath(pth) {
@@ -1280,7 +1280,7 @@ exports.toPosixPath = toPosixPath;
  * toWin32Path converts the given path to the win32 form. On Linux, / will be
  * replaced with \\.
  *
- * @param pth. Path to transform.
+ * @param pth Path to transform.
  * @return string Win32 path.
  */
 function toWin32Path(pth) {
@@ -1399,8 +1399,8 @@ const DEFAULT_BACKOFF_MILLISECONDS = 100;
 /**
  * withRetry implements a retry mechanism with fibonacci backoff
  *
- * @param fn. A function to retry on failure
- * @param opts. The retry options
+ * @param fn A function to retry on failure
+ * @param opts The retry options
  * @returns fn. A function to start the retry process as a promise
  * @throws {Error}
  */
@@ -1451,7 +1451,7 @@ exports.withRetries = withRetries;
 /***/ }),
 
 /***/ 9017:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
 /*
@@ -1469,8 +1469,12 @@ exports.withRetries = withRetries;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.clearEnv = exports.clearInputs = exports.setInputs = exports.setInput = void 0;
+exports.assertMembers = exports.skipIfMissingEnv = exports.clearEnv = exports.clearInputs = exports.setInputs = exports.setInput = void 0;
+const node_assert_1 = __importDefault(__nccwpck_require__(8061));
 /**
  * setInput sets the given name as a GitHub Actions input. It uses the reverse
  * logic for how GitHub Actions searches for a named input.
@@ -1514,6 +1518,50 @@ function clearEnv(fn) {
     });
 }
 exports.clearEnv = clearEnv;
+/**
+ * skipIfMissingEnv is a helper function for skipping a test if an environment
+ * variable is missing (unset).
+ *
+ * @param envs List of environment variables
+ * @return false or string indicating the test was skipped
+ */
+function skipIfMissingEnv(...envs) {
+    for (const env of envs) {
+        if (!(env in process.env)) {
+            return `missing $${env}`;
+        }
+    }
+    return false;
+}
+exports.skipIfMissingEnv = skipIfMissingEnv;
+/**
+ * assertMembers is an assertion that verifies the expected contains all of the
+ * given members, in the order in which they were expected.
+ *
+ * @param actual The value to check again
+ * @param expected The subset of values to assert
+ */
+function assertMembers(actual, expected) {
+    for (let i = 0; i <= actual.length - expected.length; i++) {
+        let found = true;
+        for (let j = 0; j < expected.length; j++) {
+            if (actual[i + j] !== expected[j]) {
+                found = false;
+                break;
+            }
+        }
+        if (found) {
+            return;
+        }
+    }
+    throw new node_assert_1.default.AssertionError({
+        message: 'elements from expected are not in actual',
+        actual: actual,
+        expected: expected,
+        operator: 'subArray',
+    });
+}
+exports.assertMembers = assertMembers;
 
 
 /***/ }),
@@ -1610,7 +1658,7 @@ exports.parseDuration = parseDuration;
 /**
  * sleep waits for a specified duration in milliseconds as a promise.
  *
- * @param ms. Duration in milliseconds to sleep.
+ * @param ms Duration in milliseconds to sleep.
  */
 function sleep(ms = 0) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -1782,6 +1830,13 @@ module.exports = require("crypto");
 /***/ ((module) => {
 
 module.exports = require("fs");
+
+/***/ }),
+
+/***/ 8061:
+/***/ ((module) => {
+
+module.exports = require("node:assert");
 
 /***/ }),
 

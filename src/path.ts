@@ -20,7 +20,7 @@ import { sep as pathsep } from 'path';
  * toPosixPath converts the given path to the posix form. On Windows, \\ will be
  * replaced with /.
  *
- * @param pth. Path to transform.
+ * @param pth Path to transform.
  * @return string Posix path.
  */
 export function toPosixPath(pth: string): string {
@@ -31,7 +31,7 @@ export function toPosixPath(pth: string): string {
  * toWin32Path converts the given path to the win32 form. On Linux, / will be
  * replaced with \\.
  *
- * @param pth. Path to transform.
+ * @param pth Path to transform.
  * @return string Win32 path.
  */
 export function toWin32Path(pth: string): string {

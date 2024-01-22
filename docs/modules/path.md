@@ -47,9 +47,9 @@ replaced with /.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pth` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pth` | `string` | Path to transform. |
 
 #### Returns
 
@@ -72,9 +72,9 @@ replaced with \\.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pth` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pth` | `string` | Path to transform. |
 
 #### Returns
 

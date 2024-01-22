@@ -13,6 +13,7 @@
 - [RetryOptions](index.md#retryoptions)
 - [ServiceAccountKey](index.md#serviceaccountkey)
 - [allOf](index.md#allof)
+- [assertMembers](index.md#assertmembers)
 - [clearEnv](index.md#clearenv)
 - [clearInputs](index.md#clearinputs)
 - [deepClone](index.md#deepclone)
@@ -48,6 +49,7 @@
 - [removeFile](index.md#removefile)
 - [setInput](index.md#setinput)
 - [setInputs](index.md#setinputs)
+- [skipIfMissingEnv](index.md#skipifmissingenv)
 - [sleep](index.md#sleep)
 - [stubEnv](index.md#stubenv)
 - [toBase64](index.md#tobase64)
@@ -98,6 +100,12 @@ ___
 ### allOf
 
 Re-exports [allOf](validations.md#allof)
+
+___
+
+### assertMembers
+
+Re-exports [assertMembers](testing.md#assertmembers)
 
 ___
 
@@ -308,6 +316,12 @@ ___
 ### setInputs
 
 Re-exports [setInputs](testing.md#setinputs)
+
+___
+
+### skipIfMissingEnv
+
+Re-exports [skipIfMissingEnv](testing.md#skipifmissingenv)
 
 ___
 

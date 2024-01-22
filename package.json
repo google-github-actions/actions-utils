@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rm -rf dist/ && ncc build --source-map --no-source-map-register src/index.ts",
     "lint": "eslint . --ext .ts,.tsx",
-    "format": "prettier --write **/*.ts",
+    "format": "eslint . --ext .ts,.tsx --fix",
     "docs": "rm -rf docs/ && typedoc --plugin typedoc-plugin-markdown",
     "test": "bash ./bin/runTests.sh"
   },
@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
     "@vercel/ncc": "0.38.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",

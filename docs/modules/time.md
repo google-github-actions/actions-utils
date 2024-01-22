@@ -43,9 +43,9 @@ sleep waits for a specified duration in milliseconds as a promise.
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `ms` | `number` | `0` |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `ms` | `number` | `0` | Duration in milliseconds to sleep. |
 
 #### Returns
 
