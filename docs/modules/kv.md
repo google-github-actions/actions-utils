@@ -57,7 +57,7 @@ ___
 
 ### joinKVStringForGCloud
 
-▸ **joinKVStringForGCloud**(`input`): `string`
+▸ **joinKVStringForGCloud**(`input`, `rand?`): `string`
 
 joinKVStringForGCloud creates a string suitable for using with gcloud by
 choosing a custom escape delimiter sequence that does not exist in the input
@@ -68,6 +68,7 @@ string.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `input` | [`KVPair`](kv.md#kvpair) | KVPair to serialize. |
+| `rand` | `string` | String of random characters to use; override for testing. |
 
 #### Returns
 
@@ -75,7 +76,7 @@ string.
 
 #### Defined in
 
-[kv.ts:50](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L50)
+[kv.ts:51](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L51)
 
 ___
 
@@ -99,7 +100,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:158](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L158)
+[kv.ts:172](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L172)
 
 ___
 
@@ -129,7 +130,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:193](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L193)
+[kv.ts:207](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L207)
 
 ___
 
@@ -154,7 +155,7 @@ is trimmed.
 
 #### Defined in
 
-[kv.ts:89](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L89)
+[kv.ts:103](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L103)
 
 ___
 
@@ -178,7 +179,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:264](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L264)
+[kv.ts:278](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L278)
 
 ___
 
@@ -201,4 +202,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:237](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L237)
+[kv.ts:251](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L251)
