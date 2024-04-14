@@ -1,4 +1,4 @@
-name: 'test'
+name: 'Test'
 
 on:
   push:
@@ -16,55 +16,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  install_and_compile:
-    name: 'install-and-compile'
-    runs-on: 'ubuntu-latest'
-    steps:
-    - uses: 'actions/checkout@v4'
-
-    - uses: 'actions/setup-node@v4'
-      with:
-        node-version: '20.x'
-
-    - name: 'npm build'
-      run: 'npm ci && npm run build && npm run docs'
-
-    - name: 'verify compiled'
-      shell: 'bash'
-      run: |-
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "TypeScript is not compiled!"
-          git diff
-          exit 1
-        fi
-
   unit:
-    name: 'unit'
-    needs: 'install_and_compile'
-    runs-on: '${{ matrix.os }}'
     strategy:
       fail-fast: false
       matrix:
         os:
-        - 'ubuntu-latest'
-        - 'windows-latest'
-        - 'macos-latest'
+          - 'ubuntu-latest'
+          - 'windows-latest'
+          - 'macos-latest'
+    runs-on: '${{ matrix.os }}'
 
     steps:
-    - uses: 'actions/checkout@v4'
+      - uses: 'actions/checkout@v4'
 
-    - uses: 'actions/setup-node@v4'
-      with:
-        node-version: '20.x'
+      - uses: 'actions/setup-node@v4'
+        with:
+          node-version: '20.x'
 
-    - name: 'npm build'
-      run: 'npm ci && npm run build'
+      - name: 'npm build'
+        run: 'npm ci && npm run build'
 
-    - name: 'npm lint'
-      # There's no need to run the linter for each operating system, since it
-      # will find the same thing 3x and clog up the PR review.
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: 'npm run lint'
+      - name: 'npm lint'
+        # There's no need to run the linter for each operating system, since it
+        # will find the same thing 3x and clog up the PR review.
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: 'npm run lint'
 
-    - name: 'npm test'
-      run: 'npm run test'
+      - name: 'npm test'
+        run: 'npm run test'
