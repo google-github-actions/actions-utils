@@ -24,5 +24,6 @@
 - [retry](modules/retry.md)
 - [testing](modules/testing.md)
 - [time](modules/time.md)
+- [universe](modules/universe.md)
 - [validations](modules/validations.md)
 - [warnings](modules/warnings.md)

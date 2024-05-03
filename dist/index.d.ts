@@ -15,5 +15,6 @@ export * from './random';
 export * from './retry';
 export * from './testing';
 export * from './time';
+export * from './universe';
 export * from './validations';
 export * from './warnings';
