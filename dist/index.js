@@ -830,6 +830,7 @@ __exportStar(__nccwpck_require__(570), exports);
 __exportStar(__nccwpck_require__(1043), exports);
 __exportStar(__nccwpck_require__(9017), exports);
 __exportStar(__nccwpck_require__(7575), exports);
+__exportStar(__nccwpck_require__(7167), exports);
 __exportStar(__nccwpck_require__(596), exports);
 __exportStar(__nccwpck_require__(9324), exports);
 
@@ -1676,6 +1677,53 @@ function sleep() {
     });
 }
 exports.sleep = sleep;
+
+
+/***/ }),
+
+/***/ 7167:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+/*
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.expandUniverseEndpoints = void 0;
+/**
+ * expandUniverseEndpoints takes a list of universe endpoints using the
+ * {universe} template and returns the interolated values.
+ *
+ * @param endpoints is an array of endpoints to universify
+ * @param universe is the universe to use
+ */
+function expandUniverseEndpoints(endpoints, universe = 'googleapis.com') {
+    const result = Object.assign({});
+    for (const key in endpoints) {
+        const envOverrideKey = `GHA_ENDPOINT_OVERRIDE_${key}`;
+        const envOverrideValue = process.env[envOverrideKey];
+        if (envOverrideValue && envOverrideValue !== '') {
+            result[key] = envOverrideValue.replace(/\/+$/, '');
+        }
+        else {
+            result[key] = endpoints[key].replace(/{universe}/g, universe).replace(/\/+$/, '');
+        }
+    }
+    return result;
+}
+exports.expandUniverseEndpoints = expandUniverseEndpoints;
 
 
 /***/ }),

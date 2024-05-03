@@ -19,6 +19,7 @@
 - [deepClone](index.md#deepclone)
 - [errorMessage](index.md#errormessage)
 - [exactlyOneOf](index.md#exactlyoneof)
+- [expandUniverseEndpoints](index.md#expanduniverseendpoints)
 - [forceRemove](index.md#forceremove)
 - [fromBase64](index.md#frombase64)
 - [inParallel](index.md#inparallel)
@@ -136,6 +137,12 @@ ___
 ### exactlyOneOf
 
 Re-exports [exactlyOneOf](validations.md#exactlyoneof)
+
+___
+
+### expandUniverseEndpoints
+
+Re-exports [expandUniverseEndpoints](universe.md#expanduniverseendpoints)
 
 ___
 
