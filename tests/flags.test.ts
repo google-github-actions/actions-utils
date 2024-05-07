@@ -57,47 +57,47 @@ describe('flags', { concurrency: true }, async () => {
       {
         name: `with equals and double quotes`,
         input: `--bar="2Gi"`,
-        exp: [`--bar`, `"2Gi"`],
+        exp: [`--bar`, `2Gi`],
       },
       {
         name: `with space and double quotes`,
         input: `--bar "2Gi"`,
-        exp: [`--bar`, `"2Gi"`],
+        exp: [`--bar`, `2Gi`],
       },
       {
         name: `with equals and space and double quotes`,
         input: `--bar="2Gi" --foo "2"`,
-        exp: [`--bar`, `"2Gi"`, `--foo`, `"2"`],
+        exp: [`--bar`, `2Gi`, `--foo`, `2`],
       },
       {
         name: `with equals and space and some double quotes`,
         input: `--foo 2 --bar="2Gi"`,
-        exp: [`--foo`, `2`, `--bar`, `"2Gi"`],
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
       },
       {
         name: `with equals and single quotes`,
         input: `--bar='2Gi'`,
-        exp: [`--bar`, `'2Gi'`],
+        exp: [`--bar`, `2Gi`],
       },
       {
         name: `with space and single quotes`,
         input: `--bar '2Gi'`,
-        exp: [`--bar`, `'2Gi'`],
+        exp: [`--bar`, `2Gi`],
       },
       {
         name: `with equals and space and single quotes`,
         input: `--foo '2' --bar='2Gi'`,
-        exp: [`--foo`, `'2'`, `--bar`, `'2Gi'`],
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
       },
       {
         name: `with equals and space and some single quotes`,
         input: `--foo 2 --bar='2Gi' `,
-        exp: [`--foo`, `2`, `--bar`, `'2Gi'`],
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
       },
       {
         name: `with double and single quotes`,
         input: `--foo="2" --bar='2Gi'`,
-        exp: [`--foo`, `"2"`, `--bar`, `'2Gi'`],
+        exp: [`--foo`, `2`, `--bar`, `2Gi`],
       },
       {
         name: 'with multi-line separators',
@@ -106,12 +106,12 @@ describe('flags', { concurrency: true }, async () => {
         --bar=2Gi
         --zip "zap"
       `,
-        exp: [`--foo`, `2`, `--bar`, `2Gi`, `--zip`, `"zap"`],
+        exp: [`--foo`, `2`, `--bar`, `2Gi`, `--zip`, `zap`],
       },
       {
         name: 'with subflags quoted',
         input: `--foo "--bar=1,--zip-zap"`,
-        exp: [`--foo`, `"--bar=1,--zip-zap"`],
+        exp: [`--foo`, `--bar=1,--zip-zap`],
       },
       {
         name: 'with subflags equals',
@@ -121,7 +121,7 @@ describe('flags', { concurrency: true }, async () => {
       {
         name: 'with subflags quoted subquoted',
         input: `--foo "--bar="1",--zip-zap"`,
-        exp: [`--foo`, `"--bar="1",--zip-zap"`],
+        exp: [`--foo`, `--bar="1",--zip-zap`],
       },
       {
         name: 'with subflags equals subquoted',
@@ -141,12 +141,17 @@ describe('flags', { concurrency: true }, async () => {
       {
         name: 'with kv quote',
         input: `--foo --env "foo=bar,zip=zap"`,
-        exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
+        exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
       },
       {
         name: 'with kv equals quote',
         input: `--foo --env="foo=bar,zip=zap"`,
-        exp: [`--foo`, `--env`, `"foo=bar,zip=zap"`],
+        exp: [`--foo`, `--env`, `foo=bar,zip=zap`],
+      },
+      {
+        name: 'with quotes full arg',
+        input: `--foo "--bar=-m -X=1"`,
+        exp: [`--foo`, `--bar=-m -X=1`],
       },
     ];
 
