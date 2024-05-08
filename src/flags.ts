@@ -88,6 +88,25 @@ export function parseFlags(input: string): string[] {
     result.push(current);
   }
 
+  // Post-process and remove any super-quoted strings.
+  for (let i = 0; i < result.length; i++) {
+    for (;;) {
+      const v = result[i];
+      if (v.length < 2) {
+        break;
+      }
+
+      const first = v.at(0);
+      const last = v.at(-1);
+      if ((first === `'` || first === `"`) && first === last) {
+        result[i] = v.slice(1, -1);
+        continue;
+      }
+
+      break;
+    }
+  }
+
   return result;
 }
 
