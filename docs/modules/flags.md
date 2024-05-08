@@ -61,4 +61,4 @@ match is found.
 
 #### Defined in
 
-[flags.ts:107](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L107)
+[flags.ts:126](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L126)
