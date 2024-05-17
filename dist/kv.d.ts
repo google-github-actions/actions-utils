@@ -15,9 +15,9 @@ export declare function joinKVString(input: KVPair, separator?: string): string;
  * string.
  *
  * @param input KVPair to serialize.
- * @param rand String of random characters to use; override for testing.
+ * @param chars String of characters to use.
  */
-export declare function joinKVStringForGCloud(input: KVPair, rand?: string): string;
+export declare function joinKVStringForGCloud(input: KVPair, chars?: string): string;
 /**
  * parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
  * "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
