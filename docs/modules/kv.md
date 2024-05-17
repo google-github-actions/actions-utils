@@ -28,7 +28,7 @@ KVPair represents a key=value pair of strings.
 
 #### Defined in
 
-[kv.ts:27](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L27)
+[kv.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L26)
 
 ## Functions
 
@@ -51,13 +51,13 @@ joinKVString joins the given KVPair using the provided separator.
 
 #### Defined in
 
-[kv.ts:35](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L35)
+[kv.ts:34](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L34)
 
 ___
 
 ### joinKVStringForGCloud
 
-▸ **joinKVStringForGCloud**(`input`, `rand?`): `string`
+▸ **joinKVStringForGCloud**(`input`, `chars?`): `string`
 
 joinKVStringForGCloud creates a string suitable for using with gcloud by
 choosing a custom escape delimiter sequence that does not exist in the input
@@ -65,10 +65,10 @@ string.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `input` | [`KVPair`](kv.md#kvpair) | KVPair to serialize. |
-| `rand` | `string` | String of random characters to use; override for testing. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `input` | [`KVPair`](kv.md#kvpair) | `undefined` | KVPair to serialize. |
+| `chars` | `string` | `',.!@#$%&*()_=+~`[]{}|:;<>?🚀🍪🐼\u200B'` | String of characters to use. |
 
 #### Returns
 
@@ -76,7 +76,7 @@ string.
 
 #### Defined in
 
-[kv.ts:51](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L51)
+[kv.ts:50](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L50)
 
 ___
 
@@ -100,7 +100,7 @@ the contents are parsed as a subset of YAML.
 
 #### Defined in
 
-[kv.ts:172](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L172)
+[kv.ts:160](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L160)
 
 ___
 
@@ -130,7 +130,7 @@ List of key=value pairs.
 
 #### Defined in
 
-[kv.ts:207](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L207)
+[kv.ts:195](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L195)
 
 ___
 
@@ -155,7 +155,7 @@ is trimmed.
 
 #### Defined in
 
-[kv.ts:103](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L103)
+[kv.ts:91](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L91)
 
 ___
 
@@ -179,7 +179,7 @@ results (with kvString taking precedence).
 
 #### Defined in
 
-[kv.ts:278](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L278)
+[kv.ts:266](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L266)
 
 ___
 
@@ -202,4 +202,4 @@ for testing.
 
 #### Defined in
 
-[kv.ts:251](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L251)
+[kv.ts:239](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L239)
