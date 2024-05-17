@@ -79,23 +79,23 @@ describe('kv', { concurrency: true }, async () => {
       {
         name: 'single entry',
         input: { FOO: 'bar' },
-        expected: '^d^FOO=bar',
+        expected: '^,^FOO=bar',
       },
       {
         name: 'value ends with delim',
-        input: { HELLO: 'world', GOODBYE: 'mars' },
-        expected: '^e^HELLO=worldeGOODBYE=mars',
+        input: { HELLO: 'world,', GOODBYE: 'mars' },
+        expected: '^.^HELLO=world,.GOODBYE=mars',
       },
       {
         name: 'iterates',
-        input: { abcdefghijklmnopqrstuvwxyz: '01234567890' },
-        expected: '^dea^abcdefghijklmnopqrstuvwxyz=01234567890',
+        input: { HELLO: ',.!@#$%&*()' },
+        expected: '^_^HELLO=,.!@#$%&*()',
       },
     ];
 
     for await (const tc of cases) {
       await suite.test(tc.name, async () => {
-        const actual = joinKVStringForGCloud(tc.input as KVPair, 'deab');
+        const actual = joinKVStringForGCloud(tc.input as KVPair);
         assert.deepStrictEqual(actual, tc.expected);
       });
     }
