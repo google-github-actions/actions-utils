@@ -24,9 +24,6 @@
     "README.md",
     "dist/"
   ],
-  "publishConfig": {
-    "provenance": true
-  },
   "module": "./dist/index.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",

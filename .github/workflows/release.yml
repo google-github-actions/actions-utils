@@ -32,4 +32,4 @@ jobs:
       - env:
           NODE_AUTH_TOKEN: '${{ secrets.NODE_AUTH_TOKEN }}'
         run: |-
-          npm publish
+          npm publish --provenance --access public
