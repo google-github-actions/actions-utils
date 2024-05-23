@@ -1,29 +1,30 @@
-[@google-github-actions/actions-utils](README.md) / Exports
+[**@google-github-actions/actions-utils**](README.md) • **Docs**
+
+***
 
 # @google-github-actions/actions-utils
 
-## Table of contents
+## Modules
 
-### Modules
-
-- [auth](modules/auth.md)
-- [clone](modules/clone.md)
-- [csv](modules/csv.md)
-- [encoding](modules/encoding.md)
-- [env](modules/env.md)
-- [errors](modules/errors.md)
-- [flags](modules/flags.md)
-- [fs](modules/fs.md)
-- [ignore](modules/ignore.md)
-- [index](modules/index.md)
-- [input](modules/input.md)
-- [kv](modules/kv.md)
-- [parallel](modules/parallel.md)
-- [path](modules/path.md)
-- [random](modules/random.md)
-- [retry](modules/retry.md)
-- [testing](modules/testing.md)
-- [time](modules/time.md)
-- [universe](modules/universe.md)
-- [validations](modules/validations.md)
-- [warnings](modules/warnings.md)
+- [auth](auth/README.md)
+- [clone](clone/README.md)
+- [csv](csv/README.md)
+- [encoding](encoding/README.md)
+- [enum](enum/README.md)
+- [env](env/README.md)
+- [errors](errors/README.md)
+- [flags](flags/README.md)
+- [fs](fs/README.md)
+- [ignore](ignore/README.md)
+- [index](index/README.md)
+- [input](input/README.md)
+- [kv](kv/README.md)
+- [parallel](parallel/README.md)
+- [path](path/README.md)
+- [random](random/README.md)
+- [retry](retry/README.md)
+- [testing](testing/README.md)
+- [time](time/README.md)
+- [universe](universe/README.md)
+- [validations](validations/README.md)
+- [warnings](warnings/README.md)
