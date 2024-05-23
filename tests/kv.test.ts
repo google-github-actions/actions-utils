@@ -159,6 +159,11 @@ describe('kv', { concurrency: true }, async () => {
         expected: { FOO: 'bar', ZIP: 'zap' },
       },
       {
+        name: 'returns empty for {}',
+        input: '  {} ',
+        expected: {},
+      },
+      {
         name: 'multiline',
         input: `
           FOO=bar

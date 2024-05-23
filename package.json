@@ -11,6 +11,9 @@
     "docs": "rm -rf docs/ && typedoc --plugin typedoc-plugin-markdown",
     "test": "bash ./bin/runTests.sh"
   },
+  "bin": {
+    "actions-gen-readme": "./bin/actions-gen-readme.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/google-github-actions/actions-utils.git"
