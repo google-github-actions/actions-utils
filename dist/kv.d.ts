@@ -24,6 +24,9 @@ export declare function joinKVStringForGCloud(input: KVPair, chars?: string): st
  * escaped with a backslash ("\,", "\\n"). All leading and trailing whitespace
  * is trimmed.
  *
+ * If the input is the literal string "{}", this returns the empty object. This
+ * is useful when trying to delete all upstream values.
+ *
  * @param input String with key/value pairs to parse.
  */
 export declare function parseKVString(input: string): KVPair;

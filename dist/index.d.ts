@@ -2,6 +2,7 @@ export * from './auth';
 export * from './clone';
 export * from './csv';
 export * from './encoding';
+export * from './enum';
 export * from './env';
 export * from './errors';
 export * from './flags';
