@@ -705,12 +705,15 @@ exports.isEmptyDir = isEmptyDir;
  *
  * @param outputPath Path in which to create the secure file.
  * @param data Data to write to file.
+ * @param options additional options to pass to writeFile. The default options
+ * are permissions of 0640, write-exclusive, and flush-on-success.
  *
  * @returns Path to written file.
  */
-function writeSecureFile(outputPath, data) {
+function writeSecureFile(outputPath, data, options) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield fs_1.promises.writeFile(outputPath, data, { mode: 0o640, flag: 'wx' });
+        const opts = Object.assign({}, { mode: 0o640, flag: 'wx', flush: true }, options);
+        yield fs_1.promises.writeFile(outputPath, data, opts);
         return outputPath;
     });
 }
@@ -792,7 +795,7 @@ function parseGcloudIgnore(pth) {
         const parentDir = (0, path_1.dirname)(pth);
         let ignoreContents = [];
         try {
-            ignoreContents = (yield fs_1.promises.readFile(pth, { encoding: 'utf-8' }))
+            ignoreContents = (yield fs_1.promises.readFile(pth, { encoding: 'utf8' }))
                 .toString()
                 .split(/\r?\n/)
                 .filter(shouldKeepIgnoreLine)
@@ -809,7 +812,7 @@ function parseGcloudIgnore(pth) {
             if (line.startsWith('#!include:')) {
                 const includeName = line.substring(10).trim();
                 const includePth = (0, path_1.join)(parentDir, includeName);
-                const subIgnoreContents = (yield fs_1.promises.readFile(includePth, { encoding: 'utf-8' }))
+                const subIgnoreContents = (yield fs_1.promises.readFile(includePth, { encoding: 'utf8' }))
                     .toString()
                     .split(/\r?\n/)
                     .filter(shouldKeepIgnoreLine)
@@ -1111,7 +1114,7 @@ exports.parseKVString = parseKVString;
  */
 function parseKVFile(filePath) {
     try {
-        const content = (0, validations_1.presence)((0, fs_1.readFileSync)(filePath, 'utf-8'));
+        const content = (0, validations_1.presence)((0, fs_1.readFileSync)(filePath, 'utf8'));
         if (!content || content.length < 1) {
             return {};
         }

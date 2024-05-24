@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { promises as fs, PathLike } from 'fs';
+import { promises as fs, PathLike, ObjectEncodingOptions, Mode, OpenMode } from 'fs';
 
 import { errorMessage, isNotFoundError } from './errors';
 
@@ -60,14 +60,22 @@ export async function isEmptyDir(dir: PathLike): Promise<boolean> {
  *
  * @param outputPath Path in which to create the secure file.
  * @param data Data to write to file.
+ * @param options additional options to pass to writeFile. The default options
+ * are permissions of 0640, write-exclusive, and flush-on-success.
  *
  * @returns Path to written file.
  */
 export async function writeSecureFile<T extends PathLike>(
   outputPath: T,
   data: string | Buffer,
+  options?: ObjectEncodingOptions & {
+    mode?: Mode;
+    flag?: OpenMode;
+    flush?: boolean;
+  },
 ): Promise<T> {
-  await fs.writeFile(outputPath, data, { mode: 0o640, flag: 'wx' });
+  const opts = Object.assign({}, { mode: 0o640, flag: 'wx', flush: true }, options);
+  await fs.writeFile(outputPath, data, opts);
   return outputPath;
 }
 

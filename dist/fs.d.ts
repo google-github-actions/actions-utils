@@ -1,6 +1,6 @@
 /// <reference types="node" />
 /// <reference types="node" />
-import { PathLike } from 'fs';
+import { PathLike, ObjectEncodingOptions, Mode, OpenMode } from 'fs';
 /**
  * forceRemove forcibly removes a file or directory (recursively). If the file
  * or directory does not exist, it does nothing. This is functionally equivalent
@@ -25,10 +25,16 @@ export declare function isEmptyDir(dir: PathLike): Promise<boolean>;
  *
  * @param outputPath Path in which to create the secure file.
  * @param data Data to write to file.
+ * @param options additional options to pass to writeFile. The default options
+ * are permissions of 0640, write-exclusive, and flush-on-success.
  *
  * @returns Path to written file.
  */
-export declare function writeSecureFile<T extends PathLike>(outputPath: T, data: string | Buffer): Promise<T>;
+export declare function writeSecureFile<T extends PathLike>(outputPath: T, data: string | Buffer, options?: ObjectEncodingOptions & {
+    mode?: Mode;
+    flag?: OpenMode;
+    flush?: boolean;
+}): Promise<T>;
 /**
  * removeFile removes the file at the given path. If the file does not exist, it
  * does nothing.
