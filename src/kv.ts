@@ -166,7 +166,7 @@ export function parseKVString(input: string): KVPair {
  */
 export function parseKVFile(filePath: string): KVPair {
   try {
-    const content = presence(readFileSync(filePath, 'utf-8'));
+    const content = presence(readFileSync(filePath, 'utf8'));
     if (!content || content.length < 1) {
       return {};
     }

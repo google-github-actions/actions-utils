@@ -33,7 +33,7 @@ export async function parseGcloudIgnore(pth: string): Promise<string[]> {
 
   let ignoreContents: string[] = [];
   try {
-    ignoreContents = (await fs.readFile(pth, { encoding: 'utf-8' }))
+    ignoreContents = (await fs.readFile(pth, { encoding: 'utf8' }))
       .toString()
       .split(/\r?\n/)
       .filter(shouldKeepIgnoreLine)
@@ -51,7 +51,7 @@ export async function parseGcloudIgnore(pth: string): Promise<string[]> {
       const includeName = line.substring(10).trim();
 
       const includePth = pathjoin(parentDir, includeName);
-      const subIgnoreContents = (await fs.readFile(includePth, { encoding: 'utf-8' }))
+      const subIgnoreContents = (await fs.readFile(includePth, { encoding: 'utf8' }))
         .toString()
         .split(/\r?\n/)
         .filter(shouldKeepIgnoreLine)
