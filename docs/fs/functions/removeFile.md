@@ -29,4 +29,4 @@ Use #forceRemove instead.
 
 ## Source
 
-[fs.ts:84](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L84)
+[fs.ts:92](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L92)

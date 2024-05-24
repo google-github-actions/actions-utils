@@ -6,7 +6,7 @@
 
 # Function: writeSecureFile()
 
-> **writeSecureFile**\<`T`\>(`outputPath`, `data`): `Promise`\<`T`\>
+> **writeSecureFile**\<`T`\>(`outputPath`, `data`, `options`?): `Promise`\<`T`\>
 
 writeSecureFile writes a file to disk with 0640 permissions and locks the
 file during writing.
@@ -25,6 +25,11 @@ Path in which to create the secure file.
 
 Data to write to file.
 
+• **options?**: `ObjectEncodingOptions` & `object`
+
+additional options to pass to writeFile. The default options
+are permissions of 0640, write-exclusive, and flush-on-success.
+
 ## Returns
 
 `Promise`\<`T`\>
@@ -33,4 +38,4 @@ Path to written file.
 
 ## Source
 
-[fs.ts:66](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L66)
+[fs.ts:68](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L68)
