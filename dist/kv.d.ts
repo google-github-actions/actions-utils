@@ -29,7 +29,7 @@ export declare function joinKVStringForGCloud(input: KVPair, chars?: string): st
  *
  * @param input String with key/value pairs to parse.
  */
-export declare function parseKVString(input: string): KVPair;
+export declare function parseKVString(input: string): KVPair | undefined;
 /**
  * Read and parse an env var file. If the file contents begin with a curly
  * brace, the content is assumed to be JSON and is parsed as JSON. Otherwise,
@@ -37,7 +37,7 @@ export declare function parseKVString(input: string): KVPair;
  *
  * @param filePath Path to the file on disk to parse.
  */
-export declare function parseKVFile(filePath: string): KVPair;
+export declare function parseKVFile(filePath: string): KVPair | undefined;
 /**
  * parseKVJSON parses the given string as a set of key=value pairs expressed as
  * JSON. If the input is not valid JSON, it errors. If the keys and values are
@@ -51,14 +51,14 @@ export declare function parseKVFile(filePath: string): KVPair;
  *
  * @return List of key=value pairs.
  */
-export declare function parseKVJSON(str: string): KVPair;
+export declare function parseKVJSON(str: string): KVPair | undefined;
 /**
  * Read and parse contents of the string as YAML. This is mostly just exposed
  * for testing.
  *
  * @param str YAML content to parse as K=V pairs.
  */
-export declare function parseKVYAML(str: string): KVPair;
+export declare function parseKVYAML(str: string): KVPair | undefined;
 /**
  * parseKVStringAndFile parses the given KV string and KV file, merging the
  * results (with kvString taking precedence).
@@ -66,4 +66,4 @@ export declare function parseKVYAML(str: string): KVPair;
  * @param kvString String of KEY=VALUE pairs.
  * @param kvFilePath Path on disk to a YAML file of KEY: VALUE pairs.
  */
-export declare function parseKVStringAndFile(kvString?: string, kvFilePath?: string): KVPair;
+export declare function parseKVStringAndFile(kvString?: string, kvFilePath?: string): KVPair | undefined;

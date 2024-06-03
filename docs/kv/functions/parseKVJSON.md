@@ -6,7 +6,7 @@
 
 # Function: parseKVJSON()
 
-> **parseKVJSON**(`str`): [`KVPair`](../type-aliases/KVPair.md)
+> **parseKVJSON**(`str`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 parseKVJSON parses the given string as a set of key=value pairs expressed as
 JSON. If the input is not valid JSON, it errors. If the keys and values are
@@ -24,7 +24,7 @@ JSON string to parse.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md)
+[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 List of key=value pairs.
 
