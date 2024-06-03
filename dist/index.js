@@ -1050,7 +1050,7 @@ exports.joinKVStringForGCloud = joinKVStringForGCloud;
 function parseKVString(input) {
     input = (input || '').trim();
     if (!input) {
-        return {};
+        return undefined;
     }
     const result = {};
     if (input === '{}') {
@@ -1116,7 +1116,7 @@ function parseKVFile(filePath) {
     try {
         const content = (0, validations_1.presence)((0, fs_1.readFileSync)(filePath, 'utf8'));
         if (!content || content.length < 1) {
-            return {};
+            return undefined;
         }
         if (content[0] === '{' || content[0] === '[') {
             return parseKVJSON(content);
@@ -1148,6 +1148,9 @@ exports.parseKVFile = parseKVFile;
 function parseKVJSON(str) {
     str = (str || '').trim();
     if (!str) {
+        return undefined;
+    }
+    if (str === '{}') {
         return {};
     }
     try {
@@ -1184,9 +1187,15 @@ exports.parseKVJSON = parseKVJSON;
  * @param str YAML content to parse as K=V pairs.
  */
 function parseKVYAML(str) {
-    if (!str || str.trim().length === 0) {
+    const trimmed = (str || '').trim();
+    if (!trimmed) {
+        return undefined;
+    }
+    if (trimmed === '{}') {
         return {};
     }
+    // Parse the original string here, since trimming could have changed
+    // indentation.
     const yamlContent = yaml_1.default.parse(str);
     const result = {};
     for (const [k, v] of Object.entries(yamlContent)) {
@@ -1208,16 +1217,12 @@ exports.parseKVYAML = parseKVYAML;
 function parseKVStringAndFile(kvString, kvFilePath) {
     kvString = (kvString || '').trim();
     kvFilePath = (kvFilePath || '').trim();
-    let result = {};
-    if (kvFilePath) {
-        const parsed = parseKVFile(kvFilePath);
-        result = Object.assign(Object.assign({}, result), parsed);
+    const fromFile = kvFilePath ? parseKVFile(kvFilePath) : undefined;
+    const fromString = kvString ? parseKVString(kvString) : undefined;
+    if (fromFile === undefined && fromString === undefined) {
+        return undefined;
     }
-    if (kvString) {
-        const parsed = parseKVString(kvString);
-        result = Object.assign(Object.assign({}, result), parsed);
-    }
-    return result;
+    return Object.assign({}, fromFile, fromString);
 }
 exports.parseKVStringAndFile = parseKVStringAndFile;
 

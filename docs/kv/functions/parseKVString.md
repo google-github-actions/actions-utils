@@ -6,7 +6,7 @@
 
 # Function: parseKVString()
 
-> **parseKVString**(`input`): [`KVPair`](../type-aliases/KVPair.md)
+> **parseKVString**(`input`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
 "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
@@ -24,7 +24,7 @@ String with key/value pairs to parse.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md)
+[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 ## Source
 

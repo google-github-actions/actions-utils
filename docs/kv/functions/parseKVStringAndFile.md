@@ -6,7 +6,7 @@
 
 # Function: parseKVStringAndFile()
 
-> **parseKVStringAndFile**(`kvString`?, `kvFilePath`?): [`KVPair`](../type-aliases/KVPair.md)
+> **parseKVStringAndFile**(`kvString`?, `kvFilePath`?): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 parseKVStringAndFile parses the given KV string and KV file, merging the
 results (with kvString taking precedence).
@@ -23,8 +23,8 @@ Path on disk to a YAML file of KEY: VALUE pairs.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md)
+[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 ## Source
 
-[kv.ts:273](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L273)
+[kv.ts:284](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L284)
