@@ -91,10 +91,10 @@ export function joinKVStringForGCloud(
  *
  * @param input String with key/value pairs to parse.
  */
-export function parseKVString(input: string): KVPair {
+export function parseKVString(input: string): KVPair | undefined {
   input = (input || '').trim();
   if (!input) {
-    return {};
+    return undefined;
   }
 
   const result: KVPair = {};
@@ -164,11 +164,11 @@ export function parseKVString(input: string): KVPair {
  *
  * @param filePath Path to the file on disk to parse.
  */
-export function parseKVFile(filePath: string): KVPair {
+export function parseKVFile(filePath: string): KVPair | undefined {
   try {
     const content = presence(readFileSync(filePath, 'utf8'));
     if (!content || content.length < 1) {
-      return {};
+      return undefined;
     }
 
     if (content[0] === '{' || content[0] === '[') {
@@ -199,9 +199,13 @@ export function parseKVFile(filePath: string): KVPair {
  *
  * @return List of key=value pairs.
  */
-export function parseKVJSON(str: string): KVPair {
+export function parseKVJSON(str: string): KVPair | undefined {
   str = (str || '').trim();
   if (!str) {
+    return undefined;
+  }
+
+  if (str === '{}') {
     return {};
   }
 
@@ -243,11 +247,18 @@ export function parseKVJSON(str: string): KVPair {
  *
  * @param str YAML content to parse as K=V pairs.
  */
-export function parseKVYAML(str: string): KVPair {
-  if (!str || str.trim().length === 0) {
+export function parseKVYAML(str: string): KVPair | undefined {
+  const trimmed = (str || '').trim();
+  if (!trimmed) {
+    return undefined;
+  }
+
+  if (trimmed === '{}') {
     return {};
   }
 
+  // Parse the original string here, since trimming could have changed
+  // indentation.
   const yamlContent = YAML.parse(str) as KVPair;
 
   const result: KVPair = {};
@@ -270,21 +281,15 @@ export function parseKVYAML(str: string): KVPair {
  * @param kvString String of KEY=VALUE pairs.
  * @param kvFilePath Path on disk to a YAML file of KEY: VALUE pairs.
  */
-export function parseKVStringAndFile(kvString?: string, kvFilePath?: string): KVPair {
+export function parseKVStringAndFile(kvString?: string, kvFilePath?: string): KVPair | undefined {
   kvString = (kvString || '').trim();
   kvFilePath = (kvFilePath || '').trim();
 
-  let result: Record<string, string> = {};
+  const fromFile = kvFilePath ? parseKVFile(kvFilePath) : undefined;
+  const fromString = kvString ? parseKVString(kvString) : undefined;
 
-  if (kvFilePath) {
-    const parsed = parseKVFile(kvFilePath);
-    result = { ...result, ...parsed };
+  if (fromFile === undefined && fromString === undefined) {
+    return undefined;
   }
-
-  if (kvString) {
-    const parsed = parseKVString(kvString);
-    result = { ...result, ...parsed };
-  }
-
-  return result;
+  return Object.assign({}, fromFile, fromString);
 }

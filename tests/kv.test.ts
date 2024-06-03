@@ -106,6 +106,11 @@ describe('kv', { concurrency: true }, async () => {
       {
         name: 'empty string',
         input: '',
+        expected: undefined,
+      },
+      {
+        name: 'braces',
+        input: '{}',
         expected: {},
       },
       {
@@ -257,6 +262,11 @@ ftyRyC/83GkAjs88l5eGxNE=
       {
         name: 'empty string',
         input: '',
+        expected: undefined,
+      },
+      {
+        name: 'braces',
+        input: '{}',
         expected: {},
       },
       {
@@ -300,6 +310,11 @@ ftyRyC/83GkAjs88l5eGxNE=
       {
         name: 'empty string',
         input: '',
+        expected: undefined,
+      },
+      {
+        name: 'braces',
+        input: '{}',
         expected: {},
       },
       {
@@ -382,21 +397,68 @@ ftyRyC/83GkAjs88l5eGxNE=
   });
 
   test('#parseKVStringAndFile', async (suite) => {
-    await suite.test('handles null kvString and kvFilePath', async () => {
-      const kvString = '';
-      const kvFile = '';
+    const cases = [
+      {
+        name: 'undefined kvstring and kvfile',
+        kvString: undefined,
+        kvFileContents: undefined,
+        expected: undefined,
+      },
+      {
+        name: 'empty kvstring and kvfile',
+        kvString: '',
+        kvFileContents: '',
+        expected: undefined,
+      },
+      {
+        name: 'braces kvstring and undefined kvfile',
+        kvString: '{}',
+        kvFileContents: undefined,
+        expected: {},
+      },
+      {
+        name: 'undefined kvstring and braces kvfile',
+        kvString: undefined,
+        kvFileContents: '{}',
+        expected: {},
+      },
+      {
+        name: 'braces kvstring and braces kvfile',
+        kvString: '{}',
+        kvFileContents: '{}',
+        expected: {},
+      },
+      {
+        name: 'partial kvstring and braces kvfile',
+        kvString: 'FOO=bar',
+        kvFileContents: '{}',
+        expected: { FOO: 'bar' },
+      },
+      {
+        name: 'braces kvstring and partial kvfile',
+        kvString: '{}',
+        kvFileContents: 'FOO=bar',
+        expected: { FOO: 'bar' },
+      },
+      {
+        name: 'merges with kvstring taking precedence',
+        kvString: 'FOO=bar',
+        kvFileContents: 'FOO=zap,ZIP=zap',
+        expected: { FOO: 'bar', ZIP: 'zap' },
+      },
+    ];
 
-      const result = parseKVStringAndFile(kvString, kvFile);
-      assert.deepStrictEqual(result, {});
-    });
+    for await (const tc of cases) {
+      await suite.test(tc.name, async () => {
+        let kvFile = '';
+        if (tc.kvFileContents !== undefined) {
+          kvFile = randomFilepath();
+          await fs.writeFile(kvFile, tc.kvFileContents);
+        }
 
-    await suite.test('merges kvString and kvFile', async () => {
-      const kvString = `FOO=other foo`;
-      const kvFile = randomFilepath();
-      await fs.writeFile(kvFile, `FOO: 'bar'\nZIP: 'zap'`);
-
-      const result = parseKVStringAndFile(kvString, kvFile);
-      assert.deepStrictEqual(result, { FOO: 'other foo', ZIP: 'zap' });
-    });
+        const result = parseKVStringAndFile(tc.kvString, kvFile);
+        assert.deepStrictEqual(result, tc.expected);
+      });
+    }
   });
 });
