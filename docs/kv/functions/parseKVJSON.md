@@ -28,6 +28,6 @@ JSON string to parse.
 
 List of key=value pairs.
 
-## Source
+## Defined in
 
 [kv.ts:202](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L202)

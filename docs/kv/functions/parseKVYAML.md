@@ -21,6 +21,6 @@ YAML content to parse as K=V pairs.
 
 [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
-## Source
+## Defined in
 
 [kv.ts:250](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L250)

@@ -6,8 +6,8 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "rm -rf dist/ && ncc build --source-map --no-source-map-register src/index.ts",
-    "lint": "eslint . --ext .ts,.tsx",
-    "format": "eslint . --ext .ts,.tsx --fix",
+    "lint": "eslint .",
+    "format": "eslint . --fix",
     "docs": "rm -rf docs/ && typedoc --plugin typedoc-plugin-markdown",
     "test": "bash ./bin/runTests.sh"
   },

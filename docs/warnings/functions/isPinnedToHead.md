@@ -17,6 +17,6 @@ pinned to HEAD ("master" or "main"), false otherwise.
 
 boolean indicating whether the action is pinned to HEAD.
 
-## Source
+## Defined in
 
 [warnings.ts:23](https://github.com/google-github-actions/actions-utils/blob/main/src/warnings.ts#L23)

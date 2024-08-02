@@ -24,6 +24,6 @@ Error input.
 
 Error information as a string.
 
-## Source
+## Defined in
 
 [errors.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/errors.ts#L26)

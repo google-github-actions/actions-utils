@@ -28,6 +28,6 @@ String value for the recommended pinned version (e.g.
 
 String warning message.
 
-## Source
+## Defined in
 
 [warnings.ts:41](https://github.com/google-github-actions/actions-utils/blob/main/src/warnings.ts#L41)

@@ -25,6 +25,6 @@ String value of the input.
 
 `void`
 
-## Source
+## Defined in
 
 [testing.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L26)

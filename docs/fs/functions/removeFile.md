@@ -27,6 +27,6 @@ A boolean, true if the file was deleted, false otherwise.
 
 Use #forceRemove instead.
 
-## Source
+## Defined in
 
 [fs.ts:92](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L92)

@@ -22,6 +22,6 @@ Flag string input.
 
 Array of strings in the order in which they were defined as flags.
 
-## Source
+## Defined in
 
 [flags.ts:23](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L23)

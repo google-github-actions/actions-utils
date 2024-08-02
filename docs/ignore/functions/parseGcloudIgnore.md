@@ -25,6 +25,6 @@ Path to the gcloudignore file.
 
 Ordered list of strings from the various ignore files.
 
-## Source
+## Defined in
 
 [ignore.ts:31](https://github.com/google-github-actions/actions-utils/blob/main/src/ignore.ts#L31)

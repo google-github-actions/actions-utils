@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 /**
  * presence takes the given string and converts it to undefined iff it's null,
  * undefined, or the empty string. Otherwise, it returns the trimmed string.

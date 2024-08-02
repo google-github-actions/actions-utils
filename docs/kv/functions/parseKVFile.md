@@ -22,6 +22,6 @@ Path to the file on disk to parse.
 
 [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
-## Source
+## Defined in
 
 [kv.ts:167](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L167)

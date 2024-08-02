@@ -17,7 +17,7 @@ return false.
 
 The value to check
 
-• **defaultValue?**: `boolean`= `false`
+• **defaultValue?**: `boolean` = `false`
 
 ## Returns
 
@@ -25,6 +25,6 @@ The value to check
 
 boolean
 
-## Source
+## Defined in
 
 [input.ts:40](https://github.com/google-github-actions/actions-utils/blob/main/src/input.ts#L40)

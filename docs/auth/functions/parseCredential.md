@@ -26,6 +26,6 @@ account credentials file (or base64-encoded).
 The parsed credential. It could be a service account key or an
 external credentials file.
 
-## Source
+## Defined in
 
 [auth.ts:86](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L86)

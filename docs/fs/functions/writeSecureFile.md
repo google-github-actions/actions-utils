@@ -11,7 +11,7 @@
 writeSecureFile writes a file to disk with 0640 permissions and locks the
 file during writing.
 
-## Type parameters
+## Type Parameters
 
 • **T** *extends* `PathLike`
 
@@ -36,6 +36,6 @@ are permissions of 0640, write-exclusive, and flush-on-success.
 
 Path to written file.
 
-## Source
+## Defined in
 
 [fs.ts:68](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L68)

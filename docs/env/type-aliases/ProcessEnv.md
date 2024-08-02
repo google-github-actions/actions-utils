@@ -4,12 +4,12 @@
 
 [@google-github-actions/actions-utils](../../modules.md) / [env](../README.md) / ProcessEnv
 
-# Type alias: ProcessEnv
+# Type Alias: ProcessEnv
 
 > **ProcessEnv**: `Record`\<`string`, `string` \| `undefined`\>
 
 ProcessEnv is a wrapper that defines an environment structure.
 
-## Source
+## Defined in
 
 [env.ts:20](https://github.com/google-github-actions/actions-utils/blob/main/src/env.ts#L20)

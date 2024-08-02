@@ -49,7 +49,7 @@ export async function isEmptyDir(dir: PathLike): Promise<boolean> {
   try {
     const files = await fs.readdir(dir);
     return files.length <= 0;
-  } catch (e) {
+  } catch {
     return true;
   }
 }

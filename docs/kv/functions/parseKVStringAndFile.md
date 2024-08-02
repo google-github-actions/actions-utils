@@ -25,6 +25,6 @@ Path on disk to a YAML file of KEY: VALUE pairs.
 
 [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
-## Source
+## Defined in
 
 [kv.ts:284](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L284)

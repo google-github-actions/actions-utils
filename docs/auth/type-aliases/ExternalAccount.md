@@ -4,7 +4,7 @@
 
 [@google-github-actions/actions-utils](../../modules.md) / [auth](../README.md) / ExternalAccount
 
-# Type alias: ExternalAccount
+# Type Alias: ExternalAccount
 
 > **ExternalAccount**: `object`
 
@@ -53,7 +53,7 @@ like a workload identity pool.
 
 > `optional` **headers**: `object`
 
-#### Index signature
+#### Index Signature
 
  \[`key`: `string`\]: `string`
 
@@ -97,6 +97,6 @@ like a workload identity pool.
 
 > `optional` **workforce\_pool\_user\_project**: `string`
 
-## Source
+## Defined in
 
 [auth.ts:45](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L45)

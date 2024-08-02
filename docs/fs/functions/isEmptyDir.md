@@ -23,6 +23,6 @@ Path to a directory.
 
 `Promise`\<`boolean`\>
 
-## Source
+## Defined in
 
 [fs.ts:48](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L48)

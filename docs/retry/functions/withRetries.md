@@ -10,7 +10,7 @@
 
 withRetry implements a retry mechanism with fibonacci backoff
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -36,6 +36,6 @@ fn. A function to start the retry process as a promise
 
 ## Throws
 
-## Source
+## Defined in
 
 [retry.ts:51](https://github.com/google-github-actions/actions-utils/blob/main/src/retry.ts#L51)

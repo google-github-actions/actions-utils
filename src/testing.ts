@@ -51,6 +51,7 @@ export function clearInputs(): void {
  *
  * @param fn Function to determine whether a variable should be deleted.
  */
+// eslint-disable-next-line no-unused-vars
 export function clearEnv(fn: (key: string, value?: string) => boolean): void {
   Object.keys(process.env).forEach((key) => {
     if (fn(key, process.env[key])) {

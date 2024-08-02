@@ -11,7 +11,7 @@
 toEnum converts the input value to the best enum value. If no enum value
 exists, it throws an error.
 
-## Type parameters
+## Type Parameters
 
 • **E** *extends* `Record`\<`string`, `string`\>
 
@@ -31,6 +31,6 @@ String to enumerize.
 
 string
 
-## Source
+## Defined in
 
 [enum.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/enum.ts#L25)

@@ -23,6 +23,6 @@ Path to transform.
 
 string Win32 path.
 
-## Source
+## Defined in
 
 [path.ts:37](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L37)
