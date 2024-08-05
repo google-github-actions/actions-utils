@@ -11,7 +11,7 @@
 expandUniverseEndpoints takes a list of universe endpoints using the
 {universe} template and returns the interolated values.
 
-## Type parameters
+## Type Parameters
 
 • **T** *extends* `Record`\<`string`, `string`\>
 
@@ -21,7 +21,7 @@ expandUniverseEndpoints takes a list of universe endpoints using the
 
 is an array of endpoints to universify
 
-• **universe?**: `string`= `'googleapis.com'`
+• **universe?**: `string` = `'googleapis.com'`
 
 is the universe to use
 
@@ -29,6 +29,6 @@ is the universe to use
 
 `{ [K in keyof T]: string }`
 
-## Source
+## Defined in
 
 [universe.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/universe.ts#L24)

@@ -31,6 +31,6 @@ The character to search.
 the string up to and including the search character, or null if no
 match is found.
 
-## Source
+## Defined in
 
 [flags.ts:126](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L126)

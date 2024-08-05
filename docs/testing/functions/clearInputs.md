@@ -14,6 +14,6 @@ clearInputs removes any GitHub Actions inputs set on the environment.
 
 `void`
 
-## Source
+## Defined in
 
 [testing.ts:44](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L44)

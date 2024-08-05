@@ -22,6 +22,6 @@ Duration string
 
 `number`
 
-## Source
+## Defined in
 
 [time.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/time.ts#L24)

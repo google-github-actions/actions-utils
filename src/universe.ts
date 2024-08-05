@@ -25,9 +25,9 @@ export function expandUniverseEndpoints<T extends Record<string, string>>(
   endpoints?: T,
   universe = 'googleapis.com',
 ): {
-  [K in keyof T]: string;
+  [K in keyof T]: string; // eslint-disable-line no-unused-vars
 } {
-  const result: { [K in keyof T]: string } = Object.assign({});
+  const result: { [K in keyof T]: string } = Object.assign({}); // eslint-disable-line no-unused-vars
 
   for (const key in endpoints) {
     const envOverrideKey = `GHA_ENDPOINT_OVERRIDE_${key}`;

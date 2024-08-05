@@ -19,7 +19,7 @@ filename. It does not create the file.
 
 #### Parameters
 
-• **length**: `number`= `12`
+• **length**: `number` = `12`
 
 Optional length of the filename to create. By default, this
 creates a filename with 96 bits of entropy to minimize probability of
@@ -41,12 +41,12 @@ the file.
 
 #### Parameters
 
-• **parent**: `string`= `undefined`
+• **parent**: `string` = `...`
 
 Optional parent directory for the filepath. If not given,
 os.tmpdir() is used.
 
-• **length**: `number`= `12`
+• **length**: `number` = `12`
 
 Optional length of the filename to create. By default, this
 creates a filename with 96 bits of entropy to minimize probability of
@@ -58,6 +58,6 @@ exceeding Windows filepaths lengths.
 
 Full file path.
 
-## Source
+## Defined in
 
 [random.ts:52](https://github.com/google-github-actions/actions-utils/blob/main/src/random.ts#L52)

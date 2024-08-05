@@ -12,7 +12,7 @@ deepClone builds a deep copy (clone) of the given input. By default, it uses
 structuredClone if defined. Otherwise, it uses v8 to serialize and
 deserialize the input.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -22,7 +22,7 @@ deserialize the input.
 
 Object to deep clone.
 
-• **useStructuredClone**: `boolean`= `true`
+• **useStructuredClone**: `boolean` = `true`
 
 Use structuredClone method (defaults to true).
 
@@ -32,6 +32,6 @@ Use structuredClone method (defaults to true).
 
 Deep copy of input.
 
-## Source
+## Defined in
 
 [clone.ts:28](https://github.com/google-github-actions/actions-utils/blob/main/src/clone.ts#L28)

@@ -11,7 +11,7 @@
 assertMembers is an assertion that verifies the expected contains all of the
 given members, in the order in which they were expected.
 
-## Type parameters
+## Type Parameters
 
 • **T**
 
@@ -29,6 +29,6 @@ The subset of values to assert
 
 `void`
 
-## Source
+## Defined in
 
-[testing.ts:86](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L86)
+[testing.ts:87](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L87)

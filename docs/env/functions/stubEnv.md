@@ -21,7 +21,7 @@ concurrent use. The function itself provides no locking.
 
 Map of string value pairs to set in the new environment.
 
-• **target**: [`ProcessEnv`](../type-aliases/ProcessEnv.md)= `process.env`
+• **target**: [`ProcessEnv`](../type-aliases/ProcessEnv.md) = `process.env`
 
 Target map to set and restore (defaults to `process.env`).
 
@@ -35,6 +35,6 @@ Function that restores the environment.
 
 `void`
 
-## Source
+## Defined in
 
 [env.ts:35](https://github.com/google-github-actions/actions-utils/blob/main/src/env.ts#L35)

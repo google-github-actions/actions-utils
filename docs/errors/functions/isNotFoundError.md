@@ -24,6 +24,6 @@ The error result to check.
 
 Boolean, true if the error represents NotFound, false otherwise.
 
-## Source
+## Defined in
 
 [errors.ts:75](https://github.com/google-github-actions/actions-utils/blob/main/src/errors.ts#L75)

@@ -26,6 +26,6 @@ String with key/value pairs to parse.
 
 [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
-## Source
+## Defined in
 
 [kv.ts:94](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L94)

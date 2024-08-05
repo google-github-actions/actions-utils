@@ -23,6 +23,6 @@ Path to transform.
 
 string Posix path.
 
-## Source
+## Defined in
 
 [path.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L26)

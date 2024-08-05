@@ -23,6 +23,6 @@ Path to the file or directory to remove.
 
 `Promise`\<`void`\>
 
-## Source
+## Defined in
 
 [fs.ts:29](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L29)

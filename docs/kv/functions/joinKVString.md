@@ -16,7 +16,7 @@ joinKVString joins the given KVPair using the provided separator.
 
 KVPair to serialize.
 
-• **separator**: `string`= `','`
+• **separator**: `string` = `','`
 
 Join separator.
 
@@ -24,6 +24,6 @@ Join separator.
 
 `string`
 
-## Source
+## Defined in
 
 [kv.ts:34](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L34)

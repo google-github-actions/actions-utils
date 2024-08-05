@@ -24,6 +24,6 @@ Arbitrary list of inputs.
 
 Boolean indicating whether exactly one element was truthy.
 
-## Source
+## Defined in
 
-[validations.ts:40](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L40)
+[validations.ts:38](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L38)

@@ -18,7 +18,7 @@ string.
 
 KVPair to serialize.
 
-• **chars**: `string`= ',.!@#$%&\*()\_=+~\`\[\]\{\}\|:;\<\>?🚀🍪🐼\u200B'
+• **chars**: `string` = ',.!@#$%&\*()\_=+~\`\[\]\{\}\|:;\<\>?🚀🍪🐼\u200B'
 
 String of characters to use.
 
@@ -26,6 +26,6 @@ String of characters to use.
 
 `string`
 
-## Source
+## Defined in
 
 [kv.ts:50](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L50)

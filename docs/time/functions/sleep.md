@@ -12,7 +12,7 @@ sleep waits for a specified duration in milliseconds as a promise.
 
 ## Parameters
 
-• **ms**: `number`= `0`
+• **ms**: `number` = `0`
 
 Duration in milliseconds to sleep.
 
@@ -20,6 +20,6 @@ Duration in milliseconds to sleep.
 
 `Promise`\<`void`\>
 
-## Source
+## Defined in
 
 [time.ts:85](https://github.com/google-github-actions/actions-utils/blob/main/src/time.ts#L85)

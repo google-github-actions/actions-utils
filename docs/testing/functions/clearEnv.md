@@ -21,6 +21,6 @@ Function to determine whether a variable should be deleted.
 
 `void`
 
-## Source
+## Defined in
 
-[testing.ts:54](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L54)
+[testing.ts:55](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L55)

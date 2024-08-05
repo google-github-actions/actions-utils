@@ -23,6 +23,6 @@ The string to check.
 
 The trimmed string or undefined.
 
-## Source
+## Defined in
 
-[validations.ts:27](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L27)
+[validations.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L25)

@@ -1,4 +1,3 @@
-/// <reference types="node" />
 /**
  * toBase64 base64 encodes the input as URL-encoded, unpadded.
  *

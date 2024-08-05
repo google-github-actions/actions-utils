@@ -24,6 +24,6 @@ The path to platformize.
 
 string The platform-specific path.
 
-## Source
+## Defined in
 
 [path.ts:49](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L49)

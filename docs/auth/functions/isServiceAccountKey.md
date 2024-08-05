@@ -21,6 +21,6 @@ Credential to check if is a service account key.
 
 `credential is ServiceAccountKey`
 
-## Source
+## Defined in
 
 [auth.ts:113](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L113)

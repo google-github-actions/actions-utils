@@ -13,7 +13,7 @@ filename. It does not create the file.
 
 ## Parameters
 
-• **length**: `number`= `12`
+• **length**: `number` = `12`
 
 Optional length of the filename to create. By default, this
 creates a filename with 96 bits of entropy to minimize probability of
@@ -25,6 +25,6 @@ exceeding Windows filepaths lengths.
 
 Name of the file.
 
-## Source
+## Defined in
 
 [random.ts:31](https://github.com/google-github-actions/actions-utils/blob/main/src/random.ts#L31)

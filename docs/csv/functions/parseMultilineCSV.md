@@ -25,6 +25,6 @@ String representing a comma-separated list
 
 Array of strings, in the same order they were supplied.
 
-## Source
+## Defined in
 
 [csv.ts:48](https://github.com/google-github-actions/actions-utils/blob/main/src/csv.ts#L48)

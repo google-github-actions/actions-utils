@@ -24,6 +24,6 @@ Base64-encoded string.
 
 Decoded string.
 
-## Source
+## Defined in
 
 [encoding.ts:41](https://github.com/google-github-actions/actions-utils/blob/main/src/encoding.ts#L41)

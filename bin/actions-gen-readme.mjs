@@ -34,7 +34,6 @@ async function run() {
       .join('\n')
       .trim();
     const def = opts.default ? `, default: \`${opts.default}\`` : '';
-    const href = `input::${input}`;
     inputs.push(
       `-   <a name="${input}"></a><a href="#user-content-${input}"><code>${input}</code></a>: _(${required}${def})_ ${description}\n`,
     );

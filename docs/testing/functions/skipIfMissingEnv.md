@@ -23,6 +23,6 @@ List of environment variables
 
 false or string indicating the test was skipped
 
-## Source
+## Defined in
 
-[testing.ts:69](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L69)
+[testing.ts:70](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L70)

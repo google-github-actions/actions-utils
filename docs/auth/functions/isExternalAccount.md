@@ -21,6 +21,6 @@ Credential to check if is an external account
 
 `credential is ExternalAccount`
 
-## Source
+## Defined in
 
 [auth.ts:123](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L123)

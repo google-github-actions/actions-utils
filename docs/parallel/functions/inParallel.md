@@ -11,7 +11,7 @@
 inParallel executes the given function in parallel, up to max concurrency.
 There are no guarantees on the order in which promises start.
 
-## Type parameters
+## Type Parameters
 
 • **F** *extends* () => `Promise`\<`Awaited`\<`R`\>\>
 
@@ -33,6 +33,6 @@ Optional configuration.
 
 Array of results in the order of args.
 
-## Source
+## Defined in
 
 [parallel.ts:30](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L30)

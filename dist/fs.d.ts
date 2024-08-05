@@ -1,5 +1,3 @@
-/// <reference types="node" />
-/// <reference types="node" />
 import { PathLike, ObjectEncodingOptions, Mode, OpenMode } from 'fs';
 /**
  * forceRemove forcibly removes a file or directory (recursively). If the file

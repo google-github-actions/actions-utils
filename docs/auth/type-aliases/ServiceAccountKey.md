@@ -4,7 +4,7 @@
 
 [@google-github-actions/actions-utils](../../modules.md) / [auth](../README.md) / ServiceAccountKey
 
-# Type alias: ServiceAccountKey
+# Type Alias: ServiceAccountKey
 
 > **ServiceAccountKey**: `object`
 
@@ -52,6 +52,6 @@ ServiceAccountKeyCredential is an exported credential for a service account key.
 
 > **type**: `string`
 
-## Source
+## Defined in
 
 [auth.ts:28](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L28)
