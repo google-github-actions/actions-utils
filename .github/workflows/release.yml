@@ -11,7 +11,7 @@ jobs:
     if: |-
       ${{ startsWith(github.event.head_commit.message, 'Release: v') }}
     name: 'Release'
-    uses: 'google-github-actions/.github/.github/workflows/release.yml@v0'
+    uses: 'google-github-actions/.github/.github/workflows/release.yml@v0' # ratchet:exclude
 
   publish:
     needs:
@@ -22,9 +22,9 @@ jobs:
     runs-on: 'ubuntu-latest'
 
     steps:
-      - uses: 'actions/checkout@v4'
+      - uses: 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' # ratchet:actions/checkout@v4
 
-      - uses: 'actions/setup-node@v4'
+      - uses: 'actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af' # ratchet:actions/setup-node@v4
         with:
           node-version: '20.x'
           registry-url: 'https://wombat-dressing-room.appspot.com/'
