@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,13 +8,17 @@
 
 > **allOf**(...`inputs`): `boolean`
 
+Defined in: [validations.ts:68](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L68)
+
 allOf iterates over the inputs and ensures all of the elements are truthy. If
 any elements are falsey, it returns false. If no inputs are given, the result
 is true.
 
 ## Parameters
 
-• ...**inputs**: `any`[]
+### inputs
+
+...`any`[]
 
 Arbitrary list of inputs.
 
@@ -23,7 +27,3 @@ Arbitrary list of inputs.
 `boolean`
 
 Boolean indicating whether all elements were truthy.
-
-## Defined in
-
-[validations.ts:68](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L68)

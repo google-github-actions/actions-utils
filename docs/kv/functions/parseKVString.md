@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Function: parseKVString()
 
 > **parseKVString**(`input`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+
+Defined in: [kv.ts:94](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L94)
 
 parseKVString parses a string of the format "KEY1=VALUE1,KEY2=VALUE2" or
 "KEY1=VALUE1\nKEY2=VALUE2". Keys or values that contain a separator must be
@@ -18,14 +20,12 @@ is useful when trying to delete all upstream values.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 String with key/value pairs to parse.
 
 ## Returns
 
 [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
-
-## Defined in
-
-[kv.ts:94](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L94)

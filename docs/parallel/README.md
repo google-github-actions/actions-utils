@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,8 +6,6 @@
 
 # parallel
 
-## Index
-
-### Functions
+## Functions
 
 - [inParallel](functions/inParallel.md)

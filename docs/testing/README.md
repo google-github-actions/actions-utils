@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,9 +6,7 @@
 
 # testing
 
-## Index
-
-### Functions
+## Functions
 
 - [assertMembers](functions/assertMembers.md)
 - [clearEnv](functions/clearEnv.md)

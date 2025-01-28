@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,9 +6,7 @@
 
 # csv
 
-## Index
-
-### Functions
+## Functions
 
 - [parseCSV](functions/parseCSV.md)
 - [parseMultilineCSV](functions/parseMultilineCSV.md)

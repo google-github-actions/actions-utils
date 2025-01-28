@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,11 +8,15 @@
 
 > **parseFlags**(`input`): `string`[]
 
+Defined in: [flags.ts:23](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L23)
+
 parseFlags takes an input string and parses it as posix-compliant flags.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 Flag string input.
 
@@ -21,7 +25,3 @@ Flag string input.
 `string`[]
 
 Array of strings in the order in which they were defined as flags.
-
-## Defined in
-
-[flags.ts:23](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L23)

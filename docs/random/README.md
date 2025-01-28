@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,13 +6,11 @@
 
 # random
 
-## Index
-
-### Variables
+## Variables
 
 - [default](variables/default.md)
 
-### Functions
+## Functions
 
 - [randomFilename](functions/randomFilename.md)
 - [randomFilepath](functions/randomFilepath.md)

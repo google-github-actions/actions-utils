@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,13 +8,17 @@
 
 > **toPlatformPath**(`pth`): `string`
 
+Defined in: [path.ts:49](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L49)
+
 toPlatformPath converts the given path to a platform-specific path. It does
 this by replacing instances of / and \ with the platform-specific path
 separator.
 
 ## Parameters
 
-• **pth**: `string`
+### pth
+
+`string`
 
 The path to platformize.
 
@@ -23,7 +27,3 @@ The path to platformize.
 `string`
 
 string The platform-specific path.
-
-## Defined in
-
-[path.ts:49](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L49)

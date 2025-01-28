@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Function: deepClone()
 
 > **deepClone**\<`T`\>(`input`, `useStructuredClone`): `T`
+
+Defined in: [clone.ts:28](https://github.com/google-github-actions/actions-utils/blob/main/src/clone.ts#L28)
 
 deepClone builds a deep copy (clone) of the given input. By default, it uses
 structuredClone if defined. Otherwise, it uses v8 to serialize and
@@ -18,11 +20,15 @@ deserialize the input.
 
 ## Parameters
 
-• **input**: `T`
+### input
+
+`T`
 
 Object to deep clone.
 
-• **useStructuredClone**: `boolean` = `true`
+### useStructuredClone
+
+`boolean` = `true`
 
 Use structuredClone method (defaults to true).
 
@@ -31,7 +37,3 @@ Use structuredClone method (defaults to true).
 `T`
 
 Deep copy of input.
-
-## Defined in
-
-[clone.ts:28](https://github.com/google-github-actions/actions-utils/blob/main/src/clone.ts#L28)

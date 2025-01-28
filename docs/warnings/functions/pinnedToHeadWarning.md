@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Function: pinnedToHeadWarning()
 
 > **pinnedToHeadWarning**(`recommended`): `string`
+
+Defined in: [warnings.ts:41](https://github.com/google-github-actions/actions-utils/blob/main/src/warnings.ts#L41)
 
 pinnedToHeadWarning builds a message you can use to emit a consistent warning
 about an action being pinned to HEAD. It extracts the action name and
@@ -17,7 +19,9 @@ string.
 
 ## Parameters
 
-• **recommended**: `string`
+### recommended
+
+`string`
 
 String value for the recommended pinned version (e.g.
 "v0")
@@ -27,7 +31,3 @@ String value for the recommended pinned version (e.g.
 `string`
 
 String warning message.
-
-## Defined in
-
-[warnings.ts:41](https://github.com/google-github-actions/actions-utils/blob/main/src/warnings.ts#L41)

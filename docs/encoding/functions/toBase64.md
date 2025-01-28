@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,20 +8,20 @@
 
 > **toBase64**(`input`): `string`
 
+Defined in: [encoding.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/encoding.ts#L24)
+
 toBase64 base64 encodes the input as URL-encoded, unpadded.
 
 ## Parameters
 
-• **input**: `string` \| `Buffer`
+### input
 
 String or Buffer to encode as base64.
+
+`string` | `Buffer`
 
 ## Returns
 
 `string`
 
 URL-encoded, unpadded base64 string.
-
-## Defined in
-
-[encoding.ts:24](https://github.com/google-github-actions/actions-utils/blob/main/src/encoding.ts#L24)

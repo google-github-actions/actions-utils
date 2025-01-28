@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,9 +6,7 @@
 
 # path
 
-## Index
-
-### Functions
+## Functions
 
 - [toPlatformPath](functions/toPlatformPath.md)
 - [toPosixPath](functions/toPosixPath.md)

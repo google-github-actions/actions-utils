@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,9 +6,7 @@
 
 # time
 
-## Index
-
-### Functions
+## Functions
 
 - [parseDuration](functions/parseDuration.md)
 - [sleep](functions/sleep.md)

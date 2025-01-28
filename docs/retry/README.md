@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,12 +6,10 @@
 
 # retry
 
-## Index
-
-### Interfaces
+## Interfaces
 
 - [RetryOptions](interfaces/RetryOptions.md)
 
-### Functions
+## Functions
 
 - [withRetries](functions/withRetries.md)

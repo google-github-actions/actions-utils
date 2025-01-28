@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,12 +8,16 @@
 
 > **toPosixPath**(`pth`): `string`
 
+Defined in: [path.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L26)
+
 toPosixPath converts the given path to the posix form. On Windows, \\ will be
 replaced with /.
 
 ## Parameters
 
-• **pth**: `string`
+### pth
+
+`string`
 
 Path to transform.
 
@@ -22,7 +26,3 @@ Path to transform.
 `string`
 
 string Posix path.
-
-## Defined in
-
-[path.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L26)

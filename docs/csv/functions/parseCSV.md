@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,12 +8,16 @@
 
 > **parseCSV**(`input`): `string`[]
 
+Defined in: [csv.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/csv.ts#L25)
+
 parseCSV accepts a comma-separated list of items. Whitespace around entries
 is removed.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 String representing a list.
 
@@ -22,7 +26,3 @@ String representing a list.
 `string`[]
 
 Array of strings, in the same order they were supplied.
-
-## Defined in
-
-[csv.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/csv.ts#L25)
