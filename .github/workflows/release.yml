@@ -14,6 +14,8 @@ jobs:
       ${{ startsWith(github.event.head_commit.message, 'Release: v') }}
     name: 'Release'
     uses: 'google-github-actions/.github/.github/workflows/release.yml@v1' # ratchet:exclude
+    secrets:
+      ACTIONS_BOT_TOKEN: '${{ secrets.ACTIONS_BOT_TOKEN }}'
 
   publish:
     needs:
