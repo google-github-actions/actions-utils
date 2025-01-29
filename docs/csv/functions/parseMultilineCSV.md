@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,6 +8,8 @@
 
 > **parseMultilineCSV**(`input`): `string`[]
 
+Defined in: [csv.ts:48](https://github.com/google-github-actions/actions-utils/blob/main/src/csv.ts#L48)
+
 parseMultilineCSV parses a CSV input where entries can be separated by
 newlines. This is specific for GitHub Actions, since the YAML syntax does not
 allow complex types, and sometimes splitting long entries over multiple lines
@@ -15,7 +17,9 @@ assists with readability.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 String representing a comma-separated list
 
@@ -24,7 +28,3 @@ String representing a comma-separated list
 `string`[]
 
 Array of strings, in the same order they were supplied.
-
-## Defined in
-
-[csv.ts:48](https://github.com/google-github-actions/actions-utils/blob/main/src/csv.ts#L48)

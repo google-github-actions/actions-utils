@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Type Alias: ExternalAccount
 
 > **ExternalAccount**: `object`
+
+Defined in: [auth.ts:45](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L45)
 
 ExternalAccount is an exported credential for an external account
 like a workload identity pool.
@@ -29,43 +31,43 @@ like a workload identity pool.
 
 > **credential\_source**: `object`
 
-### credential\_source.environment\_id?
+#### credential\_source.environment\_id?
 
 > `optional` **environment\_id**: `string`
 
-### credential\_source.file?
+#### credential\_source.file?
 
 > `optional` **file**: `string`
 
-### credential\_source.format?
+#### credential\_source.format?
 
 > `optional` **format**: `object`
 
-### credential\_source.format.subject\_token\_field\_name?
+#### credential\_source.format.subject\_token\_field\_name?
 
 > `optional` **subject\_token\_field\_name**: `string`
 
-### credential\_source.format.type
+#### credential\_source.format.type
 
 > **type**: `"json"` \| `"text"`
 
-### credential\_source.headers?
+#### credential\_source.headers?
 
 > `optional` **headers**: `object`
 
-#### Index Signature
+##### Index Signature
 
- \[`key`: `string`\]: `string`
+\[`key`: `string`\]: `string`
 
-### credential\_source.region\_url?
+#### credential\_source.region\_url?
 
 > `optional` **region\_url**: `string`
 
-### credential\_source.regional\_cred\_verification\_url
+#### credential\_source.regional\_cred\_verification\_url
 
 > **regional\_cred\_verification\_url**: `string`
 
-### credential\_source.url?
+#### credential\_source.url?
 
 > `optional` **url**: `string`
 
@@ -96,7 +98,3 @@ like a workload identity pool.
 ### workforce\_pool\_user\_project?
 
 > `optional` **workforce\_pool\_user\_project**: `string`
-
-## Defined in
-
-[auth.ts:45](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L45)

@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Function: inParallel()
 
 > **inParallel**\<`F`, `R`\>(`tasks`, `concurrency`?): `Promise`\<`R`[]\>
+
+Defined in: [parallel.ts:30](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L30)
 
 inParallel executes the given function in parallel, up to max concurrency.
 There are no guarantees on the order in which promises start.
@@ -19,11 +21,15 @@ There are no guarantees on the order in which promises start.
 
 ## Parameters
 
-• **tasks**: () => `Promise`\<`R`\>[]
+### tasks
+
+() => `Promise`\<`R`\>[]
 
 The tasks to invoke, must be async.
 
-• **concurrency?**: `number`
+### concurrency?
+
+`number`
 
 Optional configuration.
 
@@ -32,7 +38,3 @@ Optional configuration.
 `Promise`\<`R`[]\>
 
 Array of results in the order of args.
-
-## Defined in
-
-[parallel.ts:30](https://github.com/google-github-actions/actions-utils/blob/main/src/parallel.ts#L30)

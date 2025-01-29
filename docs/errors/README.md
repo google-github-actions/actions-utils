@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,9 +6,7 @@
 
 # errors
 
-## Index
-
-### Functions
+## Functions
 
 - [errorMessage](functions/errorMessage.md)
 - [isNotFoundError](functions/isNotFoundError.md)

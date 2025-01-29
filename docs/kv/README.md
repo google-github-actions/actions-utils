@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,13 +6,11 @@
 
 # kv
 
-## Index
-
-### Type Aliases
+## Type Aliases
 
 - [KVPair](type-aliases/KVPair.md)
 
-### Functions
+## Functions
 
 - [joinKVString](functions/joinKVString.md)
 - [joinKVStringForGCloud](functions/joinKVStringForGCloud.md)

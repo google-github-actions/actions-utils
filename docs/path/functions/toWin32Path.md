@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,12 +8,16 @@
 
 > **toWin32Path**(`pth`): `string`
 
+Defined in: [path.ts:37](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L37)
+
 toWin32Path converts the given path to the win32 form. On Linux, / will be
 replaced with \\.
 
 ## Parameters
 
-• **pth**: `string`
+### pth
+
+`string`
 
 Path to transform.
 
@@ -22,7 +26,3 @@ Path to transform.
 `string`
 
 string Win32 path.
-
-## Defined in
-
-[path.ts:37](https://github.com/google-github-actions/actions-utils/blob/main/src/path.ts#L37)

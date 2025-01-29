@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,21 +8,21 @@
 
 > **presence**(`input`): `string` \| `undefined`
 
+Defined in: [validations.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L25)
+
 presence takes the given string and converts it to undefined iff it's null,
 undefined, or the empty string. Otherwise, it returns the trimmed string.
 
 ## Parameters
 
-• **input**: `undefined` \| `null` \| `string`
+### input
 
 The string to check.
+
+`undefined` | `null` | `string`
 
 ## Returns
 
 `string` \| `undefined`
 
 The trimmed string or undefined.
-
-## Defined in
-
-[validations.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L25)

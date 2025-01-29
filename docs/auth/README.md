@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,19 +6,17 @@
 
 # auth
 
-## Index
-
-### Type Aliases
+## Type Aliases
 
 - [Credential](type-aliases/Credential.md)
 - [ExternalAccount](type-aliases/ExternalAccount.md)
 - [ServiceAccountKey](type-aliases/ServiceAccountKey.md)
 
-### Variables
+## Variables
 
 - [default](variables/default.md)
 
-### Functions
+## Functions
 
 - [isExternalAccount](functions/isExternalAccount.md)
 - [isServiceAccountKey](functions/isServiceAccountKey.md)

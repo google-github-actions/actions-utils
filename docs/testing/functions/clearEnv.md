@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,19 +8,19 @@
 
 > **clearEnv**(`fn`): `void`
 
+Defined in: [testing.ts:55](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L55)
+
 clearEnv deletes any keys from the environment for which the function returns
 true.
 
 ## Parameters
 
-• **fn**
+### fn
+
+(`key`, `value`?) => `boolean`
 
 Function to determine whether a variable should be deleted.
 
 ## Returns
 
 `void`
-
-## Defined in
-
-[testing.ts:55](https://github.com/google-github-actions/actions-utils/blob/main/src/testing.ts#L55)

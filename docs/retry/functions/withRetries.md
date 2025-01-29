@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,6 +8,8 @@
 
 > **withRetries**\<`T`\>(`fn`, `opts`): () => `Promise`\<`T`\>
 
+Defined in: [retry.ts:51](https://github.com/google-github-actions/actions-utils/blob/main/src/retry.ts#L51)
+
 withRetry implements a retry mechanism with fibonacci backoff
 
 ## Type Parameters
@@ -16,11 +18,15 @@ withRetry implements a retry mechanism with fibonacci backoff
 
 ## Parameters
 
-• **fn**
+### fn
+
+() => `Promise`\<`T`\>
 
 A function to retry on failure
 
-• **opts**: [`RetryOptions`](../interfaces/RetryOptions.md)
+### opts
+
+[`RetryOptions`](../interfaces/RetryOptions.md)
 
 The retry options
 
@@ -35,7 +41,3 @@ fn. A function to start the retry process as a promise
 `Promise`\<`T`\>
 
 ## Throws
-
-## Defined in
-
-[retry.ts:51](https://github.com/google-github-actions/actions-utils/blob/main/src/retry.ts#L51)

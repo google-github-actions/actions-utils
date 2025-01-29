@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -7,42 +7,6 @@
 # index
 
 ## References
-
-### Credential
-
-Re-exports [Credential](../auth/type-aliases/Credential.md)
-
-***
-
-### ExternalAccount
-
-Re-exports [ExternalAccount](../auth/type-aliases/ExternalAccount.md)
-
-***
-
-### KVPair
-
-Re-exports [KVPair](../kv/type-aliases/KVPair.md)
-
-***
-
-### ProcessEnv
-
-Re-exports [ProcessEnv](../env/type-aliases/ProcessEnv.md)
-
-***
-
-### RetryOptions
-
-Re-exports [RetryOptions](../retry/interfaces/RetryOptions.md)
-
-***
-
-### ServiceAccountKey
-
-Re-exports [ServiceAccountKey](../auth/type-aliases/ServiceAccountKey.md)
-
-***
 
 ### allOf
 
@@ -68,6 +32,12 @@ Re-exports [clearInputs](../testing/functions/clearInputs.md)
 
 ***
 
+### Credential
+
+Re-exports [Credential](../auth/type-aliases/Credential.md)
+
+***
+
 ### deepClone
 
 Re-exports [deepClone](../clone/functions/deepClone.md)
@@ -89,6 +59,12 @@ Re-exports [exactlyOneOf](../validations/functions/exactlyOneOf.md)
 ### expandUniverseEndpoints
 
 Re-exports [expandUniverseEndpoints](../universe/functions/expandUniverseEndpoints.md)
+
+***
+
+### ExternalAccount
+
+Re-exports [ExternalAccount](../auth/type-aliases/ExternalAccount.md)
 
 ***
 
@@ -152,21 +128,27 @@ Re-exports [joinKVStringForGCloud](../kv/functions/joinKVStringForGCloud.md)
 
 ***
 
+### KVPair
+
+Re-exports [KVPair](../kv/type-aliases/KVPair.md)
+
+***
+
 ### parseBoolean
 
 Re-exports [parseBoolean](../input/functions/parseBoolean.md)
 
 ***
 
-### parseCSV
-
-Re-exports [parseCSV](../csv/functions/parseCSV.md)
-
-***
-
 ### parseCredential
 
 Re-exports [parseCredential](../auth/functions/parseCredential.md)
+
+***
+
+### parseCSV
+
+Re-exports [parseCSV](../csv/functions/parseCSV.md)
 
 ***
 
@@ -236,6 +218,12 @@ Re-exports [presence](../validations/functions/presence.md)
 
 ***
 
+### ProcessEnv
+
+Re-exports [ProcessEnv](../env/type-aliases/ProcessEnv.md)
+
+***
+
 ### randomFilename
 
 Re-exports [randomFilename](../random/functions/randomFilename.md)
@@ -257,6 +245,18 @@ Re-exports [readUntil](../flags/functions/readUntil.md)
 ### removeFile
 
 Re-exports [removeFile](../fs/functions/removeFile.md)
+
+***
+
+### RetryOptions
+
+Re-exports [RetryOptions](../retry/interfaces/RetryOptions.md)
+
+***
+
+### ServiceAccountKey
+
+Re-exports [ServiceAccountKey](../auth/type-aliases/ServiceAccountKey.md)
 
 ***
 

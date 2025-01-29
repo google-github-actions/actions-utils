@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,6 +8,8 @@
 
 > **readUntil**(`input`, `ch`): `string` \| `null`
 
+Defined in: [flags.ts:126](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L126)
+
 readUntil reads up to and including the given character and returns the
 result. It ignores escaped versions of the character if they are preceeded by
 with "\". If ch is not found, it returns null.
@@ -16,11 +18,15 @@ This is a utility function, but it is exported for testing.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 The input string.
 
-• **ch**: `string`
+### ch
+
+`string`
 
 The character to search.
 
@@ -30,7 +36,3 @@ The character to search.
 
 the string up to and including the search character, or null if no
 match is found.
-
-## Defined in
-
-[flags.ts:126](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L126)

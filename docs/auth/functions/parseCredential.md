@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,13 +8,17 @@
 
 > **parseCredential**(`input`): [`Credential`](../type-aliases/Credential.md)
 
+Defined in: [auth.ts:86](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L86)
+
 parseCredential attempts to parse the given string as a service account key
 JSON or external account credentials. It handles if the input is
 base64-encoded.
 
 ## Parameters
 
-• **input**: `string`
+### input
+
+`string`
 
 String that is an exported JSON service account key or external
 account credentials file (or base64-encoded).
@@ -25,7 +29,3 @@ account credentials file (or base64-encoded).
 
 The parsed credential. It could be a service account key or an
 external credentials file.
-
-## Defined in
-
-[auth.ts:86](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L86)

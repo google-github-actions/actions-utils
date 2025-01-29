@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,12 +6,10 @@
 
 # env
 
-## Index
-
-### Type Aliases
+## Type Aliases
 
 - [ProcessEnv](type-aliases/ProcessEnv.md)
 
-### Functions
+## Functions
 
 - [stubEnv](functions/stubEnv.md)

@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Variable: default
 
 > **default**: `object`
+
+Defined in: [auth.ts:127](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L127)
 
 ## Type declaration
 
@@ -19,7 +21,9 @@ false otherwise.
 
 #### Parameters
 
-• **credential**: [`Credential`](../type-aliases/Credential.md)
+##### credential
+
+[`Credential`](../type-aliases/Credential.md)
 
 Credential to check if is an external account
 
@@ -36,7 +40,9 @@ ServiceAccountKey, false otherwise.
 
 #### Parameters
 
-• **credential**: [`Credential`](../type-aliases/Credential.md)
+##### credential
+
+[`Credential`](../type-aliases/Credential.md)
 
 Credential to check if is a service account key.
 
@@ -54,7 +60,9 @@ base64-encoded.
 
 #### Parameters
 
-• **input**: `string`
+##### input
+
+`string`
 
 String that is an exported JSON service account key or external
 account credentials file (or base64-encoded).
@@ -65,7 +73,3 @@ account credentials file (or base64-encoded).
 
 The parsed credential. It could be a service account key or an
 external credentials file.
-
-## Defined in
-
-[auth.ts:127](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L127)

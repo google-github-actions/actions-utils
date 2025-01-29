@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../README.md)
 
 ***
 
@@ -6,11 +6,9 @@
 
 # fs
 
-## Index
-
-### Functions
+## Functions
 
 - [forceRemove](functions/forceRemove.md)
 - [isEmptyDir](functions/isEmptyDir.md)
-- [removeFile](functions/removeFile.md)
+- [~~removeFile~~](functions/removeFile.md)
 - [writeSecureFile](functions/writeSecureFile.md)

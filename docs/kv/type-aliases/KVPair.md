@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,8 +8,6 @@
 
 > **KVPair**: `Record`\<`string`, `string`\>
 
+Defined in: [kv.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L26)
+
 KVPair represents a key=value pair of strings.
-
-## Defined in
-
-[kv.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L26)

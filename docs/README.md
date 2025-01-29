@@ -1,4 +1,4 @@
-**@google-github-actions/actions-utils** • [**Docs**](modules.md)
+**@google-github-actions/actions-utils**
 
 ***
 

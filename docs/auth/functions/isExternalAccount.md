@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -8,19 +8,19 @@
 
 > **isExternalAccount**(`credential`): `credential is ExternalAccount`
 
+Defined in: [auth.ts:123](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L123)
+
 isExternalAccount returns true if the given interface is a ExternalAccount,
 false otherwise.
 
 ## Parameters
 
-• **credential**: [`Credential`](../type-aliases/Credential.md)
+### credential
+
+[`Credential`](../type-aliases/Credential.md)
 
 Credential to check if is an external account
 
 ## Returns
 
 `credential is ExternalAccount`
-
-## Defined in
-
-[auth.ts:123](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L123)

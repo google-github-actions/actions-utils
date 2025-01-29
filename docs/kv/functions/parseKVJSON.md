@@ -1,4 +1,4 @@
-[**@google-github-actions/actions-utils**](../../README.md) • **Docs**
+[**@google-github-actions/actions-utils**](../../README.md)
 
 ***
 
@@ -7,6 +7,8 @@
 # Function: parseKVJSON()
 
 > **parseKVJSON**(`str`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+
+Defined in: [kv.ts:202](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L202)
 
 parseKVJSON parses the given string as a set of key=value pairs expressed as
 JSON. If the input is not valid JSON, it errors. If the keys and values are
@@ -18,7 +20,9 @@ instead.
 
 ## Parameters
 
-• **str**: `string`
+### str
+
+`string`
 
 JSON string to parse.
 
@@ -27,7 +31,3 @@ JSON string to parse.
 [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
 
 List of key=value pairs.
-
-## Defined in
-
-[kv.ts:202](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L202)
