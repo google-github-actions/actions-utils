@@ -8,12 +8,8 @@ on:
 
 jobs:
   release:
-    permissions:
-      contents: 'write'
-    if: |-
-      ${{ startsWith(github.event.head_commit.message, 'Release: v') }}
-    name: 'Release'
-    uses: 'google-github-actions/.github/.github/workflows/release.yml@v1' # ratchet:exclude
+    # TODO(sethvargo): revert to a tag when ready
+    uses: 'google-github-actions/.github/.github/workflows/release.yml@main' # ratchet:exclude
     secrets:
       ACTIONS_BOT_TOKEN: '${{ secrets.ACTIONS_BOT_TOKEN }}'
 
@@ -24,7 +20,6 @@ jobs:
       contents: 'read'
       id-token: 'write'
     runs-on: 'ubuntu-latest'
-
     steps:
       - uses: 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' # ratchet:actions/checkout@v4
 
