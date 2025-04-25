@@ -37,11 +37,17 @@ describe('encoding', { concurrency: true }, async () => {
         input: 'aGVsbG8=',
         expected: 'hello',
       },
+      {
+        name: 'outputs in custom format',
+        input: 'aGVsbG8=',
+        outEncoding: 'hex',
+        expected: '68656c6c6f',
+      },
     ];
 
     for await (const tc of cases) {
       await suite.test(tc.name, async () => {
-        const actual = fromBase64(tc.input);
+        const actual = fromBase64(tc.input, tc.outEncoding as BufferEncoding);
         assert.deepStrictEqual(actual, tc.expected);
       });
     }
