@@ -38,8 +38,12 @@ export function toBase64(input: string | Buffer): string {
  *
  * @return Decoded string.
  */
-export function fromBase64(input: string): string {
+export function fromBase64(input: string, outEncoding?: BufferEncoding): string {
+  if (!outEncoding) {
+    outEncoding = 'utf8';
+  }
+
   let str = input.replace(/-/g, '+').replace(/_/g, '/');
   while (str.length % 4) str += '=';
-  return Buffer.from(str, 'base64').toString('utf8');
+  return Buffer.from(str, 'base64').toString(outEncoding);
 }

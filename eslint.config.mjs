@@ -11,6 +11,9 @@ export default ts.config(
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser: tsParser,
+      globals: {
+        BufferEncoding: 'readonly',
+      },
     },
   },
   { ignores: ['dist/', '**/*.js'] },
