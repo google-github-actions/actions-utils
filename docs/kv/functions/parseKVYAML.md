@@ -6,7 +6,7 @@
 
 # Function: parseKVYAML()
 
-> **parseKVYAML**(`str`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+> **parseKVYAML**(`str`): `undefined` \| [`KVPair`](../type-aliases/KVPair.md)
 
 Defined in: [kv.ts:250](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L250)
 
@@ -23,4 +23,4 @@ YAML content to parse as K=V pairs.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+`undefined` \| [`KVPair`](../type-aliases/KVPair.md)

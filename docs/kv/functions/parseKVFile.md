@@ -6,7 +6,7 @@
 
 # Function: parseKVFile()
 
-> **parseKVFile**(`filePath`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+> **parseKVFile**(`filePath`): `undefined` \| [`KVPair`](../type-aliases/KVPair.md)
 
 Defined in: [kv.ts:167](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L167)
 
@@ -24,4 +24,4 @@ Path to the file on disk to parse.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+`undefined` \| [`KVPair`](../type-aliases/KVPair.md)

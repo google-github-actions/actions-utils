@@ -14,7 +14,9 @@ withRetry implements a retry mechanism with fibonacci backoff
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 
@@ -32,9 +34,9 @@ The retry options
 
 ## Returns
 
-`Function`
-
 fn. A function to start the retry process as a promise
+
+> (): `Promise`\<`T`\>
 
 ### Returns
 

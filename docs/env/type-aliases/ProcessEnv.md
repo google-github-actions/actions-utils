@@ -6,7 +6,7 @@
 
 # Type Alias: ProcessEnv
 
-> **ProcessEnv**: `Record`\<`string`, `string` \| `undefined`\>
+> **ProcessEnv** = `Record`\<`string`, `string` \| `undefined`\>
 
 Defined in: [env.ts:20](https://github.com/google-github-actions/actions-utils/blob/main/src/env.ts#L20)
 

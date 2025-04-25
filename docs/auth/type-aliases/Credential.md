@@ -6,7 +6,7 @@
 
 # Type Alias: Credential
 
-> **Credential**: [`ServiceAccountKey`](ServiceAccountKey.md) \| [`ExternalAccount`](ExternalAccount.md)
+> **Credential** = [`ServiceAccountKey`](ServiceAccountKey.md) \| [`ExternalAccount`](ExternalAccount.md)
 
 Defined in: [auth.ts:23](https://github.com/google-github-actions/actions-utils/blob/main/src/auth.ts#L23)
 

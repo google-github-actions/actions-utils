@@ -15,7 +15,9 @@ exists, it throws an error.
 
 ## Type Parameters
 
-• **E** *extends* `Record`\<`string`, `string`\>
+### E
+
+`E` *extends* `Record`\<`string`, `string`\>
 
 ## Parameters
 

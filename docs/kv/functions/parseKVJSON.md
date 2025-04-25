@@ -6,7 +6,7 @@
 
 # Function: parseKVJSON()
 
-> **parseKVJSON**(`str`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+> **parseKVJSON**(`str`): `undefined` \| [`KVPair`](../type-aliases/KVPair.md)
 
 Defined in: [kv.ts:202](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L202)
 
@@ -28,6 +28,6 @@ JSON string to parse.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+`undefined` \| [`KVPair`](../type-aliases/KVPair.md)
 
 List of key=value pairs.

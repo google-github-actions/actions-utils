@@ -6,7 +6,7 @@
 
 # Function: parseKVString()
 
-> **parseKVString**(`input`): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+> **parseKVString**(`input`): `undefined` \| [`KVPair`](../type-aliases/KVPair.md)
 
 Defined in: [kv.ts:94](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L94)
 
@@ -28,4 +28,4 @@ String with key/value pairs to parse.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+`undefined` \| [`KVPair`](../type-aliases/KVPair.md)

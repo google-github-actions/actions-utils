@@ -6,7 +6,7 @@
 
 # Function: readUntil()
 
-> **readUntil**(`input`, `ch`): `string` \| `null`
+> **readUntil**(`input`, `ch`): `null` \| `string`
 
 Defined in: [flags.ts:126](https://github.com/google-github-actions/actions-utils/blob/main/src/flags.ts#L126)
 
@@ -32,7 +32,7 @@ The character to search.
 
 ## Returns
 
-`string` \| `null`
+`null` \| `string`
 
 the string up to and including the search character, or null if no
 match is found.

@@ -6,7 +6,7 @@
 
 # Function: presence()
 
-> **presence**(`input`): `string` \| `undefined`
+> **presence**(`input`): `undefined` \| `string`
 
 Defined in: [validations.ts:25](https://github.com/google-github-actions/actions-utils/blob/main/src/validations.ts#L25)
 
@@ -23,6 +23,6 @@ The string to check.
 
 ## Returns
 
-`string` \| `undefined`
+`undefined` \| `string`
 
 The trimmed string or undefined.

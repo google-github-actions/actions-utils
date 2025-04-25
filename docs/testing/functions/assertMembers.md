@@ -15,7 +15,9 @@ given members, in the order in which they were expected.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 

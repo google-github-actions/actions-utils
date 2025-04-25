@@ -6,7 +6,7 @@
 
 # Function: parseBoolean()
 
-> **parseBoolean**(`input`?, `defaultValue`?): `boolean`
+> **parseBoolean**(`input?`, `defaultValue?`): `boolean`
 
 Defined in: [input.ts:40](https://github.com/google-github-actions/actions-utils/blob/main/src/input.ts#L40)
 

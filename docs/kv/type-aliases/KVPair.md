@@ -6,7 +6,7 @@
 
 # Type Alias: KVPair
 
-> **KVPair**: `Record`\<`string`, `string`\>
+> **KVPair** = `Record`\<`string`, `string`\>
 
 Defined in: [kv.ts:26](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L26)
 
