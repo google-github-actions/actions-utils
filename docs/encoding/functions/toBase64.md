@@ -18,7 +18,7 @@ toBase64 base64 encodes the input as URL-encoded, unpadded.
 
 String or Buffer to encode as base64.
 
-`string` | `Buffer`
+`string` | `Buffer`\<`ArrayBufferLike`\>
 
 ## Returns
 

@@ -15,4 +15,4 @@ export declare function toBase64(input: string | Buffer): string;
  *
  * @return Decoded string.
  */
-export declare function fromBase64(input: string): string;
+export declare function fromBase64(input: string, outEncoding?: BufferEncoding): string;

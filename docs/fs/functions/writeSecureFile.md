@@ -6,7 +6,7 @@
 
 # Function: writeSecureFile()
 
-> **writeSecureFile**\<`T`\>(`outputPath`, `data`, `options`?): `Promise`\<`T`\>
+> **writeSecureFile**\<`T`\>(`outputPath`, `data`, `options?`): `Promise`\<`T`\>
 
 Defined in: [fs.ts:68](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L68)
 
@@ -15,7 +15,9 @@ file during writing.
 
 ## Type Parameters
 
-• **T** *extends* `PathLike`
+### T
+
+`T` *extends* `PathLike`
 
 ## Parameters
 
@@ -29,7 +31,7 @@ Path in which to create the secure file.
 
 Data to write to file.
 
-`string` | `Buffer`
+`string` | `Buffer`\<`ArrayBufferLike`\>
 
 ### options?
 

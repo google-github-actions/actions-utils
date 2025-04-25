@@ -16,7 +16,9 @@ deserialize the input.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 

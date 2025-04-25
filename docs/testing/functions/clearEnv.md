@@ -17,7 +17,7 @@ true.
 
 ### fn
 
-(`key`, `value`?) => `boolean`
+(`key`, `value?`) => `boolean`
 
 Function to determine whether a variable should be deleted.
 

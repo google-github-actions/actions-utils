@@ -33,9 +33,9 @@ Target map to set and restore (defaults to `process.env`).
 
 ## Returns
 
-`Function`
-
 Function that restores the environment.
+
+> (): `void`
 
 ### Returns
 

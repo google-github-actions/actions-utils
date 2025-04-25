@@ -6,7 +6,7 @@
 
 # Function: fromBase64()
 
-> **fromBase64**(`input`): `string`
+> **fromBase64**(`input`, `outEncoding?`): `string`
 
 Defined in: [encoding.ts:41](https://github.com/google-github-actions/actions-utils/blob/main/src/encoding.ts#L41)
 
@@ -21,6 +21,10 @@ return result is a string and therefore this will not work with binary data.
 `string`
 
 Base64-encoded string.
+
+### outEncoding?
+
+`BufferEncoding`
 
 ## Returns
 

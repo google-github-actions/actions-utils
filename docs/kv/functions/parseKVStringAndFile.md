@@ -6,7 +6,7 @@
 
 # Function: parseKVStringAndFile()
 
-> **parseKVStringAndFile**(`kvString`?, `kvFilePath`?): [`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+> **parseKVStringAndFile**(`kvString?`, `kvFilePath?`): `undefined` \| [`KVPair`](../type-aliases/KVPair.md)
 
 Defined in: [kv.ts:284](https://github.com/google-github-actions/actions-utils/blob/main/src/kv.ts#L284)
 
@@ -29,4 +29,4 @@ Path on disk to a YAML file of KEY: VALUE pairs.
 
 ## Returns
 
-[`KVPair`](../type-aliases/KVPair.md) \| `undefined`
+`undefined` \| [`KVPair`](../type-aliases/KVPair.md)
