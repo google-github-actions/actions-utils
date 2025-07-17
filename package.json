@@ -4,6 +4,10 @@
   "description": "Helpers and utilities that are shared among Google GitHub Actions",
   "author": "Google LLC",
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">= 20.x",
+    "npm": ">= 11.x"
+  },
   "scripts": {
     "build": "rm -rf dist/ && ncc build --source-map --no-source-map-register src/index.ts",
     "lint": "eslint .",
