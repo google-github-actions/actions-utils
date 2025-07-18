@@ -585,8 +585,8 @@ function parseFlags(input) {
             if (v.length < 2) {
                 break;
             }
-            const first = v.at(0);
-            const last = v.at(-1);
+            const first = v.charAt(0);
+            const last = v.charAt(v.length - 1);
             if ((first === `'` || first === `"`) && first === last) {
                 result[i] = v.slice(1, -1);
                 continue;
@@ -631,7 +631,7 @@ function readUntil(input, ch) {
 /***/ }),
 
 /***/ 4772:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
 /*
@@ -649,6 +649,15 @@ function readUntil(input, ch) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.forceRemove = forceRemove;
 exports.isEmptyDir = isEmptyDir;
@@ -664,16 +673,18 @@ const errors_1 = __nccwpck_require__(3916);
  *
  * @param pth Path to the file or directory to remove.
  */
-async function forceRemove(pth) {
-    try {
-        await fs_1.promises.rm(pth, { force: true, recursive: true });
-    }
-    catch (err) {
-        if (!(0, errors_1.isNotFoundError)(err)) {
-            const msg = (0, errors_1.errorMessage)(err);
-            throw new Error(`Failed to remove "${pth}": ${msg}`);
+function forceRemove(pth) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield fs_1.promises.rm(pth, { force: true, recursive: true });
         }
-    }
+        catch (err) {
+            if (!(0, errors_1.isNotFoundError)(err)) {
+                const msg = (0, errors_1.errorMessage)(err);
+                throw new Error(`Failed to remove "${pth}": ${msg}`);
+            }
+        }
+    });
 }
 /**
  * isEmptyDir returns true if the given directory does not exist, or exists but
@@ -683,14 +694,16 @@ async function forceRemove(pth) {
  *
  * @param dir Path to a directory.
  */
-async function isEmptyDir(dir) {
-    try {
-        const files = await fs_1.promises.readdir(dir);
-        return files.length <= 0;
-    }
-    catch {
-        return true;
-    }
+function isEmptyDir(dir) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const files = yield fs_1.promises.readdir(dir);
+            return files.length <= 0;
+        }
+        catch (_a) {
+            return true;
+        }
+    });
 }
 /**
  * writeSecureFile writes a file to disk with 0640 permissions and locks the
@@ -703,10 +716,12 @@ async function isEmptyDir(dir) {
  *
  * @returns Path to written file.
  */
-async function writeSecureFile(outputPath, data, options) {
-    const opts = Object.assign({}, { mode: 0o640, flag: 'wx', flush: true }, options);
-    await fs_1.promises.writeFile(outputPath, data, opts);
-    return outputPath;
+function writeSecureFile(outputPath, data, options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const opts = Object.assign({}, { mode: 0o640, flag: 'wx', flush: true }, options);
+        yield fs_1.promises.writeFile(outputPath, data, opts);
+        return outputPath;
+    });
 }
 /**
  * removeFile removes the file at the given path. If the file does not exist, it
@@ -718,25 +733,27 @@ async function writeSecureFile(outputPath, data, options) {
  *
  * @deprecated Use #forceRemove instead.
  */
-async function removeFile(filePath) {
-    try {
-        await fs_1.promises.unlink(filePath);
-        return true;
-    }
-    catch (err) {
-        if ((0, errors_1.isNotFoundError)(err)) {
-            return false;
+function removeFile(filePath) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield fs_1.promises.unlink(filePath);
+            return true;
         }
-        const msg = (0, errors_1.errorMessage)(err);
-        throw new Error(`Failed to remove "${filePath}": ${msg}`);
-    }
+        catch (err) {
+            if ((0, errors_1.isNotFoundError)(err)) {
+                return false;
+            }
+            const msg = (0, errors_1.errorMessage)(err);
+            throw new Error(`Failed to remove "${filePath}": ${msg}`);
+        }
+    });
 }
 
 
 /***/ }),
 
 /***/ 7237:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
 /*
@@ -754,6 +771,15 @@ async function removeFile(filePath) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseGcloudIgnore = parseGcloudIgnore;
 const fs_1 = __nccwpck_require__(9896);
@@ -768,37 +794,39 @@ const errors_1 = __nccwpck_require__(3916);
  * @param pth Path to the gcloudignore file.
  * @return Ordered list of strings from the various ignore files.
  */
-async function parseGcloudIgnore(pth) {
-    const parentDir = (0, path_1.dirname)(pth);
-    let ignoreContents = [];
-    try {
-        ignoreContents = (await fs_1.promises.readFile(pth, { encoding: 'utf8' }))
-            .toString()
-            .split(/\r?\n/)
-            .filter(shouldKeepIgnoreLine)
-            .map((line) => line.trim());
-    }
-    catch (err) {
-        if (!(0, errors_1.isNotFoundError)(err)) {
-            throw err;
-        }
-    }
-    // Iterate through each line and parse any includes.
-    for (let i = 0; i < ignoreContents.length; i++) {
-        const line = ignoreContents[i];
-        if (line.startsWith('#!include:')) {
-            const includeName = line.substring(10).trim();
-            const includePth = (0, path_1.join)(parentDir, includeName);
-            const subIgnoreContents = (await fs_1.promises.readFile(includePth, { encoding: 'utf8' }))
+function parseGcloudIgnore(pth) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const parentDir = (0, path_1.dirname)(pth);
+        let ignoreContents = [];
+        try {
+            ignoreContents = (yield fs_1.promises.readFile(pth, { encoding: 'utf8' }))
                 .toString()
                 .split(/\r?\n/)
                 .filter(shouldKeepIgnoreLine)
                 .map((line) => line.trim());
-            ignoreContents.splice(i, 1, ...subIgnoreContents);
-            i += subIgnoreContents.length;
         }
-    }
-    return ignoreContents;
+        catch (err) {
+            if (!(0, errors_1.isNotFoundError)(err)) {
+                throw err;
+            }
+        }
+        // Iterate through each line and parse any includes.
+        for (let i = 0; i < ignoreContents.length; i++) {
+            const line = ignoreContents[i];
+            if (line.startsWith('#!include:')) {
+                const includeName = line.substring(10).trim();
+                const includePth = (0, path_1.join)(parentDir, includeName);
+                const subIgnoreContents = (yield fs_1.promises.readFile(includePth, { encoding: 'utf8' }))
+                    .toString()
+                    .split(/\r?\n/)
+                    .filter(shouldKeepIgnoreLine)
+                    .map((line) => line.trim());
+                ignoreContents.splice(i, 1, ...subIgnoreContents);
+                i += subIgnoreContents.length;
+            }
+        }
+        return ignoreContents;
+    });
 }
 /**
  * shouldKeepIgnoreLine is a helper that returns true if the given line is not
@@ -1203,7 +1231,7 @@ function parseKVStringAndFile(kvString, kvFilePath) {
 /***/ }),
 
 /***/ 3716:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
 /*
@@ -1221,6 +1249,22 @@ function parseKVStringAndFile(kvString, kvFilePath) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.inParallel = inParallel;
 const os_1 = __nccwpck_require__(857);
@@ -1234,31 +1278,47 @@ const errors_1 = __nccwpck_require__(3916);
  *
  * @return Array of results in the order of args.
  */
-async function inParallel(tasks, concurrency) {
-    // Concurrency is the minimum of the number of arguments or concurrency. This
-    // prevents additional undefined entries in the results array.
-    concurrency = Math.min(concurrency || (0, os_1.cpus)().length - 1);
-    if (concurrency < 1) {
-        throw new Error(`concurrency must be at least 1`);
-    }
-    const results = [];
-    const errors = [];
-    const runTasks = async (iter) => {
-        for await (const [idx, task] of iter) {
-            try {
-                results[idx] = await task();
-            }
-            catch (err) {
-                errors.push((0, errors_1.errorMessage)(err));
-            }
+function inParallel(tasks, concurrency) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // Concurrency is the minimum of the number of arguments or concurrency. This
+        // prevents additional undefined entries in the results array.
+        concurrency = Math.min(concurrency || (0, os_1.cpus)().length - 1);
+        if (concurrency < 1) {
+            throw new Error(`concurrency must be at least 1`);
         }
-    };
-    const workers = new Array(concurrency).fill(tasks.entries()).map(runTasks);
-    await Promise.allSettled(workers);
-    if (errors.length > 0) {
-        throw new Error(errors.join('\n'));
-    }
-    return results;
+        const results = [];
+        const errors = [];
+        const runTasks = (iter) => __awaiter(this, void 0, void 0, function* () {
+            var _a, iter_1, iter_1_1;
+            var _b, e_1, _c, _d;
+            try {
+                for (_a = true, iter_1 = __asyncValues(iter); iter_1_1 = yield iter_1.next(), _b = iter_1_1.done, !_b; _a = true) {
+                    _d = iter_1_1.value;
+                    _a = false;
+                    const [idx, task] = _d;
+                    try {
+                        results[idx] = yield task();
+                    }
+                    catch (err) {
+                        errors.push((0, errors_1.errorMessage)(err));
+                    }
+                }
+            }
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (!_a && !_b && (_c = iter_1.return)) yield _c.call(iter_1);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
+        });
+        const workers = new Array(concurrency).fill(tasks.entries()).map(runTasks);
+        yield Promise.allSettled(workers);
+        if (errors.length > 0) {
+            throw new Error(errors.join('\n'));
+        }
+        return results;
+    });
 }
 
 
@@ -1383,7 +1443,7 @@ exports["default"] = { randomFilename, randomFilepath };
 /***/ }),
 
 /***/ 9809:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
 /*
@@ -1401,6 +1461,15 @@ exports["default"] = { randomFilename, randomFilepath };
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.withRetries = withRetries;
 const errors_1 = __nccwpck_require__(3916);
@@ -1415,41 +1484,44 @@ const DEFAULT_BACKOFF_MILLISECONDS = 100;
  * @throws {Error}
  */
 function withRetries(fn, opts) {
+    var _a;
     const retries = opts.retries;
-    const backoffLimit = typeof opts?.backoffLimit !== 'undefined' ? Math.max(opts.backoffLimit, 0) : undefined;
+    const backoffLimit = typeof (opts === null || opts === void 0 ? void 0 : opts.backoffLimit) !== 'undefined' ? Math.max(opts.backoffLimit, 0) : undefined;
     // ensure backoff is limited to start
-    let backoff = opts.backoff ?? DEFAULT_BACKOFF_MILLISECONDS;
+    let backoff = (_a = opts.backoff) !== null && _a !== void 0 ? _a : DEFAULT_BACKOFF_MILLISECONDS;
     if (typeof backoffLimit !== 'undefined') {
         backoff = Math.min(backoff, backoffLimit);
     }
-    return async function () {
-        let attemptLimit = retries + 1;
-        let currentBackoff = backoff;
-        const currentBackoffLimit = backoffLimit;
-        let prevBackoff = 0;
-        let errMessage = 'unknown';
-        do {
-            try {
-                return await fn();
-            }
-            catch (err) {
-                errMessage = (0, errors_1.errorMessage)(err);
-                --attemptLimit;
-                if (attemptLimit > 0) {
-                    await (0, time_1.sleep)(currentBackoff);
-                    let newBackoff = prevBackoff + currentBackoff;
-                    if (typeof currentBackoffLimit !== 'undefined') {
-                        newBackoff = Math.min(newBackoff, Number(currentBackoffLimit));
-                    }
-                    prevBackoff = currentBackoff;
-                    currentBackoff = newBackoff;
+    return function () {
+        return __awaiter(this, void 0, void 0, function* () {
+            let attemptLimit = retries + 1;
+            let currentBackoff = backoff;
+            const currentBackoffLimit = backoffLimit;
+            let prevBackoff = 0;
+            let errMessage = 'unknown';
+            do {
+                try {
+                    return yield fn();
                 }
-            }
-        } while (attemptLimit > 0);
-        // We always try once.
-        const attempts = opts.retries + 1;
-        const attemptsMsg = attempts === 1 ? `1 attempt` : `${attempts} attempts`;
-        throw new Error(`retry function failed after ${attemptsMsg}: ${errMessage}`);
+                catch (err) {
+                    errMessage = (0, errors_1.errorMessage)(err);
+                    --attemptLimit;
+                    if (attemptLimit > 0) {
+                        yield (0, time_1.sleep)(currentBackoff);
+                        let newBackoff = prevBackoff + currentBackoff;
+                        if (typeof currentBackoffLimit !== 'undefined') {
+                            newBackoff = Math.min(newBackoff, Number(currentBackoffLimit));
+                        }
+                        prevBackoff = currentBackoff;
+                        currentBackoff = newBackoff;
+                    }
+                }
+            } while (attemptLimit > 0);
+            // We always try once.
+            const attempts = opts.retries + 1;
+            const attemptsMsg = attempts === 1 ? `1 attempt` : `${attempts} attempts`;
+            throw new Error(`retry function failed after ${attemptsMsg}: ${errMessage}`);
+        });
     };
 }
 
@@ -1573,7 +1645,7 @@ function assertMembers(actual, expected) {
 /***/ }),
 
 /***/ 9834:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports) {
 
 
 /*
@@ -1591,6 +1663,15 @@ function assertMembers(actual, expected) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseDuration = parseDuration;
 exports.sleep = sleep;
@@ -1657,8 +1738,10 @@ function parseDuration(input) {
  *
  * @param ms Duration in milliseconds to sleep.
  */
-async function sleep(ms = 0) {
-    return new Promise((r) => setTimeout(r, ms));
+function sleep() {
+    return __awaiter(this, arguments, void 0, function* (ms = 0) {
+        return new Promise((r) => setTimeout(r, ms));
+    });
 }
 
 
