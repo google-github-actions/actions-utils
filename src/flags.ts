@@ -96,8 +96,8 @@ export function parseFlags(input: string): string[] {
         break;
       }
 
-      const first = v.at(0);
-      const last = v.at(-1);
+      const first = v.charAt(0);
+      const last = v.charAt(v.length - 1);
       if ((first === `'` || first === `"`) && first === last) {
         result[i] = v.slice(1, -1);
         continue;
