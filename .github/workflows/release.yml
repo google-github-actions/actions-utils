@@ -6,11 +6,19 @@ on:
       - 'main'
       - 'release/**/*'
 
+defaults:
+  run:
+    shell: 'bash'
+
 jobs:
   release:
     uses: 'google-github-actions/.github/.github/workflows/release.yml@v3' # ratchet:exclude
     secrets:
       ACTIONS_BOT_TOKEN: '${{ secrets.ACTIONS_BOT_TOKEN }}'
+    permissions:
+      attestations: 'write'
+      contents: 'write'
+      packages: 'write'
 
   publish:
     needs:
