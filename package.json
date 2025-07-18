@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "engines": {
     "node": ">= 20.x",
-    "npm": ">= 11.x"
+    "npm": ">= 10.x"
   },
   "scripts": {
     "build": "rm -rf dist/ && ncc build --source-map --no-source-map-register src/index.ts",
@@ -32,22 +32,22 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
   "dependencies": {
-    "yaml": "^2.7.1"
+    "yaml": "^2.8.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.25.1",
-    "@types/node": "^22.15.2",
-    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@eslint/js": "^9.31.0",
+    "@types/node": "^24.0.14",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@vercel/ncc": "^0.38.3",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
-    "eslint": "^9.25.1",
-    "prettier": "^3.5.3",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint": "^9.31.0",
+    "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
-    "typedoc-plugin-markdown": "^4.6.3",
-    "typedoc": "^0.28.3",
-    "typescript-eslint": "^8.31.0",
+    "typedoc-plugin-markdown": "^4.7.0",
+    "typedoc": "^0.28.7",
+    "typescript-eslint": "^8.37.0",
     "typescript": "^5.8.3"
   }
 }
