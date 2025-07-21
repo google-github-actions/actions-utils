@@ -25,8 +25,10 @@ async function run() {
   const actionContents = await readFile('action.yml', 'utf8');
   const action = YAML.parse(actionContents);
 
+  const actionInputs = Object.entries(action.inputs || {});
+  if (actionInputs.length === 0) console.warn(`action.yml inputs are empty`);
   const inputs = [];
-  for (const [input, opts] of Object.entries(action.inputs)) {
+  for (const [input, opts] of Object.entries(actionInputs)) {
     const required = opts.required ? 'Required' : 'Optional';
     const description = opts.description
       .split('\n')
@@ -42,8 +44,10 @@ async function run() {
   const endInputs = readmeContents.indexOf('<!-- END_AUTOGEN_INPUTS -->');
   readmeContents.splice(startInputs + 1, endInputs - startInputs - 1, '', ...inputs, '');
 
+  const actionOutputs = Object.entries(action.outputs || {});
+  if (actionOutputs.length === 0) console.warn(`action.yml outputs are empty`);
   const outputs = [];
-  for (const [output, opts] of Object.entries(action.outputs)) {
+  for (const [output, opts] of Object.entries(actionOutputs)) {
     const description = opts.description
       .split('\n')
       .map((line) => (line.trim() === '' ? '' : `    ${line}`))
