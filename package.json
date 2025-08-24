@@ -5,15 +5,15 @@
   "author": "Google LLC",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">= 20.x",
-    "npm": ">= 10.x"
+    "node": ">= 24.x",
+    "npm": ">= 11.x"
   },
   "scripts": {
     "build": "rm -rf dist/ && ncc build --source-map --no-source-map-register src/index.ts",
     "lint": "eslint .",
     "format": "eslint . --fix",
     "docs": "rm -rf docs/ && typedoc --plugin typedoc-plugin-markdown",
-    "test": "bash ./bin/runTests.sh"
+    "test": "node --require ts-node/register --test-reporter spec --test tests/**/*.test.ts"
   },
   "bin": {
     "actions-gen-readme": "./bin/actions-gen-readme.mjs"
