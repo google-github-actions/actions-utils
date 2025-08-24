@@ -4,7 +4,7 @@
 
 [@google-github-actions/actions-utils](../../modules.md) / [fs](../README.md) / removeFile
 
-# Function: ~~removeFile()~~
+# ~~Function: removeFile()~~
 
 > **removeFile**(`filePath`): `Promise`\<`boolean`\>
 
