@@ -23,7 +23,7 @@ import { promises as fs } from 'fs';
 import { constants as fsconstants } from 'fs';
 import { randomFilepath } from '../src/random';
 
-import { isEmptyDir, forceRemove, removeFile, writeSecureFile } from '../src/fs';
+import { isEmptyDir, forceRemove, writeSecureFile } from '../src/fs';
 
 describe('fs', { concurrency: true }, async () => {
   test('#forceRemove', async (suite) => {
@@ -72,25 +72,6 @@ describe('fs', { concurrency: true }, async () => {
         assert.deepStrictEqual(isEmpty, tc.exp);
       });
     }
-  });
-
-  test('#removeFile', async (suite) => {
-    await suite.test('deletes the file', async () => {
-      const filepath = randomFilepath();
-      await fs.writeFile(filepath, 'my data');
-      const deleted = await removeFile(filepath);
-      assert.deepStrictEqual(deleted, true);
-
-      await assert.rejects(async () => {
-        await fs.access(filepath, fsconstants.F_OK);
-      }, /ENOENT/);
-    });
-
-    await suite.test('does nothing when the file does not exist', async () => {
-      const filepath = '/not/a/file';
-      const deleted = await removeFile(filepath);
-      assert.deepStrictEqual(deleted, false);
-    });
   });
 
   test('#writeSecureFile', async (suite) => {

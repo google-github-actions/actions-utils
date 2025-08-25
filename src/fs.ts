@@ -78,27 +78,3 @@ export async function writeSecureFile<T extends PathLike>(
   await fs.writeFile(outputPath, data, opts);
   return outputPath;
 }
-
-/**
- * removeFile removes the file at the given path. If the file does not exist, it
- * does nothing.
- *
- * @param filePath Path of the file on disk to delete.
- *
- * @returns A boolean, true if the file was deleted, false otherwise.
- *
- * @deprecated Use #forceRemove instead.
- */
-export async function removeFile(filePath: PathLike): Promise<boolean> {
-  try {
-    await fs.unlink(filePath);
-    return true;
-  } catch (err) {
-    if (isNotFoundError(err)) {
-      return false;
-    }
-
-    const msg = errorMessage(err);
-    throw new Error(`Failed to remove "${filePath}": ${msg}`);
-  }
-}
