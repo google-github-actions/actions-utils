@@ -46,3 +46,31 @@ jobs:
 
       - name: 'npm test'
         run: 'npm run test'
+
+  actions-gen-readme:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' # ratchet:actions/checkout@v4
+
+      - uses: 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' # ratchet:actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+
+      - name: 'npm build'
+        run: 'npm ci && npm run build'
+
+      - name: 'Install command globally'
+        run: |-
+          npm install -g .
+
+      - name: 'Copy fixtures and generate README'
+        run: |-
+          cp -R "./tests/fixtures/actions-gen-readme" "${RUNNER_TEMP}/actions-gen-readme"
+          (cd "${RUNNER_TEMP}/actions-gen-readme" && actions-gen-readme)
+
+      - name: 'Verify output'
+        run: |-
+          grep "Does things." "${RUNNER_TEMP}/actions-gen-readme/README.md"
+          grep "Does other things." "${RUNNER_TEMP}/actions-gen-readme/README.md"
+          grep "Has things." "${RUNNER_TEMP}/actions-gen-readme/README.md"
+          cat "${RUNNER_TEMP}/actions-gen-readme/README.md"
