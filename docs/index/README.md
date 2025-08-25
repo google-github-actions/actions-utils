@@ -8,6 +8,12 @@
 
 ## References
 
+### actionsGenReadme
+
+Re-exports [actionsGenReadme](../actions-gen-readme/functions/actionsGenReadme.md)
+
+***
+
 ### allOf
 
 Re-exports [allOf](../validations/functions/allOf.md)
@@ -239,12 +245,6 @@ Re-exports [randomFilepath](../random/functions/randomFilepath.md)
 ### readUntil
 
 Re-exports [readUntil](../flags/functions/readUntil.md)
-
-***
-
-### removeFile
-
-Re-exports [removeFile](../fs/functions/removeFile.md)
 
 ***
 

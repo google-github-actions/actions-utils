@@ -10,5 +10,4 @@
 
 - [forceRemove](functions/forceRemove.md)
 - [isEmptyDir](functions/isEmptyDir.md)
-- [~~removeFile~~](functions/removeFile.md)
 - [writeSecureFile](functions/writeSecureFile.md)

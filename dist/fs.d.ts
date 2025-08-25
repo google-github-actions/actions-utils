@@ -33,14 +33,3 @@ export declare function writeSecureFile<T extends PathLike>(outputPath: T, data:
     flag?: OpenMode;
     flush?: boolean;
 }): Promise<T>;
-/**
- * removeFile removes the file at the given path. If the file does not exist, it
- * does nothing.
- *
- * @param filePath Path of the file on disk to delete.
- *
- * @returns A boolean, true if the file was deleted, false otherwise.
- *
- * @deprecated Use #forceRemove instead.
- */
-export declare function removeFile(filePath: PathLike): Promise<boolean>;
