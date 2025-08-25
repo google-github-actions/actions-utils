@@ -6,6 +6,7 @@
 
 ## Modules
 
+- [actions-gen-readme](actions-gen-readme/README.md)
 - [auth](auth/README.md)
 - [clone](clone/README.md)
 - [csv](csv/README.md)
