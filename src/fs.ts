@@ -55,13 +55,13 @@ export async function isEmptyDir(dir: PathLike): Promise<boolean> {
 }
 
 /**
- * writeSecureFile writes a file to disk with 0640 permissions and locks the
+ * writeSecureFile writes a file to disk with 0600 permissions and locks the
  * file during writing.
  *
  * @param outputPath Path in which to create the secure file.
  * @param data Data to write to file.
  * @param options additional options to pass to writeFile. The default options
- * are permissions of 0640, write-exclusive, and flush-on-success.
+ * are permissions of 0600, write-exclusive, and flush-on-success.
  *
  * @returns Path to written file.
  */
@@ -74,7 +74,7 @@ export async function writeSecureFile<T extends PathLike>(
     flush?: boolean;
   },
 ): Promise<T> {
-  const opts = Object.assign({}, { mode: 0o640, flag: 'wx', flush: true }, options);
+  const opts = Object.assign({}, { mode: 0o600, flag: 'wx', flush: true }, options);
   await fs.writeFile(outputPath, data, opts);
   return outputPath;
 }
