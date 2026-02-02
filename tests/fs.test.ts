@@ -85,14 +85,14 @@ describe('fs', { concurrency: true }, async () => {
 
       if (process.platform !== 'win32') {
         const stats = await fs.stat(filepath);
-        assert.deepStrictEqual(stats.mode.toString(8), '100640');
+        assert.deepStrictEqual(stats.mode.toString(8), '100600');
       }
     });
 
     await suite.test('writes a file with custom options', async () => {
       const filepath = randomFilepath();
       const result = await writeSecureFile(filepath, 'my data', {
-        mode: 0o600,
+        mode: 0o700,
         encoding: 'utf8',
       });
       assert.deepStrictEqual(filepath, result);
@@ -102,7 +102,7 @@ describe('fs', { concurrency: true }, async () => {
 
       if (process.platform !== 'win32') {
         const stats = await fs.stat(filepath);
-        assert.deepStrictEqual(stats.mode.toString(8), '100600');
+        assert.deepStrictEqual(stats.mode.toString(8), '100700');
       }
     });
   });
