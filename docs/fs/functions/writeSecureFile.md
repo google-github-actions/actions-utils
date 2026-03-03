@@ -10,7 +10,7 @@
 
 Defined in: [fs.ts:68](https://github.com/google-github-actions/actions-utils/blob/main/src/fs.ts#L68)
 
-writeSecureFile writes a file to disk with 0640 permissions and locks the
+writeSecureFile writes a file to disk with 0600 permissions and locks the
 file during writing.
 
 ## Type Parameters
@@ -38,7 +38,7 @@ Data to write to file.
 `ObjectEncodingOptions` & `object`
 
 additional options to pass to writeFile. The default options
-are permissions of 0640, write-exclusive, and flush-on-success.
+are permissions of 0600, write-exclusive, and flush-on-success.
 
 ## Returns
 

@@ -85,7 +85,7 @@ describe('fs', { concurrency: true }, async () => {
 
       if (process.platform !== 'win32') {
         const stats = await fs.stat(filepath);
-        assert.deepStrictEqual(stats.mode.toString(8), '100640');
+        assert.deepStrictEqual(stats.mode.toString(8), '100600');
       }
     });
 
